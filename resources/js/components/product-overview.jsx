@@ -9,7 +9,6 @@ function classNames(...classes) {
 }
 
 export default function ProductOverview({ open, setOpen, product }) {
-    const [selectedColor, setSelectedColor] = useState(product.colors?.[0]);
     const [quantity, setQuantity] = useState(1);
 
     const decreaseQuantity = () => {
