@@ -1,5 +1,6 @@
-const products = [
+const arrivalsproducts = [
     {
+        uniqueId: 'arrivals-1',
         id: 1,
         name: 'Basic Tee',
         href: '',
@@ -9,6 +10,7 @@ const products = [
         color: 'Black',
     },
     {
+        uniqueId: 'arrivals-2',
         id: 2,
         name: 'Basic Tee',
         href: '',
@@ -18,6 +20,7 @@ const products = [
         color: 'Black',
     },
     {
+        uniqueId: 'arrivals-3',
         id: 3,
         name: 'Basic Tee',
         href: '',
@@ -27,6 +30,7 @@ const products = [
         color: 'Black',
     },
     {
+        uniqueId: 'arrivals-4',
         id: 4,
         name: 'Basic Tee',
         href: '',
@@ -41,4 +45,4 @@ const products = [
     href: `arrivals-details/${product.id}`,
 }));
 
-export default products;
+export default arrivalsproducts;

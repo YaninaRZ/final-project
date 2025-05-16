@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
-import products from './table-new-products';
+import tableProducts from './table-new-products';
+
 export default function ProductsV2() {
     return (
         <div className="bg-white">
@@ -7,7 +8,7 @@ export default function ProductsV2() {
                 <h2 className="sr-only">Products</h2>
 
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    {products.map((product) => (
+                    {tableProducts.map((product) => (
                         <Link key={product.id} href={product.href} className="group">
                             <img
                                 alt={product.imageAlt}

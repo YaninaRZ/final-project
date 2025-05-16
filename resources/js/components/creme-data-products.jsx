@@ -1,5 +1,6 @@
 const products = [
     {
+        uniqueId: 'cremes-1',
         id: 1,
         name: 'Basic Tee',
         href: '',
@@ -9,6 +10,7 @@ const products = [
         color: 'Black',
     },
     {
+        uniqueId: 'cremes-2',
         id: 2,
         name: 'Basic Tee',
         href: '',
@@ -18,6 +20,7 @@ const products = [
         color: 'Black',
     },
     {
+        uniqueId: 'cremes-3',
         id: 3,
         name: 'Basic Tee',
         href: '',
@@ -27,6 +30,7 @@ const products = [
         color: 'Black',
     },
     {
+        uniqueId: 'cremes-4',
         id: 4,
         name: 'Basic Tee',
         href: '',

@@ -1,4 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
+import { useState } from 'react';
+import ProductOverview from '../../components/product-overview'; // ajuste le chemin si besoin
 import hairproducts from '../../components/shampoo-data-products';
 import GuestLayout from '../../layouts/guest-layout';
 
@@ -7,16 +9,18 @@ export default function ProductShampooDetails() {
     const productId = parseInt(id);
     const product = hairproducts.find((p) => p.id === productId);
 
-    // if (!product) {
-    //     return (
-    //         <div className="p-6">
-    //             <p>Produit non trouvé.</p>
-    //             <Link href="/" className="text-blue-600 underline">
-    //                 ← Retour
-    //             </Link>
-    //         </div>
-    //     );
-    // }
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    if (!product) {
+        return (
+            <div className="p-6">
+                <p>Produit non trouvé.</p>
+                <Link href="/" className="text-blue-600 underline">
+                    ← Retour
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <GuestLayout>
@@ -26,12 +30,17 @@ export default function ProductShampooDetails() {
 
                 <div className="mt-2 flex items-center justify-between">
                     <p className="text-xl text-gray-800">{product.price}</p>
-                    <button className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">Add to Cart</button>
+                    <button onClick={() => setIsDialogOpen(true)} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
+                        Add to Cart
+                    </button>
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
                     ← Retour aux produits
                 </Link>
+
+                {/* Popup d'aperçu du produit */}
+                <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={product} />
             </div>
         </GuestLayout>
     );

@@ -12,6 +12,10 @@ Route::get('/shop-all', function () {
     return Inertia::render('shopAll');
 })->name('shop-all');
 
+Route::get('/shopp-all-detail/{id}', function ($id) {
+    return Inertia::render('shopp-all-detail', ['id' => $id]);
+})->name('shopp-all-detail');
+
 Route::get('/new-products', function () {
     return Inertia::render('newProducts');
 })->name('newProducts');
@@ -42,6 +46,8 @@ Route::get('/licence', function () {
 Route::get('/cart-step1', function () {
     return Inertia::render('cartstep1');
 })->name('cart-step1');
+
+
 
 
 

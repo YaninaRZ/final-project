@@ -1,12 +1,15 @@
-// resources/js/Pages/ProductDetail.jsx (ou autre chemin)
 import { Link, usePage } from '@inertiajs/react';
-import products from '../../components/mask-data-products';
+import { useState } from 'react';
+import maskProducts from '../../components/mask-data-products';
+import ProductOverview from '../../components/product-overview'; // adapte le chemin si besoin
 import GuestLayout from '../../layouts/guest-layout';
 
 export default function ProductMask() {
     const { id } = usePage().props;
     const productId = parseInt(id);
-    const product = products.find((p) => p.id === productId);
+    const product = maskProducts.find((p) => p.id === productId);
+
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     if (!product) {
         return (
@@ -27,12 +30,18 @@ export default function ProductMask() {
 
                 <div className="mt-2 flex items-center justify-between">
                     <p className="text-xl text-gray-800">{product.price}</p>
-                    <button className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">Add to Cart</button>
+                    {/* Bouton qui ouvre la popup */}
+                    <button onClick={() => setIsDialogOpen(true)} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
+                        Add to Cart
+                    </button>
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
                     ← Retour aux produits
                 </Link>
+
+                {/* Popup d'aperçu du produit */}
+                <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={product} />
             </div>
         </GuestLayout>
     );

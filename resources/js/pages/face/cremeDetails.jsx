@@ -1,12 +1,14 @@
-// resources/js/Pages/ProductDetail.jsx (ou autre chemin)
 import { Link, usePage } from '@inertiajs/react';
+import { useState } from 'react';
 import products from '../../components/creme-data-products';
+import ProductOverview from '../../components/product-overview';
 import GuestLayout from '../../layouts/guest-layout';
 
 export default function ProductCreme() {
     const { id } = usePage().props;
     const productId = parseInt(id);
     const product = products.find((p) => p.id === productId);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     if (!product) {
         return (
@@ -27,12 +29,23 @@ export default function ProductCreme() {
 
                 <div className="mt-2 flex items-center justify-between">
                     <p className="text-xl text-gray-800">{product.price}</p>
-                    <button className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">Add to Cart</button>
+
+                    {/* Bouton qui ouvre la popup */}
+                    <button className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white" onClick={() => setIsDialogOpen(true)}>
+                        Add to Cart
+                    </button>
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
                     ← Retour aux produits
                 </Link>
+
+                {/* Inclure le composant popup avec contrôle open */}
+                <ProductOverview
+                    open={isDialogOpen}
+                    setOpen={setIsDialogOpen}
+                    product={product} // Passe aussi le produit si besoin
+                />
             </div>
         </GuestLayout>
     );

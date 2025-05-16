@@ -1,69 +1,52 @@
-import { ProductSection } from '@/components/product-section';
+import { Link } from '@inertiajs/react';
 import GuestLayout from '../layouts/guest-layout';
 
-const faceCareProducts = [
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/d4e65699b933d120a50b52958c9f280d15c32200?placeholderIfAbsent=true',
-        title: 'Facial Cleanser',
-        price: '$29.99',
-    },
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/d4e65699b933d120a50b52958c9f280d15c32200?placeholderIfAbsent=true',
-        title: 'Facial Cleanser',
-        price: '$29.99',
-    },
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/d4e65699b933d120a50b52958c9f280d15c32200?placeholderIfAbsent=true',
-        title: 'Facial Cleanser',
-        price: '$29.99',
-    },
-];
+import arrivalsProducts from '../components/arrivals-dataproduct';
+import bodyProducts from '../components/body-data-product';
+import maskProducts from '../components/mask-data-products';
+import tableProducts from '../components/table-new-products';
 
-const bodyCareProducts = [
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/6eba2ad24cbc248f4df01829ca0b22a1dfe61db4?placeholderIfAbsent=true',
-        title: 'Body Wash',
-        price: '$29.99',
-    },
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/6eba2ad24cbc248f4df01829ca0b22a1dfe61db4?placeholderIfAbsent=true',
-        title: 'Body Wash',
-        price: '$29.99',
-    },
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/6eba2ad24cbc248f4df01829ca0b22a1dfe61db4?placeholderIfAbsent=true',
-        title: 'Body Wash',
-        price: '$29.99',
-    },
-];
-
-const hairCareProducts = [
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/07806e87877abb11c97d58b87be52bedf9372c6a?placeholderIfAbsent=true',
-        title: 'Hair Wash',
-        price: '$29.99',
-    },
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/07806e87877abb11c97d58b87be52bedf9372c6a?placeholderIfAbsent=true',
-        title: 'Hair Wash',
-        price: '$29.99',
-    },
-    {
-        image: 'https://cdn.builder.io/api/v1/image/assets/6748326f477a456b9e05ce0199194608/07806e87877abb11c97d58b87be52bedf9372c6a?placeholderIfAbsent=true',
-        title: 'Hair Wash',
-        price: '$29.99',
-    },
-];
+function renderProductGrid(title, products) {
+    return (
+        <section className="mb-12 w-full max-w-7xl">
+            <h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900">{title}</h2>
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                {products.map((product) => (
+                    <div key={product.id} className="group relative rounded-lg p-4">
+                        <Link href={route('shopp-all-detail', { id: product.uniqueId || product.id })} className="block">
+                            <img
+                                src={product.imageSrc}
+                                alt={product.imageAlt}
+                                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+                            />
+                        </Link>
+                        <div className="mt-4 flex justify-between">
+                            <div>
+                                <h3 className="text-sm text-gray-700">
+                                    <Link href={route('shopp-all-detail', { id: product.uniqueId || product.id })} className="relative">
+                                        <span aria-hidden="true" className="absolute inset-0" />
+                                        {product.name}
+                                    </Link>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+}
 
 export default function ShopAll() {
     return (
         <GuestLayout>
-            <div className="font-montserrat flex min-h-screen flex-col items-center bg-white px-2.5 py-2.5 font-bold text-[#252B42]">
-                <h1 className="text-center text-4xl">Our Products</h1>
+            <div className="font-montserrat flex min-h-screen flex-col items-center bg-white px-4 py-16 font-bold text-[#252B42]">
+                <h1 className="mb-12 text-center text-4xl">Our Products</h1>
 
-                <ProductSection title="Face Care" products={faceCareProducts} />
-                <ProductSection title="Body Care" products={bodyCareProducts} />
-                <ProductSection title="Hair Care" products={hairCareProducts} />
+                {renderProductGrid('Arrivals', arrivalsProducts)}
+                {renderProductGrid('Body Care', bodyProducts)}
+                {renderProductGrid('Masks', maskProducts)}
+                {renderProductGrid('Table Products', tableProducts)}
             </div>
         </GuestLayout>
     );

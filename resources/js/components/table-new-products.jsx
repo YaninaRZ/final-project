@@ -1,5 +1,6 @@
-const products = [
+const tableproducts = [
     {
+        uniqueId: 'table-1',
         id: 1,
         name: 'Anti Acne Face Wash',
         price: '$48',
@@ -7,6 +8,7 @@ const products = [
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
+        uniqueId: 'table-2',
         id: 2,
         name: 'Vitamin C Hand & Nail Cream',
         price: '$35',
@@ -15,6 +17,7 @@ const products = [
     },
 
     {
+        uniqueId: 'table-3',
         id: 3,
         name: 'Vitamin C Clay Face Mask',
         href: ``,
@@ -23,6 +26,7 @@ const products = [
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
     },
     {
+        uniqueId: 'table-4',
         id: 4,
         name: '10 In 1 Active Miracle',
         href: ``,
@@ -31,6 +35,7 @@ const products = [
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
     },
     {
+        uniqueId: 'table-5',
         id: 5,
         name: 'Anti Acne Face Wash',
         href: ``,
@@ -39,6 +44,7 @@ const products = [
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
+        uniqueId: 'table-6',
         id: 6,
         name: 'Vitamin C Hand & Nail Cream',
         href: ``,
@@ -67,4 +73,4 @@ const products = [
     href: `/productDetail/${product.id}`,
 }));
 
-export default products;
+export default tableproducts;

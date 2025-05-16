@@ -1,12 +1,15 @@
-// resources/js/Pages/ProductDetail.jsx (ou autre chemin)
 import { Link, usePage } from '@inertiajs/react';
-import products from '../components/arrivals-dataproduct';
+import { useState } from 'react';
+import arrivalsProducts from '../components/arrivals-dataproduct';
+import ProductOverview from '../components/product-overview'; // Vérifie bien le chemin
 import GuestLayout from '../layouts/guest-layout';
 
 export default function ProductDetails() {
     const { id } = usePage().props;
     const productId = parseInt(id);
-    const product = products.find((p) => p.id === productId);
+    const product = arrivalsProducts.find((p) => p.id === productId);
+
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     if (!product) {
         return (
@@ -27,12 +30,17 @@ export default function ProductDetails() {
 
                 <div className="mt-2 flex items-center justify-between">
                     <p className="text-xl text-gray-800">{product.price}</p>
-                    <button className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">Add to Cart</button>
+                    <button onClick={() => setIsDialogOpen(true)} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
+                        Add to Cart
+                    </button>
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
                     ← Retour aux produits
                 </Link>
+
+                {/* Popup aperçu produit */}
+                <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={product} />
             </div>
         </GuestLayout>
     );
