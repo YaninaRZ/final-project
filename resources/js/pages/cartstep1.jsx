@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid';
-import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import { CheckIcon, ClockIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import GuestLayout from '../layouts/guest-layout';
 const products = [
     {
@@ -129,7 +129,6 @@ export default function cartstep1() {
                                         <span>Shipping estimate</span>
                                         <a href="#" className="ml-2 shrink-0 text-gray-400 hover:text-gray-500">
                                             <span className="sr-only">Learn more about how shipping is calculated</span>
-                                            <QuestionMarkCircleIcon aria-hidden="true" className="size-5" />
                                         </a>
                                     </dt>
                                     <dd className="text-sm font-medium text-gray-900">$5.00</dd>
@@ -139,7 +138,6 @@ export default function cartstep1() {
                                         <span>Tax estimate</span>
                                         <a href="#" className="ml-2 shrink-0 text-gray-400 hover:text-gray-500">
                                             <span className="sr-only">Learn more about how tax is calculated</span>
-                                            <QuestionMarkCircleIcon aria-hidden="true" className="size-5" />
                                         </a>
                                     </dt>
                                     <dd className="text-sm font-medium text-gray-900">$8.32</dd>
