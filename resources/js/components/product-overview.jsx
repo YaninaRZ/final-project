@@ -3,6 +3,7 @@
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
+import { useCart } from '../hooks/use-cart';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -10,6 +11,7 @@ function classNames(...classes) {
 
 export default function ProductOverview({ open, setOpen, product }) {
     const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useCart();
 
     const decreaseQuantity = () => {
         setQuantity((q) => (q > 1 ? q - 1 : 1));
@@ -21,12 +23,15 @@ export default function ProductOverview({ open, setOpen, product }) {
 
     if (!product) return null;
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addToCart(product, quantity); // ajoute le produit avec la quantité sélectionnée
+        setOpen(false); // ferme la popup
+    };
+
     return (
         <Dialog open={open} onClose={() => setOpen(false)} className="relative z-10">
-            <DialogBackdrop
-                className="fixed inset-0 bg-gray-500/75 md:block"
-                // transitions can be added here if needed
-            />
+            <DialogBackdrop className="fixed inset-0 bg-gray-500/75 md:block" />
 
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
                 <div className="flex min-h-full items-stretch justify-center text-center md:items-center md:px-2 lg:px-4">
@@ -66,13 +71,7 @@ export default function ProductOverview({ open, setOpen, product }) {
                                             Product options
                                         </h3>
 
-                                        <form
-                                            onSubmit={(e) => {
-                                                e.preventDefault();
-                                                alert(`Added ${quantity} item(s) of ${product.name} to cart.`);
-                                                setOpen(false);
-                                            }}
-                                        >
+                                        <form onSubmit={handleSubmit}>
                                             <div className="mb-4 flex items-center space-x-4">
                                                 <label htmlFor="quantity" className="text-sm font-medium text-gray-700">
                                                     Quantité
