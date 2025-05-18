@@ -25,14 +25,6 @@ export default function ProductMask() {
         );
     }
 
-    // ✅ Ajout de la fonction handleAddToCart
-    function handleAddToCart() {
-        console.log('Ajout au panier :', product);
-        addToCart(product, 1);
-        setAddedProductId(product.id);
-        setTimeout(() => setAddedProductId(null), 2000);
-    }
-
     return (
         <GuestLayout>
             <div className="mx-auto max-w-xl px-6 py-10">
@@ -42,7 +34,7 @@ export default function ProductMask() {
                 <div className="mt-2 flex flex-col gap-2">
                     <div className="flex items-center justify-between">
                         <p className="text-xl text-gray-800">{product.price}</p>
-                        <button onClick={handleAddToCart} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
+                        <button onClick={() => setIsDialogOpen(true)} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
                             Add to Cart
                         </button>
                     </div>

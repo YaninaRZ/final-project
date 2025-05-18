@@ -19,14 +19,15 @@ export function CartProvider({ children }) {
     useEffect(() => {
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }, [cart]);
-
     const addToCart = (product, quantity = 1) => {
+        const parsedPrice = typeof product.price === 'string' ? parseFloat(product.price.replace(/[^\d.-]/g, '')) : product.price;
+
         setCart((prev) => {
             const existing = prev.find((item) => item.id === product.id);
             if (existing) {
                 return prev.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item));
             }
-            return [...prev, { ...product, quantity }];
+            return [...prev, { ...product, price: parsedPrice, quantity }];
         });
     };
 

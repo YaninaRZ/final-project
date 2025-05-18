@@ -1,13 +1,13 @@
 import { usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import allProducts from '../components/all-products-data';
-import { useCart } from '../hooks/use-cart';
+import ProductOverview from '../components/product-overview'; // ✅ Import popup
 import GuestLayout from '../layouts/guest-layout';
 
 export default function ProductDetail() {
-    const { addToCart } = useCart();
     const { id } = usePage().props;
-    const [added, setAdded] = useState(false); // Pour l'affichage temporaire
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     const product = allProducts.find((p) => p.uniqueId === id);
 
@@ -19,16 +19,15 @@ export default function ProductDetail() {
         );
     }
 
-    // On parse le prix si c'est une string genre "$39.00"
+    // ✅ Parser le prix proprement
     const parsedProduct = {
         ...product,
-        price: typeof product.price === 'string' ? parseFloat(product.price.replace('$', '')) : product.price,
+        price: typeof product.price === 'string' ? parseFloat(product.price.replace(/[^\d.-]/g, '')) : product.price,
     };
 
-    const handleAddToCart = () => {
-        addToCart(parsedProduct, 1);
-        setAdded(true);
-        setTimeout(() => setAdded(false), 2000); // Disparait après 2 secondes
+    const handleOpenPopup = () => {
+        setSelectedProduct(parsedProduct);
+        setIsDialogOpen(true);
     };
 
     return (
@@ -39,12 +38,14 @@ export default function ProductDetail() {
                 <p className="text-lg text-gray-700">ID: {product.uniqueId}</p>
                 <p className="mb-4 text-lg font-semibold text-gray-900">Prix : {parsedProduct.price.toFixed(2)} €</p>
 
-                <button onClick={handleAddToCart} className="rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">
+                {/* ✅ Ouvre la popup au lieu d’ajouter directement */}
+                <button onClick={handleOpenPopup} className="rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">
                     Ajouter au panier
                 </button>
-
-                {added && <p className="mt-2 text-green-600">✅ Produit ajouté au panier</p>}
             </div>
+
+            {/* ✅ Popup d'ajout au panier */}
+            <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
         </GuestLayout>
     );
 }
