@@ -44,7 +44,7 @@ export default function ShopAll() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
-    // Lorsqu'on clique sur "Add to Cart" => ouvrir la popup avec ce produit
+
     const handleProductClick = (product) => {
         const parsedProduct = {
             ...product,
@@ -71,7 +71,7 @@ export default function ShopAll() {
                 <h2 id="cleanser">Skinn Categorie</h2>
                 {renderProductGrid(tableProducts, handleProductClick)}
 
-                {/* ✅ Popup produit avec ajout au panier */}
+
                 <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
             </div>
         </GuestLayout>

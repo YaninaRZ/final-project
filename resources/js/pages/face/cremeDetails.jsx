@@ -17,7 +17,7 @@ export default function ProductCreme() {
             <div className="p-6">
                 <p>Produit non trouvé.</p>
                 <Link href="/" className="text-blue-600 underline">
-                    ← Retour
+                    ← Back
                 </Link>
             </div>
         );
@@ -25,7 +25,7 @@ export default function ProductCreme() {
 
     function handleAddToCart() {
         addToCart(product, 1);
-        setIsDialogOpen(true); // ✅ Ouvre la popup après ajout au panier
+        setIsDialogOpen(true);
     }
 
     return (
@@ -43,10 +43,10 @@ export default function ProductCreme() {
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
-                    ← Retour aux produits
+                    ← Return to shop
                 </Link>
 
-                {/* ✅ Popup produit visible après ajout au panier */}
+
                 <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={product} />
             </div>
         </GuestLayout>

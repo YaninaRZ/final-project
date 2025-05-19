@@ -23,7 +23,7 @@ export default function ProductCreme() {
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {products.map((product) => (
                         <div key={product.id} className="group relative">
-                            {/* ✅ Lien vers la page détail : image */}
+
                             <a href={product.href}>
                                 <img
                                     alt={product.imageAlt}
@@ -34,7 +34,7 @@ export default function ProductCreme() {
 
                             <div className="mt-4 flex justify-between">
                                 <div>
-                                    {/* ✅ Lien vers la page détail : nom du produit */}
+
                                     <h3 className="text-sm text-gray-700 hover:underline">
                                         <a href={product.href}>{product.name}</a>
                                     </h3>
@@ -43,10 +43,9 @@ export default function ProductCreme() {
                                 <p className="text-sm font-medium text-gray-900">{product.price}</p>
                             </div>
 
-                            {/* ✅ Bouton qui ouvre la popup sans redirection */}
                             <button
                                 onClick={(e) => {
-                                    e.preventDefault(); // empêche la redirection s’il est dans un lien
+                                    e.preventDefault();
                                     handleProductClick(product);
                                 }}
                                 className="mt-2 w-full rounded-md bg-[#252B42] px-4 py-2 text-sm text-white hover:bg-[#3a3f54]"
@@ -58,7 +57,7 @@ export default function ProductCreme() {
                 </div>
             </div>
 
-            {/* ✅ Popup */}
+
             <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
         </div>
     );

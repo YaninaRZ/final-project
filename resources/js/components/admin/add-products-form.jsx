@@ -18,7 +18,7 @@ export default function AddProduct() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // TODO: Send `formData` to backend (Inertia form or API request)
+
         console.log('Submitting new product:', formData);
     };
 
@@ -100,7 +100,7 @@ export default function AddProduct() {
                     />
                 </div>
 
-                {/* Galerie de produit (simplifiée pour cet exemple) */}
+
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Product Gallery</label>
                     <input

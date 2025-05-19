@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+
 
 function LogoDesign() {
   return (

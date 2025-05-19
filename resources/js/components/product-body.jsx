@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import products from './body-data-product';
-import ProductOverview from './product-overview'; // ✅ importe la popup
+import ProductOverview from './product-overview';
 
 export default function ProductBody() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function ProductBody() {
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {products.map((product) => (
                         <div key={product.id} className="group relative">
-                            {/* Image cliquable vers la page détail */}
+
                             <a href={product.href}>
                                 <img
                                     alt={product.imageAlt}
@@ -34,7 +34,7 @@ export default function ProductBody() {
 
                             <div className="mt-4 flex justify-between">
                                 <div>
-                                    {/* Nom cliquable vers la page détail */}
+
                                     <h3 className="text-sm text-gray-700 hover:underline">
                                         <a href={product.href}>{product.name}</a>
                                     </h3>
@@ -43,7 +43,6 @@ export default function ProductBody() {
                                 <p className="text-sm font-medium text-gray-900">{product.price}</p>
                             </div>
 
-                            {/* Bouton Add to Cart qui ouvre la popup */}
                             <button
                                 onClick={(e) => {
                                     e.preventDefault();
@@ -58,7 +57,7 @@ export default function ProductBody() {
                 </div>
             </div>
 
-            {/* Popup ProductOverview */}
+
             <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
         </div>
     );

@@ -1,6 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import ProductOverview from '../../components/product-overview'; // ajuste le chemin si besoin
+import ProductOverview from '../../components/product-overview';
 import hairproducts from '../../components/shampoo-data-products';
 import GuestLayout from '../../layouts/guest-layout';
 
@@ -16,7 +16,7 @@ export default function ProductShampooDetails() {
             <div className="p-6">
                 <p>Produit non trouvé.</p>
                 <Link href="/" className="text-blue-600 underline">
-                    ← Retour
+                    ← Back
                 </Link>
             </div>
         );
@@ -37,10 +37,10 @@ export default function ProductShampooDetails() {
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
-                    ← Retour aux produits
+                    ← Back
                 </Link>
 
-                {/* Popup d'aperçu du produit */}
+
                 <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={product} />
             </div>
         </GuestLayout>

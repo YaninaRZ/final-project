@@ -12,7 +12,7 @@ export default function ProductsAdmin() {
             <div className="p-6">
                 <p>Post no non trouvé.</p>
                 <Link href="/" className="text-blue-600 underline">
-                    ← Retour
+                    ← Back
                 </Link>
             </div>
         );

@@ -18,7 +18,7 @@ export default function ProductDetail() {
             <div className="p-6">
                 <p>Produit non trouvé.</p>
                 <Link href="/" className="text-blue-600 underline">
-                    ← Retour
+                    ← Back
                 </Link>
             </div>
         );
@@ -48,7 +48,7 @@ export default function ProductDetail() {
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
-                    ← Retour aux produits
+                    ← Back
                 </Link>
 
                 <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={parsedProduct} />

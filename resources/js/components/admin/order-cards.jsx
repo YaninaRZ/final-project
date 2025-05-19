@@ -3,7 +3,7 @@ import { CalendarDaysIcon, CreditCardIcon, UserCircleIcon } from '@heroicons/rea
 export default function Row() {
     return (
         <div className="flex flex-wrap items-center justify-center gap-8 p-6">
-            {/* Card 1 */}
+
             <div className="w-full sm:w-2/3 xl:w-1/4">
                 <div className="rounded-lg bg-gray-50 shadow-xs ring-1 ring-gray-900/5">
                     <dl className="flex flex-wrap p-6">
@@ -49,7 +49,7 @@ export default function Row() {
                 </div>
             </div>
 
-            {/* Card 2 */}
+
             <div className="w-full sm:w-2/3 xl:w-1/4">
                 <div className="rounded-lg bg-gray-50 shadow-xs ring-1 ring-gray-900/5">
                     <dl className="flex flex-wrap p-6">
@@ -95,7 +95,7 @@ export default function Row() {
                 </div>
             </div>
 
-            {/* Card 3 */}
+
             <div className="w-full sm:w-2/3 xl:w-1/4">
                 <div className="rounded-lg bg-gray-50 shadow-xs ring-1 ring-gray-900/5">
                     <dl className="flex flex-wrap p-6">

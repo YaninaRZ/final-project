@@ -14,16 +14,16 @@ export default function ViewOrder() {
     return (
         <GuestLayout>
             <div className="mx-auto flex max-w-7xl flex-col items-center space-x-8 px-6 py-10 md:flex-row">
-                {/* Image section */}
+
                 <div className="mb-6 flex w-full md:mb-0 md:w-1/2">
                     <img
-                        src="/images/order-placeholder.jpg" // à remplacer si tu as une image spécifique
+                        src="/images/order-placeholder.jpg"
                         alt={`Order ${order.id}`}
                         className="w-full rounded-xl object-cover shadow-lg"
                     />
                 </div>
 
-                {/* Text section */}
+
                 <div className="w-full space-y-4 md:w-1/2">
                     <h1 className="text-3xl font-bold text-gray-900">Order Details</h1>
                     <p className="text-gray-700">

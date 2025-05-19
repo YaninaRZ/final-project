@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import allProducts from '../components/all-products-data';
-import ProductOverview from '../components/product-overview'; // ✅ Import popup
+import ProductOverview from '../components/product-overview';
 import GuestLayout from '../layouts/guest-layout';
 
 export default function ProductDetail() {
@@ -19,7 +19,7 @@ export default function ProductDetail() {
         );
     }
 
-    // ✅ Parser le prix proprement
+
     const parsedProduct = {
         ...product,
         price: typeof product.price === 'string' ? parseFloat(product.price.replace(/[^\d.-]/g, '')) : product.price,
@@ -45,10 +45,10 @@ export default function ProductDetail() {
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
-                    ← Retour aux produits
+                    ← Back
                 </Link>
 
-                {/* Popup d'ajout au panier */}
+
                 <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
             </div>
         </GuestLayout>

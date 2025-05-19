@@ -2,7 +2,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import maskProducts from '../../components/mask-data-products';
 import ProductOverview from '../../components/product-overview';
-import { useCart } from '../../hooks/use-cart'; // ✅ Import du hook useCart
+import { useCart } from '../../hooks/use-cart';
 import GuestLayout from '../../layouts/guest-layout';
 
 export default function ProductMask() {
@@ -11,15 +11,15 @@ export default function ProductMask() {
     const product = maskProducts.find((p) => p.id === productId);
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const { addToCart } = useCart(); // ✅ Récupération de la fonction d'ajout
-    const [addedProductId, setAddedProductId] = useState(null); // ✅ Pour l'affichage temporaire
+    const { addToCart } = useCart();
+    const [addedProductId, setAddedProductId] = useState(null);
 
     if (!product) {
         return (
             <div className="p-6">
                 <p>Produit non trouvé.</p>
                 <Link href="/" className="text-blue-600 underline">
-                    ← Retour
+                    ← Back
                 </Link>
             </div>
         );
@@ -40,15 +40,15 @@ export default function ProductMask() {
                         </button>
                     </div>
 
-                    {/* ✅ Message de confirmation */}
-                    {addedProductId === product.id && <p className="text-sm text-green-600">✅ Produit ajouté au panier</p>}
+
+                    {addedProductId === product.id && <p className="text-sm text-green-600"> Product added to cart</p>}
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
-                    ← Retour aux produits
+                    ← Back
                 </Link>
 
-                {/* Popup d'aperçu du produit */}
+
                 <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={product} />
             </div>
         </GuestLayout>

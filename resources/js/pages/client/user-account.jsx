@@ -77,7 +77,6 @@ export default function Login() {
                             </aside>
 
                             <form action="#" method="POST" className="divide-y divide-gray-200 lg:col-span-9">
-                                {/* Profile section */}
                                 <div className="px-4 py-6 sm:p-6 lg:pb-8">
                                     <div>
                                         <h2 className="text-lg/6 font-medium text-gray-900">Profile</h2>

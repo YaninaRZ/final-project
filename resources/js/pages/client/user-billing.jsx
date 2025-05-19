@@ -17,7 +17,7 @@ const subNavigation = [
     { name: 'Sign Out', href: '/', icon: ArrowRightOnRectangleIcon, current: false },
 ];
 
-// Exemple de données dynamiques
+
 const orders = [
     { id: 'ORD123456', date: '2025-04-25', total: '$89.99', status: 'Shipped' },
     { id: 'ORD123455', date: '2025-03-10', total: '$49.99', status: 'Delivered' },
@@ -42,7 +42,7 @@ export default function UserBilling() {
                 <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
                     <div className="overflow-hidden rounded-lg bg-white shadow-sm">
                         <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-x lg:divide-y-0">
-                            {/* Sidebar */}
+
                             <aside className="py-6 lg:col-span-3">
                                 <nav className="space-y-1">
                                     {subNavigation.map((item) => (
@@ -70,7 +70,7 @@ export default function UserBilling() {
                                 </nav>
                             </aside>
 
-                            {/* Billing Content */}
+
                             <div className="px-4 py-6 sm:p-6 lg:col-span-9">
                                 <div>
                                     <h2 className="text-lg font-medium text-gray-900">Orders</h2>
@@ -78,7 +78,7 @@ export default function UserBilling() {
                                 </div>
 
                                 <div className="mt-6 space-y-8">
-                                    {/* Payment Method */}
+
                                     <div>
                                         <h3 className="text-sm font-medium text-gray-900">Payment Method</h3>
                                         <div className="mt-2 flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-3 shadow-sm">
@@ -96,7 +96,7 @@ export default function UserBilling() {
                                     </div>
                                 </div>
 
-                                {/* Order History */}
+
                                 <div>
                                     <div className="p-4">
                                         <h3 className="text-sm font-medium text-gray-900">Order History</h3>

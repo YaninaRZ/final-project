@@ -36,7 +36,7 @@ export default function UserPassword() {
                 <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
                     <div className="overflow-hidden rounded-lg bg-white shadow-sm">
                         <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-x lg:divide-y-0">
-                            {/* Sidebar */}
+
                             <aside className="py-6 lg:col-span-3">
                                 <nav className="space-y-1">
                                     {subNavigation.map((item) => (
@@ -66,7 +66,7 @@ export default function UserPassword() {
                                 </nav>
                             </aside>
 
-                            {/* Password Content */}
+
                             <div className="px-4 py-6 sm:p-6 lg:col-span-9">
                                 <h2 className="text-lg font-medium text-gray-900">Password</h2>
                                 <p className="mt-1 text-sm text-gray-500">Update your password to keep your account secure.</p>
@@ -118,7 +118,7 @@ export default function UserPassword() {
                                     </div>
                                 </form>
                             </div>
-                            {/* End Password Content */}
+
                         </div>
                     </div>
                 </div>

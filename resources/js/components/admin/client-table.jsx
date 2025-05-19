@@ -12,7 +12,7 @@ export default function Table() {
         title: '',
         email: '',
     });
-    // State local pour gérer la liste des utilisateurs
+
     const [users, setUsers] = useState(people);
 
     const handleChange = (e) => {
@@ -24,10 +24,10 @@ export default function Table() {
             name: formData.name,
             title: formData.title,
             email: formData.email,
-            role: 'Member', // tu peux adapter si besoin
+            role: 'Member',
         };
-        setUsers([...users, newUser]); // Ajout dans le state local
-        setFormData({ name: '', title: '', email: '' }); // Reset formulaire
+        setUsers([...users, newUser]);
+        setFormData({ name: '', title: '', email: '' });
         setOpen(false);
     };
 
@@ -37,13 +37,13 @@ export default function Table() {
     };
 
     const handleDeleteUser = () => {
-        setUsers(users.filter((user) => user.email !== selectedUser.email)); // Supprime par email
+        setUsers(users.filter((user) => user.email !== selectedUser.email));
         setDeleteDialogOpen(false);
     };
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
-            {/* Header */}
+
             <div className="sm:flex sm:items-center sm:justify-between">
                 <div className="max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                     <h1 className="text-3xl font-bold tracking-tight text-gray-900">List of Clients</h1>
@@ -57,7 +57,7 @@ export default function Table() {
                 </div>
             </div>
 
-            {/* Add User Dialog */}
+
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent>
                     <DialogHeader>
@@ -97,7 +97,7 @@ export default function Table() {
                 </DialogContent>
             </Dialog>
 
-            {/* Confirm Delete Dialog */}
+
             <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
                 <DialogContent>
                     <DialogHeader>
@@ -117,7 +117,7 @@ export default function Table() {
                 </DialogContent>
             </Dialog>
 
-            {/* Table */}
+
             <div className="mt-8 flow-root">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">

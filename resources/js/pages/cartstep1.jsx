@@ -26,13 +26,13 @@ export default function CartStep1() {
                                 onClick={clearCart}
                                 className="rounded-md border border-red-600 px-4 py-2 text-sm text-red-600 hover:bg-red-50"
                             >
-                                Vider le panier
+                                Empty cart
                             </button>
                         </div>
                     )}
 
                     {cart.length === 0 ? (
-                        <p className="mt-8 text-gray-500">Votre panier est vide.</p>
+                        <p className="mt-8 text-gray-500">Your cart is empty.</p>
                     ) : (
                         <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
                             <section aria-labelledby="cart-heading" className="lg:col-span-7">
@@ -94,7 +94,7 @@ export default function CartStep1() {
                                 </ul>
                             </section>
 
-                            {/* Order summary */}
+
                             <section
                                 aria-labelledby="summary-heading"
                                 className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
@@ -120,7 +120,7 @@ export default function CartStep1() {
                                 <div className="mt-6">
                                     <button
                                         type="submit"
-                                        className="w-full rounded-md bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow hover:bg-indigo-700"
+                                        className="w-full rounded-md bg-[#252B42]  px-4 py-3 text-base font-medium text-white shadow hover:-bg-[#252B42] "
                                     >
                                         Checkout
                                     </button>

@@ -7,7 +7,7 @@ const CART_KEY = 'my_cart';
 export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
 
-    // Charger le panier depuis localStorage au démarrage
+
     useEffect(() => {
         const stored = localStorage.getItem(CART_KEY);
         if (stored) {
@@ -15,7 +15,7 @@ export function CartProvider({ children }) {
         }
     }, []);
 
-    // Sauvegarder dans localStorage à chaque changement
+
     useEffect(() => {
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }, [cart]);

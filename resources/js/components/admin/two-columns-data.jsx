@@ -10,9 +10,9 @@ export default function DataColumns() {
     if (!product) {
         return (
             <div className="p-6">
-                <p>Post no non trouvé.</p>
+                <p>Post not found.</p>
                 <Link href="/" className="text-blue-600 underline">
-                    ← Retour
+                    ← Back to posts
                 </Link>
             </div>
         );
@@ -35,8 +35,6 @@ export default function DataColumns() {
                                 <Button text={editMode ? 'View' : 'Edit'} onClick={() => setEditMode(!editMode)} />
                             </div>
                         </div>
-
-                        {/* <p className="mt-2 text-sm text-gray-600">{editMode ? 'Edit Mode' : 'View Mode'}</p> */}
                     </div>
 
                     <div className="mt-6 border-t border-gray-100">

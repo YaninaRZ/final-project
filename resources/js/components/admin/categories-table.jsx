@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useState } from 'react';
 
-// Exemple de données initiales pour les catégories
+
 const initialCategories = [
     { id: 1, name: 'Informatique' },
     { id: 2, name: 'Cuisine' },
@@ -15,7 +15,6 @@ export default function CategoriesTable() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [formData, setFormData] = useState({ name: '' });
 
-    // State local pour gérer la liste des catégories
     const [categories, setCategories] = useState(initialCategories);
 
     const handleChange = (e) => {
@@ -24,13 +23,13 @@ export default function CategoriesTable() {
 
     const handleAddCategory = () => {
         const newCategory = {
-            id: categories.length ? categories[categories.length - 1].id + 1 : 1, // id auto-incrémenté
+            id: categories.length ? categories[categories.length - 1].id + 1 : 1,
             name: formData.name.trim(),
         };
-        if (newCategory.name === '') return; // ignore si vide
+        if (newCategory.name === '') return;
 
         setCategories([...categories, newCategory]);
-        setFormData({ name: '' }); // reset formulaire
+        setFormData({ name: '' });
         setOpen(false);
     };
 
@@ -46,7 +45,7 @@ export default function CategoriesTable() {
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
-            {/* Header */}
+
             <div className="sm:flex sm:items-center sm:justify-between">
                 <div className="max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                     <h1 className="text-3xl font-bold tracking-tight text-gray-900">List of Categories</h1>
@@ -60,7 +59,7 @@ export default function CategoriesTable() {
                 </div>
             </div>
 
-            {/* Add Category Dialog */}
+
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent>
                     <DialogHeader>
@@ -84,7 +83,7 @@ export default function CategoriesTable() {
                 </DialogContent>
             </Dialog>
 
-            {/* Confirm Delete Dialog */}
+
             <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
                 <DialogContent>
                     <DialogHeader>
@@ -104,7 +103,7 @@ export default function CategoriesTable() {
                 </DialogContent>
             </Dialog>
 
-            {/* Table */}
+
             <div className="mt-8 flow-root">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">

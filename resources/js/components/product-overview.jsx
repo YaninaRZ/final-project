@@ -26,22 +26,22 @@ export default function ProductOverview({ open, setOpen, product }) {
 
             <div className="fixed inset-y-0 right-0 z-20 w-1/2 overflow-y-auto bg-white shadow-xl">
                 <div className="relative flex h-full flex-col p-6">
-                    {/* Close Button */}
+
                     <button type="button" onClick={() => setOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
                         <span className="sr-only">Close</span>
                         <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
 
-                    {/* Product Image */}
+
                     <img src={product.imageSrc} alt={product.imageAlt} className="mb-6 w-full rounded-lg object-cover" />
 
-                    {/* Product Name */}
+
                     <h2 className="mb-2 text-xl font-semibold text-gray-900">{product.name}</h2>
 
-                    {/* Price */}
-                    <p className="mb-4 text-lg font-medium text-indigo-600">{product.price}$</p>
 
-                    {/* Quantity Selector */}
+                    <p className="mb-4 text-lg font-medium text-bg-[#252B42] ">{product.price}$</p>
+
+
                     <div className="mb-4 flex items-center gap-4">
                         <label htmlFor="quantity" className="text-sm font-medium text-gray-700">
                             Quantity
@@ -63,9 +63,9 @@ export default function ProductOverview({ open, setOpen, product }) {
                         </div>
                     </div>
 
-                    {/* Add to Cart Button */}
+
                     <form onSubmit={handleSubmit} className="mt-auto">
-                        <button type="submit" className="w-full rounded-md bg-indigo-600 px-6 py-3 text-white hover:bg-indigo-700">
+                        <button type="submit" className="w-full rounded-md bg-[#252B42]  px-6 py-3 text-white hover:bg-[#252B42] ">
                             Add to cart
                         </button>
                     </form>

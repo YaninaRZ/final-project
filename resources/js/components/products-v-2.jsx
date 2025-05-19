@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { useState } from 'react';
-import ProductOverview from './product-overview'; // ✅ importe la popup
+import ProductOverview from './product-overview';
 import tableProducts from './table-new-products';
 
 export default function ProductsV2() {
@@ -34,7 +34,7 @@ export default function ProductsV2() {
                                 <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                             </Link>
 
-                            {/* ✅ Bouton pour ouvrir la popup */}
+
                             <button
                                 onClick={() => handleProductClick(product)}
                                 className="mt-2 w-full rounded-md bg-[#252B42] px-4 py-2 text-sm text-white hover:bg-[#3a3f54]"
@@ -46,7 +46,7 @@ export default function ProductsV2() {
                 </div>
             </div>
 
-            {/* ✅ Intégration de la popup */}
+
             <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
         </div>
     );

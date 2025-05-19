@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import bodyProducts from '../../components/body-data-product';
-import ProductOverview from '../../components/product-overview'; // Vérifie bien le chemin
+import ProductOverview from '../../components/product-overview';
 import GuestLayout from '../../layouts/guest-layout';
 
 export default function ProductDetails() {
@@ -16,7 +16,7 @@ export default function ProductDetails() {
             <div className="p-6">
                 <p>Produit non trouvé.</p>
                 <Link href="/" className="text-blue-600 underline">
-                    ← Retour
+                    ← Back
                 </Link>
             </div>
         );
@@ -37,10 +37,10 @@ export default function ProductDetails() {
                 </div>
 
                 <Link href="/new-products" className="mt-6 block text-blue-500">
-                    ← Retour aux produits
+                    ← Back
                 </Link>
 
-                {/* Popup aperçu produit */}
+
                 <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={product} />
             </div>
         </GuestLayout>
