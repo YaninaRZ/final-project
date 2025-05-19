@@ -40,7 +40,7 @@ export default function ProductDetail() {
 
                 {/* ✅ Ouvre la popup au lieu d’ajouter directement */}
                 <button onClick={handleOpenPopup} className="rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">
-                    Ajouter au panier
+                    Add to cart
                 </button>
             </div>
 

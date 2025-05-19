@@ -6,7 +6,7 @@ export default function ShopNowButton() {
           aria-label="Shop now"
           type="button"
         >
-          Shop now
+          Learn More
         </button>
       </div>
     );

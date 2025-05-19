@@ -64,13 +64,13 @@ export default function CategoriesTable() {
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Ajouter une catégorie</DialogTitle>
+                        <DialogTitle>Add a category</DialogTitle>
                     </DialogHeader>
                     <div className="space-y-4">
                         <input
                             type="text"
                             name="name"
-                            placeholder="Nom de la catégorie"
+                            placeholder="Name of the category"
                             className="w-full rounded border p-2"
                             value={formData.name}
                             onChange={handleChange}
@@ -78,7 +78,7 @@ export default function CategoriesTable() {
                     </div>
                     <DialogFooter>
                         <Button onClick={handleAddCategory} disabled={!formData.name.trim()}>
-                            Enregistrer
+                            Save
                         </Button>
                     </DialogFooter>
                 </DialogContent>
@@ -88,17 +88,17 @@ export default function CategoriesTable() {
             <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Confirmation de suppression</DialogTitle>
+                        <DialogTitle>Deletion confirmation</DialogTitle>
                     </DialogHeader>
                     <p className="text-sm text-gray-700">
-                        Voulez-vous vraiment supprimer la catégorie <strong>{selectedCategory?.name}</strong> ? Cette action est irréversible.
+                        Do you really want to delete the category?<strong>{selectedCategory?.name}</strong> ? This action is irreversible.
                     </p>
                     <DialogFooter>
                         <Button variant="outline" onClick={() => setDeleteDialogOpen(false)}>
-                            Annuler
+                            Cancel
                         </Button>
                         <Button variant="destructive" onClick={handleDeleteCategory}>
-                            Supprimer
+                            Delete
                         </Button>
                     </DialogFooter>
                 </DialogContent>
@@ -111,9 +111,9 @@ export default function CategoriesTable() {
                         <table className="min-w-full divide-y divide-gray-300">
                             <thead>
                                 <tr>
-                                    <th className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Nom</th>
+                                    <th className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Name</th>
                                     <th className="relative px-4 py-3.5 text-right text-sm font-medium text-gray-900">
-                                        <span className="sr-only">Supprimer</span>
+                                        <span className="sr-only">Delete</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -123,7 +123,7 @@ export default function CategoriesTable() {
                                         <td className="px-4 py-4 text-sm text-gray-900">{category.name}</td>
                                         <td className="px-4 py-4 text-right text-sm">
                                             <button onClick={() => confirmDelete(category)} className="text-red-600 hover:text-red-800">
-                                                supprimer
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
@@ -131,7 +131,7 @@ export default function CategoriesTable() {
                                 {categories.length === 0 && (
                                     <tr>
                                         <td colSpan={2} className="py-4 text-center text-gray-500">
-                                            Aucune catégorie
+                                            No category
                                         </td>
                                     </tr>
                                 )}

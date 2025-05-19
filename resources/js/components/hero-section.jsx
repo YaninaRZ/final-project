@@ -30,10 +30,7 @@ export default function Hero() {
                 <div className="pr-6 pl-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pr-0 lg:pl-24 xl:pl-32">
                     <p className="text-black-500 mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">Discover The Beauty Within</p>
                     <div className="mt-8">
-                        <Link
-                            href="shop-all"
-                            className="w-full border border-solid border-stone-300 bg-stone-200 px-6 py-3.5 transition-colors hover:bg-stone-300"
-                        >
+                        <Link href="shop-all" className="w-full rounded-md border border-solid border-stone-300 bg-stone-200 px-16 py-3.5">
                             View collection
                         </Link>
                     </div>

@@ -36,7 +36,7 @@ export default function ProductCreme() {
 
                 <div className="mt-2 flex items-center justify-between">
                     <p className="text-xl text-gray-800">{product.price}</p>
-                    <button onClick={() => setIsDialogOpen(true)} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
+                    <button onClick={handleAddToCart} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
                         Add to Cart
                     </button>
                 </div>
