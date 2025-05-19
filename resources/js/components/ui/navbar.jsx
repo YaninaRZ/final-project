@@ -1,7 +1,7 @@
 'use client'
 
 import { Fragment, useState } from 'react'
-import { Link } from '@inertiajs/react'; 
+import { Link, usePage } from '@inertiajs/react';
 import {
   Dialog,
   DialogBackdrop,
@@ -36,9 +36,9 @@ const navigation = {
           id: 'Face care',
           name: 'Face care',
           items: [
-            
+
             { name: 'cremes', href: route('face.creme') },
-            { name: 'masks', href: route('face.mask')},
+            { name: 'masks', href: route('face.mask') },
           ],
         },
         {
@@ -52,14 +52,14 @@ const navigation = {
           id: 'Body care',
           name: 'Body care',
           items: [
-            { name: 'Body',  href: route('body/incoming') },
+            { name: 'Body', href: route('body/incoming') },
           ],
         },
       ],
     },
   ],
   pages: [
-    { name: 'New', href: route('newProducts') },  
+    { name: 'New', href: route('newProducts') },
     { name: 'About', href: route('about') }
   ],
 }
@@ -69,6 +69,9 @@ const navigation = {
 export default function NavbarDesign() {
   const [open, setOpen] = useState(false)
 
+  const page = usePage();
+  const { auth } = page.props;
+  console.log(auth);
   return (
     <div className="bg-white">
       {/* Mobile menu */}
@@ -166,26 +169,34 @@ export default function NavbarDesign() {
             </div>
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-            <Link
+              {auth.user ? (
+
+                <Link
                   href={route("user-account")}
                   className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
                 >
                   User Account
                 </Link>
-            <Link
-                  href={route("login")}
-                  className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                >
-                  Log in
-                </Link>
-              <div className="flow-root">
-              <Link
-                  href={route("register")}
-                  className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                >
-                  Register
-                </Link>
-              </div>
+              ) :
+                (
+                  <>
+                    <Link
+                      href={route("login")}
+                      className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                    >
+                      Log in
+                    </Link>
+                    <div className="flow-root">
+                      <Link
+                        href={route("register")}
+                        className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                      >
+                        Register
+                      </Link>
+                    </div>
+                  </>
+                )
+              }
             </div>
 
           </DialogPanel>
@@ -193,7 +204,7 @@ export default function NavbarDesign() {
       </Dialog>
 
       <header className="relative bg-white">
-     
+
 
         <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="border-b border-gray-200">
@@ -235,7 +246,7 @@ export default function NavbarDesign() {
                         transition
                         className="absolute inset-x-0 top-full z-50 text-sm text-gray-500 transition data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
                       >
-          
+
                         <div aria-hidden="true" className="absolute inset-0 top-1/2 bg-white shadow-sm" />
 
                         <div className="relative bg-white">
@@ -302,25 +313,32 @@ export default function NavbarDesign() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                <Link
-                  href={route("user-account")}
-                  className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                >
-                  User Account
-                </Link>
-                <Link
-                  href={route("login")}
-                  className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                >
-                  Log in
-                </Link>
-                  <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                  <Link
-                  href={route("register")}
-                  className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                >
-                  Register
-                </Link>
+                  {auth.user ?
+                    (
+
+                      <Link
+                        href={route("user-account")}
+                        className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                      >
+                        User Account
+                      </Link>
+                    ) : (
+                      <>
+                        <Link
+                          href={route("login")}
+                          className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                        >
+                          Log in
+                        </Link>
+                        <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
+                        <Link
+                          href={route("register")}
+                          className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                        >
+                          Register
+                        </Link>
+                      </>
+                    )}
                 </div>
 
                 {/* Cart */}
@@ -330,7 +348,7 @@ export default function NavbarDesign() {
                       aria-hidden="true"
                       className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
-           
+
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
                 </div>

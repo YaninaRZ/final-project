@@ -37,6 +37,7 @@ export default function ProductShampoo() {
                                     {/* ✅ Lien sur le nom */}
                                     <h3 className="text-sm text-gray-700 hover:underline">
                                         <a href={product.href}>{product.name}</a>
+                                        <p className="text-sm font-medium text-gray-900">{product.price}</p>
                                     </h3>
                                 </div>
                                 <p className="text-sm font-medium text-gray-900">{product.price}</p>

@@ -33,6 +33,7 @@ export default function ProductCreme() {
             <div className="mx-auto max-w-xl px-6 py-10">
                 <img src={product.imageSrc} alt={product.imageAlt} className="w-full rounded-xl" />
                 <h1 className="mt-4 text-2xl font-bold">{product.name}</h1>
+                <p className="mt-4">{product.description}</p>
 
                 <div className="mt-2 flex items-center justify-between">
                     <p className="text-xl text-gray-800">{product.price}</p>

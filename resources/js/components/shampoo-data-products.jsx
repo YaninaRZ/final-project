@@ -7,7 +7,8 @@ const hairproducts = [
         imageSrc: '/images/shampoo-sakura.webp',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
-        color: 'Black',
+        description:
+            'Infuse your hair with the delicate scent of cherry blossoms. This gentle shampoo cleanses deeply while nourishing each strand, leaving your hair soft, shiny, and beautifully fragrant.',
     },
 
     // More products...

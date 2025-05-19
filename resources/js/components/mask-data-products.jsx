@@ -2,12 +2,14 @@ const maskproducts = [
     {
         uniqueId: 'mask-1',
         id: 9,
-        name: 'MAsk',
+        name: 'Mask',
         href: '',
         imageSrc: '/images/mask-ritual.webp',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
         color: 'Black',
+        description:
+            'Experience the ultimate skincare ritual with this revitalizing mask. Designed to cleanse, hydrate, and refresh your skin, it’s the perfect addition to your self-care routine for a radiant, healthy glow.',
     },
 
     // More products...

@@ -30,6 +30,7 @@ export default function ProductMask() {
             <div className="mx-auto max-w-xl px-6 py-10">
                 <img src={product.imageSrc} alt={product.imageAlt} className="w-full rounded-xl" />
                 <h1 className="mt-4 text-2xl font-bold">{product.name}</h1>
+                <p className="mt-4">{product.description}</p>
 
                 <div className="mt-2 flex flex-col gap-2">
                     <div className="flex items-center justify-between">

@@ -1,4 +1,4 @@
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import allProducts from '../components/all-products-data';
 import ProductOverview from '../components/product-overview'; // ✅ Import popup
@@ -32,20 +32,25 @@ export default function ProductDetail() {
 
     return (
         <GuestLayout>
-            <div className="mx-auto max-w-3xl p-8">
-                <h1 className="mb-4 text-3xl font-bold">{product.name}</h1>
-                <img src={product.imageSrc} alt={product.imageAlt} className="mb-4 w-full max-w-md rounded" />
-                <p className="text-lg text-gray-700">ID: {product.uniqueId}</p>
-                <p className="mb-4 text-lg font-semibold text-gray-900">Prix : {parsedProduct.price.toFixed(2)} €</p>
+            <div className="mx-auto max-w-xl px-6 py-10">
+                <img src={product.imageSrc} alt={product.imageAlt} className="w-full rounded-xl" />
+                <h1 className="mt-4 text-2xl font-bold">{product.name}</h1>
+                <p className="mt-4">{product.description}</p>
 
-                {/* ✅ Ouvre la popup au lieu d’ajouter directement */}
-                <button onClick={handleOpenPopup} className="rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">
-                    Add to cart
-                </button>
+                <div className="mt-2 flex items-center justify-between">
+                    <p className="text-xl text-gray-800">{parsedProduct.price.toFixed(2)} $</p>
+                    <button onClick={handleOpenPopup} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <Link href="/new-products" className="mt-6 block text-blue-500">
+                    ← Retour aux produits
+                </Link>
+
+                {/* Popup d'ajout au panier */}
+                <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
             </div>
-
-            {/* ✅ Popup d'ajout au panier */}
-            <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
         </GuestLayout>
     );
 }
