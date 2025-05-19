@@ -52,7 +52,7 @@ const navigation = {
           id: 'Body care',
           name: 'Body care',
           items: [
-            { name: 'incomming',  href: route('body/incoming') },
+            { name: 'Body',  href: route('body/incoming') },
           ],
         },
       ],

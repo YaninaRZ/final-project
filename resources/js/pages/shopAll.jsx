@@ -59,16 +59,16 @@ export default function ShopAll() {
             <div className="font-montserrat flex min-h-screen flex-col items-center bg-white px-4 py-16 font-bold text-[#252B42]">
                 <h1 className="mb-12 text-center text-4xl">Our Products</h1>
 
-                <h2>New arrivals</h2>
+                <h2 id="face-wash">New arrivals</h2>
                 {renderProductGrid(arrivalsProducts, handleProductClick)}
 
-                <h2>Body Categorie</h2>
+                <h2 id="body-wash">Body Categorie</h2>
                 {renderProductGrid(bodyProducts, handleProductClick)}
 
-                <h2>Mask Categorie</h2>
+                <h2 id="face-wash">Mask Categorie</h2>
                 {renderProductGrid(maskProducts, handleProductClick)}
 
-                <h2>Skinn Categorie</h2>
+                <h2 id="cleanser">Skinn Categorie</h2>
                 {renderProductGrid(tableProducts, handleProductClick)}
 
                 {/* ✅ Popup produit avec ajout au panier */}

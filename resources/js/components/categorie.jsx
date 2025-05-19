@@ -8,7 +8,10 @@ export default function Categorie() {
                     <img alt="" src="images/bodywash.svg" className="absolute inset-0 h-full w-full object-cover" />
                     <div className="relative flex w-full flex-col items-start justify-end bg-black/40 p-8 sm:p-12">
                         <p className="mt-1 text-2xl font-medium text-white">Body Wash</p>
-                        <Link href="/shop-all" className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50">
+                        <Link
+                            href="/shop-all#body-wash"
+                            className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50"
+                        >
                             Shop now
                         </Link>
                     </div>
@@ -18,7 +21,10 @@ export default function Categorie() {
                     <img alt="" src="images/facewash.svg" className="absolute inset-0 h-full w-full object-cover" />
                     <div className="relative flex w-full flex-col items-start justify-end bg-black/40 p-8 sm:p-12">
                         <p className="mt-1 text-2xl font-medium text-white">Face Wash</p>
-                        <Link href="/shop-all" className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50">
+                        <Link
+                            href="/shop-all#face-wash"
+                            className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50"
+                        >
                             Shop now
                         </Link>
                     </div>
@@ -28,7 +34,10 @@ export default function Categorie() {
                     <img alt="" src="images/cleanserwash.svg" className="absolute inset-0 h-full w-full object-cover" />
                     <div className="relative flex w-full flex-col items-start justify-end bg-black/40 p-8 sm:p-12">
                         <p className="mt-1 text-2xl font-medium text-white">Cleanser</p>
-                        <Link href="/shop-all" className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50">
+                        <Link
+                            href="/shop-all#cleanser"
+                            className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50"
+                        >
                             Shop now
                         </Link>
                     </div>
