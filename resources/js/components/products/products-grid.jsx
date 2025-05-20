@@ -38,7 +38,6 @@ export default function ProductsGrid({ products }) {
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [allProducts, setAllProducts] = useState(products);
 
     const handleProductClick = (product) => {
         const parsedProduct = {
@@ -50,12 +49,12 @@ export default function ProductsGrid({ products }) {
 
     };
 
-    useEffect(() => {
-        setAllProducts(products);
-    }, [])
+
+
     return (
         <div className='font-montserrat flex flex-col items-center font-bold text-[#252B42]'>
             <h2 id={`${products[0].category}`}>{products[0].categoryTitle}</h2>
+
             {renderProductGrid(products, handleProductClick)}
 
             <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />

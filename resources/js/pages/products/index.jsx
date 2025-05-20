@@ -41,7 +41,7 @@ export default function ProductIndex() {
         } else {
             setProducts(groupProductsByCategory(products))
         }
-    }, []);
+    }, [category]);
 
 
 
@@ -50,13 +50,12 @@ export default function ProductIndex() {
             <div className="font-montserrat flex min-h-screen flex-col items-center bg-white px-4 py-16 font-bold text-[#252B42]">
                 <h1 className="mb-12 text-center text-4xl">Our Products</h1>
                 {category ?
-                    <><ProductsGrid products={products} /></>
+                    <ProductsGrid products={products} />
                     :
                     (Object.entries(products).map(([slug, category]) => (
-
-
-                        <ProductsGrid products={category.products} />
-
+                        category?.products && (
+                            <ProductsGrid key={slug} products={category.products} />
+                        )
                     )))}
             </div>
         </GuestLayout>
