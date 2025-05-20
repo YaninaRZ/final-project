@@ -1,13 +1,6 @@
 import { Link } from '@inertiajs/react';
+import ProductOverview from "../product-overview"
 import { useState } from 'react';
-import GuestLayout from '../layouts/guest-layout';
-
-import arrivalsProducts from '../components/arrivals-dataproduct';
-import bodyProducts from '../components/body-data-product';
-import maskProducts from '../components/mask-data-products';
-import tableProducts from '../components/table-new-products';
-
-import ProductOverview from '../components/product-overview';
 
 function renderProductGrid(products, onProductClick) {
     return (
@@ -15,7 +8,7 @@ function renderProductGrid(products, onProductClick) {
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                 {products.map((product) => (
                     <div key={product.id} className="group relative rounded-lg p-4">
-                        <Link href={route('shopp-all-detail', { id: product.uniqueId || product.id })} className="block">
+                        <Link href={route('products.show', { id: product.uniqueId || product.id })} className="block">
                             <img
                                 src={product.imageSrc}
                                 alt={product.imageAlt}
@@ -24,7 +17,7 @@ function renderProductGrid(products, onProductClick) {
                         </Link>
                         <div className="mt-4 flex flex-col gap-2">
                             <h3 className="text-sm text-gray-700">
-                                <Link href={route('shopp-all-detail', { id: product.uniqueId || product.id })} className="relative">
+                                <Link href={route('products.show', { id: product.uniqueId || product.id })} className="relative">
                                     <span aria-hidden="true" className="absolute inset-0" />
                                     {product.name}
                                 </Link>
@@ -40,10 +33,11 @@ function renderProductGrid(products, onProductClick) {
     );
 }
 
-export default function ShopAll() {
+
+export default function ProductsGrid({ products }) {
+
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
-
 
     const handleProductClick = (product) => {
         const parsedProduct = {
@@ -52,28 +46,14 @@ export default function ShopAll() {
         };
         setSelectedProduct(parsedProduct);
         setIsDialogOpen(true);
+
     };
-
     return (
-        <GuestLayout>
-            <div className="font-montserrat flex min-h-screen flex-col items-center bg-white px-4 py-16 font-bold text-[#252B42]">
-                <h1 className="mb-12 text-center text-4xl">Our Products</h1>
+        <div className='font-montserrat flex flex-col items-center font-bold text-[#252B42]'>
+            <h2 id={`${products[0].category}`}>{products[0].categoryTitle}</h2>
+            {renderProductGrid(products, handleProductClick)}
 
-                <h2 id="face-wash">New arrivals</h2>
-                {renderProductGrid(arrivalsProducts, handleProductClick)}
-
-                <h2 id="body-wash">Body Categorie</h2>
-                {renderProductGrid(bodyProducts, handleProductClick)}
-
-                <h2 id="face-wash">Mask Categorie</h2>
-                {renderProductGrid(maskProducts, handleProductClick)}
-
-                <h2 id="cleanser">Skinn Categorie</h2>
-                {renderProductGrid(tableProducts, handleProductClick)}
-
-
-                <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
-            </div>
-        </GuestLayout>
-    );
+            <ProductOverview open={isDialogOpen} setOpen={setIsDialogOpen} product={selectedProduct} />
+        </div>
+    )
 }

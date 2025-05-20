@@ -15,7 +15,7 @@ export default function Skinn() {
                         dolores et quas molestias excepturi.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
-                        <Link href="/shop-all" className="w-full rounded-md border border-solid border-stone-300 bg-stone-200 px-16 py-3.5">
+                        <Link href="/products" className="w-full rounded-md border border-solid border-stone-300 bg-stone-200 px-16 py-3.5">
                             Shop all
                         </Link>
                     </div>

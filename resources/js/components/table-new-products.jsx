@@ -7,6 +7,8 @@ const tableproducts = [
         imageSrc: '/images/cleanser.svg',
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         description: 'A refreshing face wash designed to deeply cleanse and balance oily skin while preventing acne breakouts.',
+        category: 'skinn',
+        categoryTitle: 'Skinn Products',
     },
     {
         uniqueId: 'table-2',
@@ -16,6 +18,8 @@ const tableproducts = [
         imageSrc: '/images/vitamin.png',
         imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
         description: 'Nourish and protect your hands and nails with this vitamin-rich cream that leaves skin soft and radiant.',
+        category: 'skinn',
+        categoryTitle: 'Skinn Products',
     },
     {
         uniqueId: 'table-3',
@@ -25,6 +29,8 @@ const tableproducts = [
         imageSrc: '/images/coffee.svg',
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
         description: 'A detoxifying clay mask infused with Vitamin C to brighten and purify your skin for a smoother complexion.',
+        category: 'skinn',
+        categoryTitle: 'Skinn Products',
     },
     {
         uniqueId: 'table-4',
@@ -34,6 +40,8 @@ const tableproducts = [
         imageSrc: '/images/miracle.svg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
         description: 'A powerful multi-benefit formula that revitalizes dull skin, promoting elasticity and hydration in one step.',
+        category: 'skinn',
+        categoryTitle: 'Skinn Products',
     },
 ].map((product) => ({
     ...product,

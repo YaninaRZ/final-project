@@ -2,24 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\ProductController;
+
 
 Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-Route::get('/shop-all', function () {
-    return Inertia::render('shopAll');
-})->name('shop-all');
-
-Route::get('/shopp-all-detail/{id}', function ($id) {
-    return Inertia::render('shopp-all-detail', ['id' => $id]);
-})->name('shopp-all-detail');
-
 Route::get('/new-products', function () {
     return Inertia::render('newProducts');
 })->name('newProducts');
-
 
 Route::get('/about', function () {
     return Inertia::render('about');
@@ -48,10 +39,22 @@ Route::get('/cart-step1', function () {
 })->name('cart-step1');
 
 
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////Products pages
+
+// BEST ROUTES EVER
+
+Route::get('/products', function () {
+    return Inertia::render('products/index');
+})->name('products');
+
+Route::get('/products/category/{category}', function ($category) {
+    return Inertia::render('products/index', ['category' => $category]);
+})->name('products.category');
+
+Route::get('/products/{id}', function ($id) {
+    return Inertia::render('products/show', ['id' => $id]);
+})->name('products.show');
+
 
 
 // a corriger
@@ -62,58 +65,6 @@ Route::get('/productDetail/{id}', function ($id) {
 Route::get('/postDetail/{id}', function ($id) {
     return Inertia::render('postDetail', ['id' => $id]);
 })->name('postDetail');
-
-
-///////////////////////////////////////////cremes nav bar
-Route::get('/creme', function () {
-    return Inertia::render('face/creme');
-})->name('face.creme');
-
-
-Route::get('/face/creme-details/{id}', function ($id) {
-    return Inertia::render('face/cremeDetails', ['id' => $id]);
-})->name('creme-details');
-
-/////////////////////////////////////////////:::mask nav bar 
-Route::get('/mask', function () {
-    return Inertia::render('face/mask');
-})->name('face.mask');
-
-
-Route::get('/face/mask-details/{id}', function ($id) {
-    return Inertia::render('face/maskDetails', ['id' => $id]);
-})->name('mask-details');
-
-//////////////////////////////////////////////shampoo nav bar 
-Route::get('/shampoo', function () {
-    return Inertia::render('hair/shampoo');
-})->name('hair/shampoo');
-
-
-Route::get('/hair/shampoo-details/{id}', function ($id) {
-    return Inertia::render('hair/shampooDetails', ['id' => $id]);
-})->name('shampoo-details');
-
-///////////////////////////////////////////////incoming nav bar 
-
-Route::get('/body', function () {
-    return Inertia::render('body/incoming');
-})->name('body/incoming');
-
-
-Route::get('/body/body-details/{id}', function ($id) {
-    return Inertia::render('body/bodyDetails', ['id' => $id]);
-})->name('body-details');
-
-
-///////////////////////////////////////////arrivals nav bar
-Route::get('/arrivals', function () {
-    return Inertia::render('arrivals');
-})->name('arrivals');
-
-Route::get('/arrivals-details/{id}', function ($id) {
-    return Inertia::render('arrivalsDetails', ['id' => $id]);
-})->name('arrivals-details');
 
 
 

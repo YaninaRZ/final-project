@@ -6,6 +6,8 @@ const maskproducts = [
         href: '',
         imageSrc: '/images/mask-ritual.webp',
         imageAlt: "Front of men's Basic Tee in black.",
+        category: 'masks',
+        categoryTitle: 'Masks',
         price: '$35',
         color: 'Black',
         description:

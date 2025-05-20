@@ -26,7 +26,7 @@ const navigation = {
       featured: [
         {
           name: 'New Arrivals',
-          href: route('arrivals'),
+          href: route('products.category', { category: 'new-arrivals' }),
           imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-category-01.jpg',
           imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
         },
@@ -37,22 +37,22 @@ const navigation = {
           name: 'Face care',
           items: [
 
-            { name: 'cremes', href: route('face.creme') },
-            { name: 'masks', href: route('face.mask') },
+            { name: 'skinn products', href: route('products.category', { category: 'skinn' }) },
+            { name: 'masks', href: route('products.category', { category: 'masks' }) },
           ],
         },
         {
           id: 'Hair care',
           name: 'Hair care',
           items: [
-            { name: 'Shampoos', href: route('hair/shampoo') },
+            { name: 'Shampoos', href: route('products.category', { category: 'shampoos' }) },
           ],
         },
         {
           id: 'Body care',
           name: 'Body care',
           items: [
-            { name: 'Body', href: route('body/incoming') },
+            { name: 'Body', href: route('products.category', { category: 'body' }) },
           ],
         },
       ],

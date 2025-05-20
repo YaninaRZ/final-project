@@ -8,6 +8,8 @@ const bodyproducts = [
         imageAlt: 'Soft, silky skin with nourishing rice milk and cherry blossom.',
         price: '$35',
         color: 'Black',
+        category: 'body',
+        categoryTitle: 'Body wash',
         description:
             'Immerse your skin in the delicate aroma of cherry blossoms with this light, hydrating cream that leaves skin radiant and smooth.',
     },
@@ -20,6 +22,8 @@ const bodyproducts = [
         imageAlt: 'Brighten your skin with our nourishing Mehr body cream.',
         price: '$35',
         color: 'Black',
+        category: 'body',
+        categoryTitle: 'Body wash',
         description:
             'Energize your skin daily with Mehr’s vibrant formula, packed with nourishing ingredients that refresh and revitalize your body.',
     },
@@ -32,6 +36,8 @@ const bodyproducts = [
         imageAlt: 'Rich hydration with the Yozakura body cream for deep nourishment.',
         price: '$35',
         color: 'Black',
+        category: 'body',
+        categoryTitle: 'Body wash',
         description:
             'Experience deep hydration with the luxurious Yozakura cream, crafted to soothe and restore your skin’s natural softness overnight.',
     },
@@ -44,6 +50,8 @@ const bodyproducts = [
         imageAlt: 'Indulge in dreamy softness with our signature body cream.',
         price: '$35',
         color: 'Black',
+        category: 'body',
+        categoryTitle: 'Body wash',
         description: 'Wrap your skin in velvety softness with The Dream Collection, a rich body cream designed to nourish and pamper every inch.',
     },
 ].map((product) => ({

@@ -9,12 +9,14 @@ const hairproducts = [
         price: '$35',
         description:
             'Infuse your hair with the delicate scent of cherry blossoms. This gentle shampoo cleanses deeply while nourishing each strand, leaving your hair soft, shiny, and beautifully fragrant.',
+        category: 'shampoos',
+        categoryTitle: 'Shampoo',
     },
 
     // More products...
 ].map((product) => ({
     ...product,
-    href: route('shampoo-details', { id: product.id }),
+    href: route('products.show', { id: product.id }),
 }));
 
 export default hairproducts;

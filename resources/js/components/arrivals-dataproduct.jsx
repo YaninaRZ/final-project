@@ -1,17 +1,5 @@
 const arrivalsproducts = [
     {
-        uniqueId: 'arrivals-1',
-        id: 1,
-        name: 'Cream Forte',
-        href: '',
-        imageSrc: '/images/cream-forte.avif',
-        imageAlt: 'Pink product.',
-        price: '$35',
-
-        description:
-            'Power up your skincare routine with Cream Forte, a rich formula designed to deeply nourish and strengthen your skin’s natural barrier.',
-    },
-    {
         uniqueId: 'arrivals-2',
         id: 2,
         name: 'Basic Tee',
@@ -19,7 +7,8 @@ const arrivalsproducts = [
         imageSrc: '/images/product-beige.avif',
         imageAlt: 'Regenerative cream.',
         price: '$35',
-
+        category: 'new-arrivals',
+        categoryTitle: 'New Arrivals',
         description: 'Effortless comfort meets style in our Basic Tee—crafted from soft, breathable fabric for everyday wear with a modern touch.',
     },
     {
@@ -30,7 +19,8 @@ const arrivalsproducts = [
         imageSrc: '/images/spf.avif',
         imageAlt: 'Moisturize your skin.',
         price: '$35',
-
+        category: 'new-arrivals',
+        categoryTitle: 'New Arrivals',
         description: 'Protect and hydrate with our lightweight SPF, providing broad-spectrum defense while keeping your skin soft and nourished.',
     },
     {
@@ -41,7 +31,8 @@ const arrivalsproducts = [
         imageSrc: '/images/soap.avif',
         imageAlt: 'Soap.',
         price: '$35',
-
+        category: 'new-arrivals',
+        categoryTitle: 'New Arrivals',
         description: 'Cleanse gently with our soothing soap, crafted to refresh your skin without stripping natural moisture.',
     },
 ].map((product) => ({

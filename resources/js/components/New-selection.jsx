@@ -14,7 +14,7 @@ export default function Selection() {
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <Link
-                            href="shop-all"
+                            href="products"
                             className="w-full rounded-md border border-solid border-stone-300 bg-stone-200 px-6 py-3.5 transition-colors hover:bg-stone-300"
                         >
                             Shop all
