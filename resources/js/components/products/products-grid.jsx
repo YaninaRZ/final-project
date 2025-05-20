@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react';
 import ProductOverview from "../product-overview"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function renderProductGrid(products, onProductClick) {
     return (
@@ -38,6 +38,7 @@ export default function ProductsGrid({ products }) {
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [allProducts, setAllProducts] = useState(products);
 
     const handleProductClick = (product) => {
         const parsedProduct = {
@@ -48,6 +49,10 @@ export default function ProductsGrid({ products }) {
         setIsDialogOpen(true);
 
     };
+
+    useEffect(() => {
+        setAllProducts(products);
+    }, [])
     return (
         <div className='font-montserrat flex flex-col items-center font-bold text-[#252B42]'>
             <h2 id={`${products[0].category}`}>{products[0].categoryTitle}</h2>
