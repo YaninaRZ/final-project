@@ -1,6 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import allProducts from '../../components/all-products-data';
+import allProducts from '../../data/products';
 import ProductOverview from '../../components/product-overview';
 import GuestLayout from '../../layouts/guest-layout';
 

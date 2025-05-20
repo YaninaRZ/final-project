@@ -1,4 +1,4 @@
-import posts from './dataposts';
+import posts from '@/data/posts';
 import ShopNowButton from './ui/shopnowbtn';
 
 export default function ProductsV1() {

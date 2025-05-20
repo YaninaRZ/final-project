@@ -34,9 +34,9 @@ Route::get('/licence', function () {
 
 // Cart
 
-Route::get('/cart-step1', function () {
-    return Inertia::render('cartstep1');
-})->name('cart-step1');
+Route::get('/cart', function () {
+    return Inertia::render('cart');
+})->name('cart');
 
 
 ///////////////////////////////////////////////////////////////////////////////////Products pages
@@ -55,12 +55,6 @@ Route::get('/products/{id}', function ($id) {
     return Inertia::render('products/show', ['id' => $id]);
 })->name('products.show');
 
-
-
-// a corriger
-Route::get('/productDetail/{id}', function ($id) {
-    return Inertia::render('productDetail', ['id' => $id]);
-})->name('product-detail');
 // a corriger
 Route::get('/postDetail/{id}', function ($id) {
     return Inertia::render('postDetail', ['id' => $id]);

@@ -1,7 +1,8 @@
 import { usePage } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import GuestLayout from '../../layouts/guest-layout';
-import allProducts from '../../components/all-products-data';
+// import allProducts from '../../components/all-products-data';
+import allProducts from '../../data/products';
 import ProductsGrid from '../../components/products/products-grid';
 
 

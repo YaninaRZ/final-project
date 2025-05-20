@@ -1,6 +1,6 @@
 // resources/js/Pages/ProductDetail.jsx (ou autre chemin)
 import { Link, usePage } from '@inertiajs/react';
-import posts from '../components/dataposts';
+import posts from '../data/posts';
 import GuestLayout from '../layouts/guest-layout';
 export default function PostDetail() {
     const { id } = usePage().props;
