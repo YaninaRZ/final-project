@@ -8,9 +8,9 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-Route::get('/newProducts', function () {
+Route::get('/new-products', function () {
     return Inertia::render('new-products');
-})->name('newProducts');
+})->name('new-products');
 
 Route::get('/about', function () {
     return Inertia::render('about');
@@ -56,9 +56,9 @@ Route::get('/products/{id}', function ($id) {
 })->name('products.show');
 
 // a corriger
-Route::get('/postDetail/{id}', function ($id) {
+Route::get('/post-detail/{id}', function ($id) {
     return Inertia::render('post-detail', ['id' => $id]);
-})->name('postDetail');
+})->name('post-detail');
 
 
 
@@ -67,8 +67,8 @@ Route::get('/postDetail/{id}', function ($id) {
 // Admin log
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/admin', function () {
-        return Inertia::render('dashboard');
+    Route::get('/admin/dashboard', function () {
+        return Inertia::render('admin/dashboard');
     })->name('dashboard');
 });
 

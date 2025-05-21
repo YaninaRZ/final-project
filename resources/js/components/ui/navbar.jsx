@@ -59,7 +59,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'New', href: route('newProducts') },
+    { name: 'New', href: route('new-products') },
     { name: 'About', href: route('about') }
   ],
 }

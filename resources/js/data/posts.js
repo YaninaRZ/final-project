@@ -25,7 +25,7 @@ const posts = [
     },
 ].map((post) => ({
     ...post,
-    href: `/postDetail/${post.id}`,
+    href: route('post-detail', post.id),
 }));
 
 export default posts;

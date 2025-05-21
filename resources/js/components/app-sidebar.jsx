@@ -9,7 +9,7 @@ import { useState } from 'react';
 const mainNavItems = [
     {
         title: 'Dashboard',
-        url: '/admin',
+        url: '/admin/dashboard',
         icon: LayoutGrid,
     },
     {

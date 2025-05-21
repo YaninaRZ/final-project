@@ -1,7 +1,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid';
 import { Link } from '@inertiajs/react';
-import ButtonAdd from '@/ui/button-add';
+import ButtonAdd from '@/components/ui/button-add.jsx';
 import products from '@/data/products';
 const statuses = {
     Paid: 'text-green-700 bg-green-50 ring-green-600/20',

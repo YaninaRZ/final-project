@@ -1,5 +1,6 @@
 import posts from '@/data/posts';
 import ShopNowButton from './ui/shopnowbtn';
+import { Link } from '@inertiajs/react'
 
 export default function PostGrid() {
     return (
@@ -27,10 +28,10 @@ export default function PostGrid() {
                                 </div>
                             </div>
                             <h3 className="mt-3 text-lg/6 font-semibold text-black">
-                                <a href={post.href}>
+                                <Link href={post.href}>
                                     <span className="absolute inset-0" />
                                     {post.product}
-                                </a>
+                                </Link>
                             </h3>
                             <ShopNowButton />
                         </article>
