@@ -1,4 +1,4 @@
-const order = [
+const orders = [
     {
         Product: 'Coffee Mask',
         OrderID: '1',
@@ -36,4 +36,4 @@ const order = [
     href: `/ordered-order-details/${item.OrderID}`,
 }));
 
-export default order;
+export default orders;

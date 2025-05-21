@@ -1,7 +1,7 @@
 import { CheckIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
-import { useCart } from '../hooks/use-cart';
-import GuestLayout from '../layouts/guest-layout';
+import { useCart } from '@/hooks/use-cart';
+import GuestLayout from '@/layouts/guest-layout';
 
 export default function CartStep1() {
     const { cart, updateQuantity, removeFromCart, clearCart } = useCart();

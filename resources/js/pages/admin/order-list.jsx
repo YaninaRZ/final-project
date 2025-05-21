@@ -1,5 +1,5 @@
-import OrderTable from '../../components/order-table';
-import AdminLayout from '../../layouts/admin-layout';
+import OrderTable from '@/components/admin/order-table';
+import AdminLayout from '@/layouts/admin-layout';
 
 export default function orderList() {
     return (

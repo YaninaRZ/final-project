@@ -2,7 +2,7 @@
 
 import { Disclosure } from '@headlessui/react';
 import { ArrowRightOnRectangleIcon, CreditCardIcon, KeyIcon, UserCircleIcon } from '@heroicons/react/24/outline';
-import GuestLayout from '../../layouts/guest-layout';
+import GuestLayout from '@/layouts/guest-layout';
 
 const user = {
     name: 'Debbie Lewis',

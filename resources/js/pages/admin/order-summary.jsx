@@ -1,8 +1,9 @@
 import { Link, usePage } from '@inertiajs/react';
-import orders from '../../components/admin/admin-data-orders';
-import Example from '../../components/admin/details-screen';
-import AdminLayout from '../../layouts/admin-layout';
-export default function OrderProductDetail() {
+import orders from '@/data/orders';
+import Example from '@/components/admin/details-screen';
+import AdminLayout from '@/layouts/admin-layout';
+
+export default function OrderSummary() {
     const { props } = usePage();
 
     const command = orders.filter((order) => order.OrderID == props.id)[0];

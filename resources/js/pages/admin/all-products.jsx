@@ -2,7 +2,7 @@ import { AppContent } from '@/components/app-content';
 import { AppShell } from '@/components/app-shell';
 import { AppSidebar } from '@/components/app-sidebar';
 import { AppSidebarHeader } from '@/components/app-sidebar-header';
-import CardStats2 from '../../components/admin/card-stats-v2';
+import ProductListCard from '@/components/admin/product-list-card';
 
 export default function orderedProducts({ children, breadcrumbs = [] }) {
     return (
@@ -18,7 +18,7 @@ export default function orderedProducts({ children, breadcrumbs = [] }) {
                         sale items before we run out.
                     </p>
                 </div>
-                <CardStats2></CardStats2>
+                <ProductListCard />
             </AppContent>
         </AppShell>
     );

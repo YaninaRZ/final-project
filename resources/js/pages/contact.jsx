@@ -1,5 +1,5 @@
-import ContactForm from '../components/contact-form';
-import GuestLayout from '../layouts/guest-layout';
+import ContactForm from '@/components/contact-form';
+import GuestLayout from '@/layouts/guest-layout';
 
 export default function Contact() {
     return (

@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import GuestLayout from '../../layouts/guest-layout';
+import GuestLayout from '@/layouts/guest-layout';
 
 export default function ViewOrder() {
     const { id } = usePage().props;

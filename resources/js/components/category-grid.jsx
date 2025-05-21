@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react';
 
-export default function Categorie() {
+export default function CategoryGrid() {
     return (
         <>
             <div className="mb-100 grid min-h-full grid-cols-1 lg:grid-cols-3">

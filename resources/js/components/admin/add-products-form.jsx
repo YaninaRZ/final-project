@@ -112,7 +112,7 @@ export default function AddProduct() {
                 </div>
 
                 <div>
-                    <button type="submit" className="inline-flex justify-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500">
+                    <button type="submit" className="inline-flex justify-center rounded-md  bg-[#68513F] px-4 py-2 text-white hover:bg-[#68513F]">
                         Add Product
                     </button>
                 </div>

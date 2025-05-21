@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useState } from 'react';
-import people from './client-data';
+import clients from '@/data/clients';
 
 export default function Table() {
     const [open, setOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function Table() {
         email: '',
     });
 
-    const [users, setUsers] = useState(people);
+    const [users, setUsers] = useState(clients);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,18 +44,12 @@ export default function Table() {
     return (
         <div className="px-4 sm:px-6 lg:px-8">
 
-            <div className="sm:flex sm:items-center sm:justify-between">
-                <div className="max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-                    <h1 className="text-3xl font-bold tracking-tight text-gray-900">List of Clients</h1>
-                    <p className="mt-4 max-w-xl text-sm text-gray-700">
-                        Manage your client database efficiently and keep track of all essential information. Our tools help you maintain strong
-                        relationships and deliver the best service to your valued clients.
-                    </p>
-                </div>
-                <div className="mt-4 sm:mt-0 sm:flex-none">
+            <div className="flex justify-end">
+                <div>
                     <Button onClick={() => setOpen(true)}>Add Client</Button>
                 </div>
             </div>
+
 
 
             <Dialog open={open} onOpenChange={setOpen}>

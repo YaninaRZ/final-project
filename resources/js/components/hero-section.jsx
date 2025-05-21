@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react';
 
-export default function Hero() {
+export default function HeroSection() {
     return (
         <div className="bg-white-900 relative h-screen">
             <div className="relative h-80 overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">

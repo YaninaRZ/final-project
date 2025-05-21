@@ -8,8 +8,8 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-Route::get('/new-products', function () {
-    return Inertia::render('newProducts');
+Route::get('/newProducts', function () {
+    return Inertia::render('new-products');
 })->name('newProducts');
 
 Route::get('/about', function () {
@@ -57,7 +57,7 @@ Route::get('/products/{id}', function ($id) {
 
 // a corriger
 Route::get('/postDetail/{id}', function ($id) {
-    return Inertia::render('postDetail', ['id' => $id]);
+    return Inertia::render('post-detail', ['id' => $id]);
 })->name('postDetail');
 
 
@@ -67,39 +67,39 @@ Route::get('/postDetail/{id}', function ($id) {
 // Admin log
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
+    Route::get('/admin', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
 
-Route::get('/ordered-products', function () {
-    return Inertia::render('admin/orderedProducts');
-})->name('orderedproducts');
+Route::get('admin/all-products', function () {
+    return Inertia::render('admin/all-products');
+})->name('all-products');
 
-Route::get('/order-list', function () {
-    return Inertia::render('admin/orderList');
+Route::get('admin/order-list', function () {
+    return Inertia::render('admin/order-list');
 })->name('orderList');
 
-Route::get('/client', function () {
+Route::get('admin/client', function () {
     return Inertia::render('admin/client');
 })->name('client');
 
-Route::get('/categories', function () {
+Route::get('admin/categories', function () {
     return Inertia::render('admin/categories');
 })->name('categories');
 
 // a corriger
-Route::get('productsAdmin/{id}', function ($id) {
-    return Inertia::render('admin/productsAdmin', ['id' => $id]);
+Route::get('admin/product-detail/{id}', function ($id) {
+    return Inertia::render('admin/product-detail', ['id' => $id]);
 })->name('productsAdmin');
 
 Route::get('admin/add-product', function () {
     return Inertia::render('admin/add-product');
 })->name('add-product');
 
-Route::get('admin/ordered-product-details/{id}', function ($id) {
-    return Inertia::render('admin/ordered-product-details', ['id' => $id]);
-})->name('ordered-product-details');
+Route::get('admin/order-summary/{id}', function ($id) {
+    return Inertia::render('admin/order-summary', ['id' => $id]);
+})->name('order-summary');
 
 
 

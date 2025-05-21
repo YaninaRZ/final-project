@@ -1,8 +1,8 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid';
 import { Link } from '@inertiajs/react';
-import ButtonAdd from '../ui/button-add';
-import products from './admin-data-products';
+import ButtonAdd from '@/ui/button-add';
+import products from '@/data/products';
 const statuses = {
     Paid: 'text-green-700 bg-green-50 ring-green-600/20',
     Withdraw: 'text-gray-600 bg-gray-50 ring-gray-500/10',
@@ -13,10 +13,10 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function CardStats2() {
+export default function ProductListCard() {
     return (
         <>
-            card-stats-v2.jsx
+
             <div className="flex justify-end">
                 <div className="w-40 px-4 py-4">
                     <ButtonAdd />
@@ -29,7 +29,7 @@ export default function CardStats2() {
                             <div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
                                 <img
                                     alt={product.name}
-                                    src={product.imageUrl}
+                                    src={product.imageSrc}
                                     className="size-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10"
                                 />
                                 <div className="text-sm/6 font-medium text-gray-900">{product.name}</div>
@@ -58,13 +58,13 @@ export default function CardStats2() {
                                 <div className="flex justify-between gap-x-4 py-3">
                                     <dt className="text-gray-500">Sales</dt>
                                     <dd className="text-gray-700">
-                                        <time quantityTime={product.sales.quantity}>{product.sales.quantity}</time>
+                                        <time>{product.sales.quantity}</time>
                                     </dd>
                                 </div>
                                 <div className="flex justify-between gap-x-4 py-3">
                                     <dt className="text-gray-500">Remaining Products</dt>
                                     <dd className="flex items-start gap-x-2">
-                                        <div className="font-medium text-gray-900">{product.sales.RemainingProducts}</div>
+                                        <div className="font-medium text-gray-900">{product.sales.remainingProducts}</div>
                                         <div
                                             className={classNames(
                                                 statuses[product.sales.quantity],

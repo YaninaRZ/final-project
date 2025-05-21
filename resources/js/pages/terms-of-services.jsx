@@ -1,4 +1,4 @@
-import GuestLayout from '../layouts/guest-layout';
+import GuestLayout from '@/layouts/guest-layout';
 export default function Terms() {
     return (
         <GuestLayout>

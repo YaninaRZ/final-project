@@ -1,16 +1,16 @@
-import CardGroup from '../components/Card-group';
-import AboutSection from '../components/about-welcome';
-import FAQ from '../components/accordion-centered';
-import HeroImitaton from '../components/imitation-content';
-import GuestLayout from '../layouts/guest-layout';
+import ProductCards from '@/components/product-cards';
+import HeroSectionMain from '@/components/hero-section-main';
+import FaqSection from '@/components/faq-section';
+import HeroImitaton from '@/components/hero-imitation';
+import GuestLayout from '@/layouts/guest-layout';
 
 export default function About() {
     return (
         <GuestLayout>
-            <AboutSection></AboutSection>
-            <HeroImitaton></HeroImitaton>
-            <CardGroup></CardGroup>
-            <FAQ></FAQ>
+            <HeroSectionMain />
+            <HeroImitaton />
+            <ProductCards />
+            <FaqSection />
         </GuestLayout>
     );
 }

@@ -1,8 +1,8 @@
 'use client';
 import { Link } from '@inertiajs/react';
 import { useLayoutEffect, useRef, useState } from 'react';
-import AdminFilter from './admin-filter';
-import order from './admin/admin-data-orders';
+import AdminFilter from './filter';
+import orders from '@/data/orders';
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
@@ -14,8 +14,8 @@ export default function OrderTable() {
     const [selectedOrder, setSelectedOrder] = useState([]);
 
     useLayoutEffect(() => {
-        const isIndeterminate = selectedOrder.length > 0 && selectedOrder.length < order.length;
-        setChecked(selectedOrder.length === order.length);
+        const isIndeterminate = selectedOrder.length > 0 && selectedOrder.length < orders.length;
+        setChecked(selectedOrder.length === orders.length);
         setIndeterminate(isIndeterminate);
         checkbox.current.indeterminate = isIndeterminate;
     }, [selectedOrder]);
@@ -108,7 +108,7 @@ export default function OrderTable() {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
-                                    {order.map((command) => (
+                                    {orders.map((command) => (
                                         <tr key={command.Date} className={selectedOrder.includes(command) ? 'bg-gray-50' : undefined}>
                                             <td className="relative px-7 sm:w-12 sm:px-6">
                                                 {selectedOrder.includes(command) && <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />}
@@ -162,7 +162,7 @@ export default function OrderTable() {
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Status}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Amount}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                                                <Link href={route('ordered-product-details', command.OrderID)}>See</Link>
+                                                <Link href={route('order-summary', command.OrderID)}>See</Link>
                                             </td>
                                         </tr>
                                     ))}

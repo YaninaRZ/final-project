@@ -1,8 +1,9 @@
 import { PaperClipIcon } from '@heroicons/react/20/solid';
 import { usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import Button from '../button';
-import products from './admin-data-products';
+import Button from '@/components/button';
+import products from '@/data/products';
+
 export default function DataColumns() {
     const { id } = usePage().props;
     const productId = parseInt(id);
@@ -22,7 +23,6 @@ export default function DataColumns() {
 
     return (
         <>
-            two-data-columns.jsx
             <div className="flex flex-col gap-8 p-6 lg:flex-row">
                 <div className="w-full lg:w-1/2">
                     <div className="px-4 sm:px-0">
@@ -106,24 +106,22 @@ export default function DataColumns() {
                             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm/6 font-medium text-gray-900"> Remaining Stock Quantity</dt>
                                 <dd className="mt-1 flex text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                    <dd className="mt-1 flex text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                        {editMode ? (
-                                            <input
-                                                id="remaining-stock-quantity"
-                                                name="remaining-stock-quantity"
-                                                type="number"
-                                                placeholder="remaining-stock-quantity"
-                                                aria-label="remaining-stock-quantity"
-                                                value={product.sales.remainingProducts}
-                                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                            />
-                                        ) : (
-                                            <>
-                                                <span className="grow">{product.sales.remainingProducts}</span>
-                                                <span className="ml-4 shrink-0"></span>
-                                            </>
-                                        )}
-                                    </dd>
+                                    {editMode ? (
+                                        <input
+                                            id="remaining-stock-quantity"
+                                            name="remaining-stock-quantity"
+                                            type="number"
+                                            placeholder="remaining-stock-quantity"
+                                            aria-label="remaining-stock-quantity"
+                                            value={product.sales.remainingProducts}
+                                            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        />
+                                    ) : (
+                                        <>
+                                            <span className="grow">{product.sales.remainingProducts}</span>
+                                            <span className="ml-4 shrink-0"></span>
+                                        </>
+                                    )}
                                 </dd>
                             </div>
                             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -187,7 +185,7 @@ export default function DataColumns() {
                                                     <>
                                                         <button
                                                             type="button"
-                                                            className="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500"
+                                                            className="rounded-md bg-white font-medium text-[#68513F] hover:text-[#68513F]"
                                                         >
                                                             Update
                                                         </button>
@@ -196,7 +194,7 @@ export default function DataColumns() {
                                                         </span>
                                                         <button
                                                             type="button"
-                                                            className="rounded-md bg-white font-medium text-gray-900 hover:text-gray-800"
+                                                            className="rounded-md bg-white font-medium text-[#68513F] hover:text-[#68513F]"
                                                         >
                                                             Remove
                                                         </button>
@@ -219,7 +217,7 @@ export default function DataColumns() {
                                                     <>
                                                         <button
                                                             type="button"
-                                                            className="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500"
+                                                            className="rounded-md bg-white font-medium text-[#68513F] hover:text-[#68513F]"
                                                         >
                                                             Update
                                                         </button>
@@ -250,7 +248,7 @@ export default function DataColumns() {
                                         </button>
                                         <button
                                             type="submit"
-                                            className="inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                            className="inline-flex justify-center rounded-md  bg-[#68513F] px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-[#68513F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:bg-[#68513F]"
                                         >
                                             Save
                                         </button>
@@ -263,7 +261,7 @@ export default function DataColumns() {
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <img src={product.imageUrl} alt={product.imageAlt} className="w-full rounded-xl object-cover shadow-md" />
+                    <img src={product.imageSrc} alt={product.imageAlt} className="w-full rounded-xl object-cover shadow-md" />
                 </div>
             </div>
         </>

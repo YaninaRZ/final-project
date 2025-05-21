@@ -1,8 +1,8 @@
 import { Link, usePage } from '@inertiajs/react';
-import products from '../../components/admin/admin-data-products';
-import DataColumns from '../../components/admin/two-columns-data';
-import AdminLayout from '../../layouts/admin-layout';
-export default function ProductsAdmin() {
+import products from '@/data/products';
+import DataColumns from '@/components/admin/data-columns';
+import AdminLayout from '@/layouts/admin-layout';
+export default function ProductDetails() {
     const { id } = usePage().props;
     const productId = parseInt(id);
     const product = products.find((p) => p.id === productId);
@@ -20,7 +20,6 @@ export default function ProductsAdmin() {
 
     return (
         <AdminLayout>
-            productsAdmin.jsx
             <DataColumns />
         </AdminLayout>
     );

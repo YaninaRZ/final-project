@@ -46,14 +46,7 @@ export default function CategoriesTable() {
     return (
         <div className="px-4 sm:px-6 lg:px-8">
 
-            <div className="sm:flex sm:items-center sm:justify-between">
-                <div className="max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-                    <h1 className="text-3xl font-bold tracking-tight text-gray-900">List of Categories</h1>
-                    <p className="mt-4 max-w-xl text-sm text-gray-700">
-                        Explore our carefully curated categories designed to help you find exactly what you need. Organize your store efficiently and
-                        boost your productivity by managing these categories.
-                    </p>
-                </div>
+            <div className="sm:flex sm:items-center sm:justify-end">
                 <div className="mt-4 sm:mt-0 sm:flex-none">
                     <Button onClick={() => setOpen(true)}>Add Category</Button>
                 </div>

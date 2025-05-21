@@ -12,6 +12,7 @@ const products = [
         category: 'new-arrivals',
         categoryTitle: 'New Arrivals',
         description: 'Effortless comfort meets style in our Basic Tee—crafted from soft, breathable fabric for everyday wear with a modern touch.',
+        sales: { remainingProducts: '1', quantity: '123' },
     },
     {
         uniqueId: 'arrivals-3',
@@ -24,6 +25,7 @@ const products = [
         category: 'new-arrivals',
         categoryTitle: 'New Arrivals',
         description: 'Protect and hydrate with our lightweight SPF, providing broad-spectrum defense while keeping your skin soft and nourished.',
+        sales: { remainingProducts: '$', quantity: '123' },
     },
     {
         uniqueId: 'arrivals-4',
@@ -36,8 +38,9 @@ const products = [
         category: 'new-arrivals',
         categoryTitle: 'New Arrivals',
         description: 'Cleanse gently with our soothing soap, crafted to refresh your skin without stripping natural moisture.',
-    },
+        sales: { remainingProducts: '$', quantity: '123' },
 
+    },
     {
         uniqueId: 'body-1',
         id: 5,
@@ -49,8 +52,9 @@ const products = [
         color: 'Black',
         category: 'body',
         categoryTitle: 'Body wash',
-        description:
-            'Immerse your skin in the delicate aroma of cherry blossoms with this light, hydrating cream that leaves skin radiant and smooth.',
+        description: 'Immerse your skin in the delicate aroma of cherry blossoms with this light, hydrating cream that leaves skin radiant and smooth.',
+
+        sales: { remainingProducts: '$', quantity: '123' },
     },
     {
         uniqueId: 'body-2',
@@ -65,6 +69,7 @@ const products = [
         categoryTitle: 'Body wash',
         description:
             'Energize your skin daily with Mehr’s vibrant formula, packed with nourishing ingredients that refresh and revitalize your body.',
+        sales: { remainingProducts: '$', quantity: '123' },
     },
     {
         uniqueId: 'body-3',
@@ -79,6 +84,7 @@ const products = [
         categoryTitle: 'Body wash',
         description:
             'Experience deep hydration with the luxurious Yozakura cream, crafted to soothe and restore your skin’s natural softness overnight.',
+        sales: { remainingProducts: '$', quantity: '123' },
     },
     {
         uniqueId: 'body-4',
@@ -92,6 +98,7 @@ const products = [
         category: 'body',
         categoryTitle: 'Body wash',
         description: 'Wrap your skin in velvety softness with The Dream Collection, a rich body cream designed to nourish and pamper every inch.',
+        sales: { remainingProducts: '$', quantity: '123' },
     },
     {
         uniqueId: 'mask-1',
@@ -106,7 +113,8 @@ const products = [
         color: 'Black',
         description:
             'Experience the ultimate skincare ritual with this revitalizing mask. Designed to cleanse, hydrate, and refresh your skin, it’s the perfect addition to your self-care routine for a radiant, healthy glow.',
-    },{
+        sales: { remainingProducts: '$', quantity: '123' },
+    }, {
         uniqueId: 'table-1',
         id: 13,
         name: 'Anti Acne Face Wash',
@@ -114,6 +122,7 @@ const products = [
         imageSrc: '/images/cleanser.svg',
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         description: 'A refreshing face wash designed to deeply cleanse and balance oily skin while preventing acne breakouts.',
+        sales: { remainingProducts: '$', quantity: '123' },
         category: 'skinn',
         categoryTitle: 'Skinn Products',
     },
@@ -125,6 +134,7 @@ const products = [
         imageSrc: '/images/vitamin.png',
         imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
         description: 'Nourish and protect your hands and nails with this vitamin-rich cream that leaves skin soft and radiant.',
+        sales: { remainingProducts: '$', quantity: '123' },
         category: 'skinn',
         categoryTitle: 'Skinn Products',
     },
@@ -136,6 +146,7 @@ const products = [
         imageSrc: '/images/coffee.svg',
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
         description: 'A detoxifying clay mask infused with Vitamin C to brighten and purify your skin for a smoother complexion.',
+        sales: { remainingProducts: '$', quantity: '123' },
         category: 'skinn',
         categoryTitle: 'Skinn Products',
     },
@@ -147,6 +158,7 @@ const products = [
         imageSrc: '/images/miracle.svg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
         description: 'A powerful multi-benefit formula that revitalizes dull skin, promoting elasticity and hydration in one step.',
+        sales: { remainingProducts: '$', quantity: '123' },
         category: 'skinn',
         categoryTitle: 'Skinn Products',
     }, {
@@ -159,6 +171,7 @@ const products = [
         price: '$35',
         description:
             'Infuse your hair with the delicate scent of cherry blossoms. This gentle shampoo cleanses deeply while nourishing each strand, leaving your hair soft, shiny, and beautifully fragrant.',
+        sales: { remainingProducts: '$', quantity: '123' },
         category: 'shampoos',
         categoryTitle: 'Shampoo',
     },

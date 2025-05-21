@@ -27,11 +27,11 @@ const faqs = [
     answer:
       "I don't know, but the logo is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
   },
-  
+
   // More questions...
 ]
 
-export default function FAQ() {
+export default function FaqSection() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">

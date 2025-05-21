@@ -1,7 +1,7 @@
 import posts from '@/data/posts';
 import ShopNowButton from './ui/shopnowbtn';
 
-export default function ProductsV1() {
+export default function PostGrid() {
     return (
         <div className="bg-white py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">

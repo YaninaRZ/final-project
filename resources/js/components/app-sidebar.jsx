@@ -9,27 +9,27 @@ import { useState } from 'react';
 const mainNavItems = [
     {
         title: 'Dashboard',
-        url: '/dashboard',
+        url: '/admin',
         icon: LayoutGrid,
     },
     {
         title: 'All Products',
-        url: '/ordered-products',
+        url: '/admin/all-products',
         icon: Package,
     },
     {
         title: 'Order List',
-        url: '/order-list',
+        url: '/admin/order-list',
         icon: ListOrdered,
     },
     {
         title: 'Clients',
-        url: '/client',
+        url: '/admin/client',
         icon: Users,
     },
     {
         title: 'Categories',
-        url: '/categories',
+        url: '/admin/categories',
         icon: Tags,
     },
 ];

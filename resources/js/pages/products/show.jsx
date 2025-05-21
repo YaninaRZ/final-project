@@ -1,8 +1,8 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import allProducts from '../../data/products';
-import ProductOverview from '../../components/product-overview';
-import GuestLayout from '../../layouts/guest-layout';
+import allProducts from '@/data/products';
+import ProductOverview from '@/components/product-overview';
+import GuestLayout from '@/layouts/guest-layout';
 
 export default function ProductShow() {
     const { id } = usePage().props;

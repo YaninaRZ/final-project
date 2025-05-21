@@ -1,9 +1,9 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import ProductOverview from '../components/product-overview';
-import products from '../components/table-new-products';
-import { useCart } from '../hooks/use-cart';
-import GuestLayout from '../layouts/guest-layout';
+import ProductOverview from '@/components/product-overview';
+import products from '@/components/table-new-products';
+import { useCart } from '@/hooks/use-cart';
+import GuestLayout from '@/layouts/guest-layout';
 
 export default function ProductDetail() {
     const { addToCart } = useCart();

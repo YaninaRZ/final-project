@@ -1,8 +1,8 @@
 import AppLayout from '@/layouts/app-layout';
 import { Head } from '@inertiajs/react';
-import StatsCard from '../components/admin/card-stats';
-import { LineChart } from '../components/line-chart';
-import OrderTable from '../components/order-table';
+import StatsCard from '@/components/admin/card-stats';
+import { LineChart } from '@/components/admin/line-chart';
+import OrderTable from '@/components/admin/order-table';
 
 const breadcrumbs = [
     {

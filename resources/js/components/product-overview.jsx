@@ -3,7 +3,7 @@
 import { Dialog, DialogBackdrop } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
-import { useCart } from '../hooks/use-cart';
+import { useCart } from '@/hooks/use-cart';
 
 export default function ProductOverview({ open, setOpen, product }) {
     const [quantity, setQuantity] = useState(1);
