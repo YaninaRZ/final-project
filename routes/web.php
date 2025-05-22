@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+///////////////////////////////////////////////////////////////////////NON CONNECTÉ
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -32,16 +33,12 @@ Route::get('/licence', function () {
     return Inertia::render('licence');
 })->name('licence');
 
-// Cart
-
 Route::get('/cart', function () {
     return Inertia::render('cart');
 })->name('cart');
 
 
-///////////////////////////////////////////////////////////////////////////////////Products pages
-
-// BEST ROUTES EVER
+///////////////////////////////////////////////////////////////////////PAGES PRODUITS
 
 Route::get('/products', function () {
     return Inertia::render('products/index');
@@ -61,66 +58,66 @@ Route::get('/post-detail/{id}', function ($id) {
 })->name('post-detail');
 
 
+///////////////////////////////////////////////////////////////////////ROUTES ADMIN
 
-//************************************************************************ *ROUTES ADMIN*/
+Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
-// Admin log
+    Route::prefix('admin')->group(function () {
+        Route::get('dashboard', function () {
+            return Inertia::render('admin/dashboard');
+        })->name('dashboard');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return Inertia::render('admin/dashboard');
-    })->name('dashboard');
+        Route::get('all-products', function () {
+            return Inertia::render('admin/all-products');
+        })->name('all-products');
+
+        Route::get('order-list', function () {
+            return Inertia::render('admin/order-list');
+        })->name('orderList');
+
+        Route::get('client', function () {
+            return Inertia::render('admin/client');
+        })->name('client');
+
+        Route::get('categories', function () {
+            return Inertia::render('admin/categories');
+        })->name('categories');
+
+        Route::get('product-detail/{id}', function ($id) {
+            return Inertia::render('admin/product-detail', ['id' => $id]);
+        })->name('productsAdmin');
+
+        Route::get('add-product', function () {
+            return Inertia::render('admin/add-product');
+        })->name('add-product');
+
+        Route::get('order-summary/{id}', function ($id) {
+            return Inertia::render('admin/order-summary', ['id' => $id]);
+        })->name('order-summary');
+    });
 });
 
-Route::get('admin/all-products', function () {
-    return Inertia::render('admin/all-products');
-})->name('all-products');
 
-Route::get('admin/order-list', function () {
-    return Inertia::render('admin/order-list');
-})->name('orderList');
+///////////////////////////////////////////////////////////////////////PROFIL CLIENT
+Route::middleware(['auth', 'verified', 'role:client'])->group(function () {
 
-Route::get('admin/client', function () {
-    return Inertia::render('admin/client');
-})->name('client');
-
-Route::get('admin/categories', function () {
-    return Inertia::render('admin/categories');
-})->name('categories');
-
-// a corriger
-Route::get('admin/product-detail/{id}', function ($id) {
-    return Inertia::render('admin/product-detail', ['id' => $id]);
-})->name('productsAdmin');
-
-Route::get('admin/add-product', function () {
-    return Inertia::render('admin/add-product');
-})->name('add-product');
-
-Route::get('admin/order-summary/{id}', function ($id) {
-    return Inertia::render('admin/order-summary', ['id' => $id]);
-})->name('order-summary');
+    Route::get('/user-account', function () {
+        return Inertia::render('client/user-account');
+    })->name('user-account');
 
 
+    Route::get('/user-password', function () {
+        return Inertia::render('client/user-password');
+    })->name('user-password');
 
-///////////////////////////////////////////////////::://////////////////////////   client log 
+    Route::get('/user-billing', function () {
+        return Inertia::render('client/user-billing');
+    })->name('user-billing');
 
-Route::get('/user-account', function () {
-    return Inertia::render('client/user-account');
-})->name('user-account');
-
-
-Route::get('/user-password', function () {
-    return Inertia::render('client/user-password');
-})->name('user-password');
-
-Route::get('/user-billing', function () {
-    return Inertia::render('client/user-billing');
-})->name('user-billing');
-
-Route::get('/client/view-order/{id}', function ($id) {
-    return Inertia::render('client/view-order', ['id' => $id]);
-})->name('view-order');
+    Route::get('/client/view-order/{id}', function ($id) {
+        return Inertia::render('client/view-order', ['id' => $id]);
+    })->name('view-order');
+});
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

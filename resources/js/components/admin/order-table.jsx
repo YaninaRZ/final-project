@@ -161,7 +161,7 @@ export default function OrderTable() {
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Name}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Status}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Amount}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-[#68513F]">
                                                 <Link href={route('order-summary', command.OrderID)}>See</Link>
                                             </td>
                                         </tr>

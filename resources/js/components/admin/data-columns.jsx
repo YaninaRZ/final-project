@@ -12,7 +12,7 @@ export default function DataColumns() {
         return (
             <div className="p-6">
                 <p>Post not found.</p>
-                <Link href="/" className="text-blue-600 underline">
+                <Link href={route("home")} className="text-blue-600 underline">
                     ← Back to posts
                 </Link>
             </div>
@@ -194,7 +194,7 @@ export default function DataColumns() {
                                                         </span>
                                                         <button
                                                             type="button"
-                                                            className="rounded-md bg-white font-medium text-[#68513F] hover:text-[#68513F]"
+                                                            className="rounded-md bg-white font-medium text-red-600 ]"
                                                         >
                                                             Remove
                                                         </button>
@@ -226,7 +226,7 @@ export default function DataColumns() {
                                                         </span>
                                                         <button
                                                             type="button"
-                                                            className="rounded-md bg-white font-medium text-gray-900 hover:text-gray-800"
+                                                            className="rounded-md bg-white font-medium text-red-600"
                                                         >
                                                             Remove
                                                         </button>

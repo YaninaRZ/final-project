@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 const navigation = {
     pages: [
         { name: 'Home', href: '/' },
@@ -107,9 +108,9 @@ export default function Footer() {
                                 <ul role="list" className="mt-6 space-y-4">
                                     {navigation.pages.map((item) => (
                                         <li key={item.name}>
-                                            <a href={item.href} className="text-sm/6 text-gray-600 hover:text-gray-900">
+                                            <Link href={item.href} className="text-sm/6 text-gray-600 hover:text-gray-900">
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -119,9 +120,9 @@ export default function Footer() {
                                 <ul role="list" className="mt-6 space-y-4">
                                     {navigation.contact.map((item) => (
                                         <li key={item.name}>
-                                            <a href={item.href} className="text-sm/6 text-gray-600 hover:text-gray-900">
+                                            <Link href={item.href} className="text-sm/6 text-gray-600 hover:text-gray-900">
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -133,9 +134,9 @@ export default function Footer() {
                                 <ul role="list" className="mt-6 space-y-4">
                                     {navigation.company.map((item) => (
                                         <li key={item.name}>
-                                            <a href={item.href} className="text-sm/6 text-gray-600 hover:text-gray-900">
+                                            <Link href={item.href} className="text-sm/6 text-gray-600 hover:text-gray-900">
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -145,9 +146,9 @@ export default function Footer() {
                                 <ul role="list" className="mt-6 space-y-4">
                                     {navigation.forU.map((item) => (
                                         <li key={item.name}>
-                                            <a href={item.href} className="text-sm/6 text-gray-600 hover:text-gray-900">
+                                            <Link href={item.href} className="text-sm/6 text-gray-600 hover:text-gray-900">
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>

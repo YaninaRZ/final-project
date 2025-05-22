@@ -17,7 +17,7 @@ export default function ProductDetail() {
         return (
             <div className="p-6">
                 <p>Produit non trouvé.</p>
-                <Link href="/" className="text-blue-600 underline">
+                <Link href={route("home")} className="text-blue-600 underline">
                     ← Back
                 </Link>
             </div>

@@ -4,6 +4,7 @@ import { Disclosure } from '@headlessui/react';
 import { ArrowRightOnRectangleIcon, CreditCardIcon, KeyIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import GuestLayout from '@/layouts/guest-layout';
+import { Link } from '@inertiajs/react';
 
 const user = {
     name: 'Debbie Lewis',
@@ -14,13 +15,11 @@ const user = {
 const subNavigation = [
     { name: 'Profile', href: '#', icon: UserCircleIcon, current: true },
     { name: 'Password', href: 'user-password', icon: KeyIcon, current: false },
-    { name: 'Billing', href: '/user-billing', icon: CreditCardIcon, current: false },
-    { name: 'Sign Out', href: '/', icon: ArrowRightOnRectangleIcon, current: false },
+    { name: 'Orders', href: '/user-billing', icon: CreditCardIcon, current: false },
 ];
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
     { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
 ];
 
 function classNames(...classes) {
@@ -73,6 +72,19 @@ export default function Login() {
                                             <span className="truncate">{item.name}</span>
                                         </a>
                                     ))}
+                                    <Link
+                                        method="post"
+                                        href={route('logout')}
+                                        as="button"
+                                        className="group flex items-center border-l-4 border-transparent px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-gray-900 w-full"
+                                    >
+                                        <ArrowRightOnRectangleIcon
+                                            aria-hidden="true"
+                                            className="mr-3 -ml-1 size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
+                                        />
+                                        <span className="truncate">Log out</span>
+                                    </Link>
+
                                 </nav>
                             </aside>
 

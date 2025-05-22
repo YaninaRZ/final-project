@@ -10,7 +10,7 @@ export default function PostDetail() {
         return (
             <div className="p-6">
                 <p>Post no non trouvé.</p>
-                <Link href="/" className="text-blue-600 underline">
+                <Link href={route("home")} className="text-blue-600 underline">
                     ← Back
                 </Link>
             </div>
@@ -30,7 +30,7 @@ export default function PostDetail() {
                     <h1 className="text-3xl font-bold text-gray-900">{post.name}</h1>
                     <h2 className="mt-4 text-2xl font-semibold text-gray-500">{post.categories}</h2>
                     <p className="mt-4 text-xl text-gray-800">{post.description}</p>
-                    <Link href="/" className="mt-6 inline-block text-blue-500 hover:text-blue-700">
+                    <Link href={route("home")} className="mt-6 inline-block text-blue-500 hover:text-blue-700">
                         ← Back
                     </Link>
                 </div>

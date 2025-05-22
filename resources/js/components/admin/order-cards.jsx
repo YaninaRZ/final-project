@@ -42,9 +42,9 @@ export default function Row() {
                         </div>
                     </dl>
                     <div className="mt-6 border-t border-gray-900/5 px-6 py-6">
-                        <a href="#" className="text-sm font-semibold text-gray-900">
+                        <Link href="#" className="text-sm font-semibold text-gray-900">
                             Download receipt <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -88,9 +88,9 @@ export default function Row() {
                         </div>
                     </dl>
                     <div className="mt-6 border-t border-gray-900/5 px-6 py-6">
-                        <a href="#" className="text-sm font-semibold text-gray-900">
+                        <Link href="#" className="text-sm font-semibold text-gray-900">
                             Download receipt <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -134,9 +134,9 @@ export default function Row() {
                         </div>
                     </dl>
                     <div className="mt-6 border-t border-gray-900/5 px-6 py-6">
-                        <a href="#" className="text-sm font-semibold text-gray-900">
+                        <Link href="#" className="text-sm font-semibold text-gray-900">
                             Download receipt <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

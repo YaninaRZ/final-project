@@ -4,7 +4,7 @@ const products = [
     {
         uniqueId: 'arrivals-2',
         id: 2,
-        name: 'Basic Tee',
+        name: 'Antiwrinkle',
         href: '',
         imageSrc: '/images/product-beige.avif',
         imageAlt: 'Regenerative cream.',
@@ -12,7 +12,8 @@ const products = [
         category: 'new-arrivals',
         categoryTitle: 'New Arrivals',
         description: 'Effortless comfort meets style in our Basic Tee—crafted from soft, breathable fabric for everyday wear with a modern touch.',
-        sales: { remainingProducts: '1', quantity: '123' },
+        stock: 13,
+        sales: { remainingProducts: '$', quantity: '123' },
     },
     {
         uniqueId: 'arrivals-3',
