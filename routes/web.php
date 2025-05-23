@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -75,9 +76,9 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
             return Inertia::render('admin/order-list');
         })->name('orderList');
 
-        Route::get('client', function () {
-            return Inertia::render('admin/client');
-        })->name('client');
+        Route::get('client', [UserController::class, 'index'])->name('client');
+        Route::post('client-create', [UserController::class, 'store'])->name('client.store');
+        Route::delete('client-delete/{id}', [UserController::class, 'destroy'])->name('client.destroy');
 
         Route::get('categories', function () {
             return Inertia::render('admin/categories');

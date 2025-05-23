@@ -1,7 +1,15 @@
 'use client'
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar';
+import { UserInfo } from '@/components/user-info';
+import { UserMenuContent } from '@/components/user-menu-content';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { Fragment, useState } from 'react'
 import { Link, usePage } from '@inertiajs/react';
+import { DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
+import { useMobileNavigation } from '@/hooks/use-mobile-navigation';
+import { LogOut, Settings } from 'lucide-react';
+
 import {
   Dialog,
   DialogBackdrop,
@@ -68,6 +76,11 @@ const navigation = {
 
 export default function NavbarDesign() {
   const [open, setOpen] = useState(false)
+
+
+  const isMobile = useIsMobile();
+
+  const cleanup = useMobileNavigation();
 
   const page = usePage();
   const { auth } = page.props;
@@ -170,13 +183,30 @@ export default function NavbarDesign() {
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               {auth.user ? (
+                <>
+                  {/* <Link
+                    href={route("user-account")}
+                    className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                  >
+                    User Account {auth.user.name}
+                  </Link> */}
 
-                <Link
-                  href={route("user-account")}
-                  className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                >
-                  User Account
-                </Link>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <div size="lg" className="text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent group">
+                        <UserInfo user={auth.user} />
+                        {/* <ChevronsUpDown className="ml-auto size-4" /> */}
+                      </div>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+                      align="end"
+                      side={'bottom'}
+                    >
+                      <UserMenuContent user={auth.user} />
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </>
               ) :
                 (
                   <>
@@ -324,12 +354,50 @@ export default function NavbarDesign() {
                       </Link>
                     ) : (
 
-                      <Link
-                        href={route("user-account")}
-                        className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                      >
-                        User Account
-                      </Link>
+                      // <Link
+                      //   href={route("user-account")}
+                      //   className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                      // >
+                      //   User Account {auth.user.name}
+                      // </Link>
+
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <div size="lg" className="text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent group cursor-pointer">
+                            <UserInfo user={auth.user} />
+                            {/* <ChevronsUpDown className="ml-auto size-4" /> */}
+                          </div>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+                          align="end"
+                          side={'bottom'}
+                        >
+                          <>
+                            <DropdownMenuLabel className="p-0 font-normal">
+                              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                                <UserInfo user={auth.user} showEmail={true} />
+                              </div>
+                            </DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuGroup>
+                              <DropdownMenuItem asChild>
+                                <Link className="block w-full" href={route('user-account')} as="button" prefetch onClick={cleanup}>
+                                  <Settings className="mr-2" />
+                                  Account
+                                </Link>
+                              </DropdownMenuItem>
+                            </DropdownMenuGroup>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem asChild>
+                              <Link className="block w-full" method="post" href={route('logout')} as="button" onClick={cleanup}>
+                                <LogOut className="mr-2" />
+                                Log out
+                              </Link>
+                            </DropdownMenuItem>
+                          </>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     )
                   ) : (
                     <>

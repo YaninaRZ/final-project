@@ -1,45 +1,47 @@
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useState } from 'react';
-import clients from '@/data/clients';
+import { useForm } from '@inertiajs/react';
+import InputError from '@/components/input-error';
 
-export default function Table() {
+export default function Table({ clients }) {
     const [open, setOpen] = useState(false);
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
-    const [formData, setFormData] = useState({
+
+    ///////////////////////////////////////////////////////////////////////////
+
+
+    const { data, setData, post, processing, errors, reset, delete: deleteUser } = useForm({
         name: '',
-        title: '',
         email: '',
+        password: '',
     });
 
-    const [users, setUsers] = useState(clients);
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleAddUser = () => {
-        const newUser = {
-            name: formData.name,
-            title: formData.title,
-            email: formData.email,
-            role: 'Member',
-        };
-        setUsers([...users, newUser]);
-        setFormData({ name: '', title: '', email: '' });
-        setOpen(false);
-    };
-
-    const confirmDelete = (user) => {
-        setSelectedUser(user);
-        setDeleteDialogOpen(true);
+    const submit = (e) => {
+        e.preventDefault();
+        post(route('client.store'), {
+            onFinish: () => {
+                reset('email');
+                reset('password');
+                reset('name');
+                setOpen(false);
+            },
+        });
     };
 
     const handleDeleteUser = () => {
-        setUsers(users.filter((user) => user.email !== selectedUser.email));
-        setDeleteDialogOpen(false);
+        if (!selectedUser) return;
+
+        deleteUser(route('client.destroy', selectedUser.id), {
+            onFinish: () => {
+                setDeleteDialogOpen(false);
+                setSelectedUser(null);
+            },
+        });
     };
+
+    ////////////////////////////////////////////////////////////////////:
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
@@ -50,44 +52,48 @@ export default function Table() {
                 </div>
             </div>
 
-
-
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle>Add a New User</DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Name"
-                            className="w-full rounded border p-2"
-                            value={formData.name}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder="Title"
-                            className="w-full rounded border p-2"
-                            value={formData.title}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            className="w-full rounded border p-2"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <DialogFooter>
-                        <Button onClick={handleAddUser} disabled={!formData.name || !formData.title || !formData.email}>
-                            Save
-                        </Button>
-                    </DialogFooter>
+                    <form className="flex flex-col gap-6" onSubmit={submit}>
+                        <DialogHeader>
+                            <DialogTitle>Add a New User</DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Name"
+                                className="w-full rounded border p-2"
+                                value={data.name}
+                                onChange={(e) => setData('name', e.target.value)}
+                            />
+                            <InputError message={errors.name} />
+
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                className="w-full rounded border p-2"
+                                value={data.email}
+                                onChange={(e) => setData('email', e.target.value)}
+                            />
+                            <InputError message={errors.email} />
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                className="w-full rounded border p-2"
+                                value={data.password}
+                                onChange={(e) => setData('password', e.target.value)}
+                            />
+                            <InputError message={errors.password} />
+                        </div>
+                        <DialogFooter>
+                            <Button type="submit" disabled={!data.name || !data.password || !data.email}>
+                                Save
+                            </Button>
+                        </DialogFooter>
+                    </form>
                 </DialogContent>
             </Dialog>
 
@@ -127,13 +133,19 @@ export default function Table() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {users.map((person) => (
+                                {clients.map((person) => (
                                     <tr key={person.email}>
                                         <td className="px-4 py-4 text-sm text-gray-900">{person.name}</td>
                                         <td className="px-3 py-4 text-sm text-gray-500">{person.title}</td>
                                         <td className="px-3 py-4 text-sm text-gray-500">{person.email}</td>
                                         <td className="px-4 py-4 text-right text-sm">
-                                            <button onClick={() => confirmDelete(person)} className="text-red-600 hover:text-red-800">
+                                            <button
+                                                onClick={() => {
+                                                    setSelectedUser(person);
+                                                    setDeleteDialogOpen(true);
+                                                }}
+                                                className="text-red-600 hover:text-red-800"
+                                            >
                                                 delete
                                             </button>
                                         </td>
