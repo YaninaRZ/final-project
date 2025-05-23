@@ -8,27 +8,40 @@ export default function CategoriesTable() {
     const [open, setOpen] = useState(false);
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [editingCategory, setEditingCategory] = useState(null);
 
     const confirmDelete = (category) => {
         setSelectedCategory(category);
         setDeleteDialogOpen(true);
     };
 
-    ///////////////////////////////////////////////////////////////
     const { categories } = usePage().props;
-    const { data, setData, post, processing, errors, reset, delete: deleteCategory } = useForm({
+    const { data, setData, post, put, processing, errors, reset, delete: deleteCategory } = useForm({
         name: '',
     });
-
     const submit = (e) => {
         e.preventDefault();
-        post(route('categories.store'), {
-            onFinish: () => {
-                reset('name');
-                setOpen(false);
-            },
-        });
+
+        if (editingCategory) {
+            // Mise à jour
+            put(route('categories.update', editingCategory.id), {
+                onFinish: () => {
+                    reset('name');
+                    setOpen(false);
+                    setEditingCategory(null);
+                },
+            });
+        } else {
+            // Création
+            post(route('categories.store'), {
+                onFinish: () => {
+                    reset('name');
+                    setOpen(false);
+                },
+            });
+        }
     };
+
 
     const handleDeleteCategory = () => {
         if (!selectedCategory) return;
@@ -41,12 +54,24 @@ export default function CategoriesTable() {
         });
     };
 
+    const openAddModal = () => {
+        setEditingCategory(null);
+        setData('name', '');
+        setOpen(true);
+    };
+
+    const openEditModal = (category) => {
+        setEditingCategory(category);
+        setData('name', category.name);
+        setOpen(true);
+    };
+
     return (
         <div className="px-4 sm:px-6 lg:px-8">
 
             <div className="sm:flex sm:items-center sm:justify-end">
                 <div className="mt-4 sm:mt-0 sm:flex-none">
-                    <Button onClick={() => setOpen(true)}>Add Category</Button>
+                    <Button onClick={openAddModal}>Add Category</Button>
                 </div>
             </div>
 
@@ -54,7 +79,7 @@ export default function CategoriesTable() {
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Add a category</DialogTitle>
+                        <DialogTitle>{editingCategory ? 'Edit Category' : 'Add a category'}</DialogTitle>
                     </DialogHeader>
 
                     <form onSubmit={submit} className="space-y-4">
@@ -115,10 +140,20 @@ export default function CategoriesTable() {
                                     <tr key={category.id}>
                                         <td className="px-4 py-4 text-sm text-gray-900">{category.name}</td>
                                         <td className="px-4 py-4 text-right text-sm">
-                                            <button onClick={() => confirmDelete(category)} className="text-red-600 hover:text-red-800">
+                                            <button
+                                                onClick={() => openEditModal(category)}
+                                                className="text-blue-600 hover:text-blue-800 mr-4"
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                onClick={() => confirmDelete(category)}
+                                                className="text-red-600 hover:text-red-800"
+                                            >
                                                 Delete
                                             </button>
                                         </td>
+
                                     </tr>
                                 ))}
                                 {categories.length === 0 && (

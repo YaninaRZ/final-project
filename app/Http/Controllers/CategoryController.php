@@ -56,7 +56,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        //pas besoin car modal 
     }
 
     /**
@@ -64,7 +64,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate(['name' => 'required|string|max:255']);
+        $category->update(['name' => $request->name]);
+
+        return redirect()->back()->with('success', 'Category modified.');
     }
 
     /**

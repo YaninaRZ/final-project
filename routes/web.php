@@ -85,6 +85,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
         Route::get('categories', [CategoryController::class, 'index'])->name('categories');
         Route::post('categories-create', [CategoryController::class, 'store'])->name('categories.store');
+        Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
         Route::delete('categories-delete/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
         Route::get('product-detail/{id}', function ($id) {
