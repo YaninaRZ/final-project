@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RoleMiddleware;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 ///////////////////////////////////////////////////////////////////////NON CONNECTÉ
@@ -80,9 +82,10 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         Route::post('client-create', [UserController::class, 'store'])->name('client.store');
         Route::delete('client-delete/{id}', [UserController::class, 'destroy'])->name('client.destroy');
 
-        Route::get('categories', function () {
-            return Inertia::render('admin/categories');
-        })->name('categories');
+
+        Route::get('categories', [CategoryController::class, 'index'])->name('categories');
+        Route::post('categories-create', [CategoryController::class, 'store'])->name('categories.store');
+        Route::delete('categories-delete/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
         Route::get('product-detail/{id}', function ($id) {
             return Inertia::render('admin/product-detail', ['id' => $id]);

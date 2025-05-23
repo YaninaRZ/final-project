@@ -125,7 +125,6 @@ export default function Table({ clients }) {
                             <thead>
                                 <tr>
                                     <th className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">Name</th>
-                                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
                                     <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
                                     <th className="relative px-4 py-3.5 text-right text-sm font-medium text-gray-900">
                                         <span className="sr-only">delete</span>
@@ -136,7 +135,6 @@ export default function Table({ clients }) {
                                 {clients.map((person) => (
                                     <tr key={person.email}>
                                         <td className="px-4 py-4 text-sm text-gray-900">{person.name}</td>
-                                        <td className="px-3 py-4 text-sm text-gray-500">{person.title}</td>
                                         <td className="px-3 py-4 text-sm text-gray-500">{person.email}</td>
                                         <td className="px-4 py-4 text-right text-sm">
                                             <button

@@ -1,46 +1,44 @@
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { useForm, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
-
-const initialCategories = [
-    { id: 1, name: 'Informatique' },
-    { id: 2, name: 'Cuisine' },
-    { id: 3, name: 'Sport' },
-];
 
 export default function CategoriesTable() {
     const [open, setOpen] = useState(false);
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [formData, setFormData] = useState({ name: '' });
-
-    const [categories, setCategories] = useState(initialCategories);
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleAddCategory = () => {
-        const newCategory = {
-            id: categories.length ? categories[categories.length - 1].id + 1 : 1,
-            name: formData.name.trim(),
-        };
-        if (newCategory.name === '') return;
-
-        setCategories([...categories, newCategory]);
-        setFormData({ name: '' });
-        setOpen(false);
-    };
 
     const confirmDelete = (category) => {
         setSelectedCategory(category);
         setDeleteDialogOpen(true);
     };
 
+    ///////////////////////////////////////////////////////////////
+    const { categories } = usePage().props;
+    const { data, setData, post, processing, errors, reset, delete: deleteCategory } = useForm({
+        name: '',
+    });
+
+    const submit = (e) => {
+        e.preventDefault();
+        post(route('categories.store'), {
+            onFinish: () => {
+                reset('name');
+                setOpen(false);
+            },
+        });
+    };
+
     const handleDeleteCategory = () => {
-        setCategories(categories.filter((cat) => cat.id !== selectedCategory.id));
-        setDeleteDialogOpen(false);
+        if (!selectedCategory) return;
+
+        deleteCategory(route('categories.destroy', selectedCategory.id), {
+            onFinish: () => {
+                setDeleteDialogOpen(false);
+                setSelectedCategory(null);
+            },
+        });
     };
 
     return (
@@ -58,23 +56,26 @@ export default function CategoriesTable() {
                     <DialogHeader>
                         <DialogTitle>Add a category</DialogTitle>
                     </DialogHeader>
-                    <div className="space-y-4">
+
+                    <form onSubmit={submit} className="space-y-4">
                         <input
                             type="text"
                             name="name"
-                            placeholder="Name of the category"
+                            value={data.name}
+                            onChange={(e) => setData('name', e.target.value)}
                             className="w-full rounded border p-2"
-                            value={formData.name}
-                            onChange={handleChange}
                         />
-                    </div>
-                    <DialogFooter>
-                        <Button onClick={handleAddCategory} disabled={!formData.name.trim()}>
-                            Save
-                        </Button>
-                    </DialogFooter>
+                        {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+
+                        <DialogFooter>
+                            <Button type="submit" disabled={processing || !data.name.trim()}>
+                                Save
+                            </Button>
+                        </DialogFooter>
+                    </form>
                 </DialogContent>
             </Dialog>
+
 
 
             <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>

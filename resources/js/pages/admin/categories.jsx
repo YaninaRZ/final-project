@@ -1,6 +1,6 @@
 import CategoriesTable from '@/components/admin/categories-table';
 import AdminLayout from '@/layouts/admin-layout';
-export default function Caegories() {
+export default function Categories() {
     return (
         <AdminLayout>
             <div className="max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
