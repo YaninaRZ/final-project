@@ -80,7 +80,21 @@ class AllProductController extends Controller
      */
     public function update(Request $request, AllProduct $allProduct)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'sku' => 'nullable|string|max:100',
+            'sales_quantity' => 'nullable|integer',
+            'sales_remaining_products' => 'nullable|integer',
+            'sales_price' => 'nullable|numeric',
+            'image_src' => 'nullable|string',
+            'image_alt' => 'nullable|string',
+            'product_gallery' => 'nullable|string',
+        ]);
+
+
+        $allProduct->update($validated);
+        return redirect()->route('product-detail', $allProduct->id);
     }
 
     /**
