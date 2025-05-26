@@ -13,41 +13,6 @@ import {
 } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 
-const invoice = {
-    subTotal: '$8,800.00',
-    tax: '$1,760.00',
-    total: '$10,560.00',
-    items: [
-        {
-            id: 1,
-            title: 'Cleanser',
-            description: 'Skinn product.',
-            price: '$20,00',
-            quantity: 2,
-        },
-        {
-            id: 2,
-            title: 'Mask',
-            description: 'Skinn product.',
-            price: '$5,200',
-            quantity: 2,
-        },
-        {
-            id: 3,
-            title: 'Cleanser',
-            description: 'Skinn product.',
-            price: '$112,00',
-            quantity: 2,
-        },
-        {
-            id: 4,
-            title: 'Mask',
-            description: 'Skinn product.',
-            price: '$400.00',
-            quantity: 2,
-        },
-    ],
-};
 
 const moods = [
     { name: 'Excited', value: 'excited', icon: FireIcon, iconColor: 'text-white', bgColor: 'bg-red-500' },
@@ -62,9 +27,11 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
+export default function Example({ order }) {
+    console.log(order);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [selected, setSelected] = useState(moods[5]);
+
 
     return (
         <>
@@ -164,7 +131,7 @@ export default function Example() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {invoice.items.map((item) => (
+                                    {/* {order.items.map((item) => (
                                         <tr key={item.id} className="border-b border-gray-100">
                                             <td className="max-w-0 px-0 py-5 align-top">
                                                 <div className="truncate font-medium text-gray-900">{item.title}</div>
@@ -174,7 +141,7 @@ export default function Example() {
                                             <td className="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums">{item.quantity}</td>
                                             <td className="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums">{item.price}</td>
                                         </tr>
-                                    ))}
+                                    ))} */}
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -188,7 +155,7 @@ export default function Example() {
                                         >
                                             Subtotal
                                         </th>
-                                        <td className="pt-6 pr-0 pb-0 pl-8 text-right text-gray-900 tabular-nums">{invoice.subTotal}</td>
+                                        {/* <td className="pt-6 pr-0 pb-0 pl-8 text-right text-gray-900 tabular-nums">{invoice.subTotal}</td> */}
                                     </tr>
                                     <tr>
                                         <th scope="row" className="pt-4 font-normal text-gray-700 sm:hidden">
@@ -197,7 +164,7 @@ export default function Example() {
                                         <th scope="row" colSpan={3} className="hidden pt-4 text-right font-normal text-gray-700 sm:table-cell">
                                             Tax
                                         </th>
-                                        <td className="pt-4 pr-0 pb-0 pl-8 text-right text-gray-900 tabular-nums">{invoice.tax}</td>
+                                        {/* <td className="pt-4 pr-0 pb-0 pl-8 text-right text-gray-900 tabular-nums">{invoice.tax}</td> */}
                                     </tr>
                                     <tr>
                                         <th scope="row" className="pt-4 font-semibold text-gray-900 sm:hidden">
@@ -206,7 +173,7 @@ export default function Example() {
                                         <th scope="row" colSpan={3} className="hidden pt-4 text-right font-semibold text-gray-900 sm:table-cell">
                                             Total
                                         </th>
-                                        <td className="pt-4 pr-0 pb-0 pl-8 text-right font-semibold text-gray-900 tabular-nums">{invoice.total}</td>
+                                        {/* <td className="pt-4 pr-0 pb-0 pl-8 text-right font-semibold text-gray-900 tabular-nums">{invoice.total}</td> */}
                                     </tr>
                                 </tfoot>
                             </table>

@@ -25,6 +25,24 @@ function classNames(...classes) {
 
 export default function ProductListCard({ products }) {
     const [open, setOpen] = useState(false);
+    const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+    const confirmDelete = (product) => {
+        setSelectedProduct(product);
+        setDeleteDialogOpen(true);
+    };
+
+    const handleDeleteProduct = () => {
+        if (!selectedProduct) return;
+
+        deleteProduct(route('all-products.destroy', selectedProduct.id), {
+            onFinish: () => {
+                setDeleteDialogOpen(false);
+                setSelectedProduct(null);
+            },
+        });
+    };
 
     console.log(products);
 
@@ -187,14 +205,42 @@ export default function ProductListCard({ products }) {
                                         <MenuItem>
                                             <Link
                                                 href={route('product-detail', product.id)}
-                                                className="block px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
+                                                className="block px-3 py-1 text-sm text-gray-900 hover:bg-gray-50"
                                             >
                                                 View
-                                                <span className="sr-only">, {product.name}</span>
                                             </Link>
                                         </MenuItem>
+                                        <MenuItem>
+                                            <button
+                                                onClick={() => confirmDelete(product)}
+                                                className="block w-full px-3 py-1 text-sm text-left text-red-600 hover:bg-gray-50"
+                                            >
+                                                Delete
+                                            </button>
+                                        </MenuItem>
                                     </MenuItems>
+
                                 </Menu>
+
+                                <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+                                    <DialogContent>
+                                        <DialogHeader>
+                                            <DialogTitle>Confirm Deletion</DialogTitle>
+                                        </DialogHeader>
+                                        <p className="text-sm text-gray-700">
+                                            Are you sure you want to delete <strong>{selectedProduct?.name}</strong>? This action cannot be undone.
+                                        </p>
+                                        <DialogFooter>
+                                            <Button variant="outline" onClick={() => setDeleteDialogOpen(false)}>
+                                                Cancel
+                                            </Button>
+                                            <Button variant="destructive" onClick={handleDeleteProduct}>
+                                                Delete
+                                            </Button>
+                                        </DialogFooter>
+                                    </DialogContent>
+                                </Dialog>
+
                             </div>
                             <dl className="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm/6">
                                 <div className="flex justify-between gap-x-4 py-3">

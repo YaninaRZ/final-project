@@ -1,7 +1,7 @@
 import OrderTable from '@/components/admin/order-table';
 import AdminLayout from '@/layouts/admin-layout';
 
-export default function orderList() {
+export default function orderList(orders) {
     return (
         <AdminLayout>
             <div className="max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -11,7 +11,7 @@ export default function orderList() {
                     sale items before we run out.
                 </p>
             </div>
-            <OrderTable />
+            <OrderTable orders={orders} />
         </AdminLayout>
     );
 }

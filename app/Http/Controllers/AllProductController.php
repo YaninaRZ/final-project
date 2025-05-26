@@ -102,6 +102,7 @@ class AllProductController extends Controller
      */
     public function destroy(AllProduct $allProduct)
     {
-        //
+        $allProduct->delete();
+        return redirect()->back()->with('success', 'Category deleted with succes.');
     }
 }

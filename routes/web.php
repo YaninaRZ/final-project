@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AllProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Models\AllProduct;
@@ -76,11 +77,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         Route::post('all-products', [AllProductController::class, 'store'])->name('all-products.store');
         Route::put('all-products/{allProduct}', [AllProductController::class, 'update'])->name('all-products.update');
         Route::get('all-products/{allProduct}', [AllProductController::class, 'show'])->name('product-detail');
+        Route::delete('all-products/{allProduct}', [AllProductController::class, 'destroy'])->name('all-products.destroy');
 
-
-        Route::get('order-list', function () {
-            return Inertia::render('admin/order-list');
-        })->name('orderList');
+        Route::get('order-list', [OrdersController::class, 'index'])->name('order-list');
+        Route::get('orders/{order}', [OrdersController::class, 'show'])->name('orders.show');
+        Route::delete('orders/{orders}', [OrdersController::class, 'destroy'])->name('orders.destroy');
 
         Route::get('client', [UserController::class, 'index'])->name('client');
         Route::post('client-create', [UserController::class, 'store'])->name('client.store');

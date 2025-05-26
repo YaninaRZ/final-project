@@ -1,38 +1,54 @@
 'use client';
-import { Link } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import { useLayoutEffect, useRef, useState } from 'react';
 import AdminFilter from './filter';
-import orders from '@/data/orders';
+
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function OrderTable() {
+export default function OrderTable({ orders = [] }) {
     const checkbox = useRef();
+
+    const orderList = orders.orders || [];
+
     const [checked, setChecked] = useState(false);
     const [indeterminate, setIndeterminate] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState([]);
 
     useLayoutEffect(() => {
-        const isIndeterminate = selectedOrder.length > 0 && selectedOrder.length < orders.length;
+        const isIndeterminate = selectedOrder.length > 0 && selectedOrder.length < order.length;
         setChecked(selectedOrder.length === orders.length);
         setIndeterminate(isIndeterminate);
-        checkbox.current.indeterminate = isIndeterminate;
-    }, [selectedOrder]);
+        if (checkbox.current) {
+            checkbox.current.indeterminate = isIndeterminate;
+        }
+    }, [selectedOrder, orders]);
 
     function toggleAll() {
-        setSelectedOrder(checked || indeterminate ? [] : order);
+        setSelectedOrder(checked || indeterminate ? [] : [...orders]);
         setChecked(!checked && !indeterminate);
         setIndeterminate(false);
     }
+
+    const { data, setData, post, put, processing, errors, reset, delete: deleteProduct } = useForm({
+        Product: '',
+        OrderID: '',
+        Date: '',
+        Customer_Name: '',
+        Status: '',
+        Amount: '',
+    });
+
+    console.log(orders);
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center">
                 <div className="sm:flex-auto">
-                    <AdminFilter></AdminFilter>
+                    <AdminFilter />
                     <h1 className="text-base font-semibold text-gray-900">Recent Orders</h1>
-                    <p className="mt-2 text-sm text-gray-700">A list of all the recents orders</p>
+                    <p className="mt-2 text-sm text-gray-700">A list of all the recent orders</p>
                 </div>
             </div>
             <div className="mt-8 flow-root">
@@ -44,6 +60,12 @@ export default function OrderTable() {
                                     <button
                                         type="button"
                                         className="inline-flex items-center rounded-sm bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white"
+                                        onClick={() => {
+                                            // exemple suppression multiple
+                                            // tu peux appeler une fonction delete ici
+                                            alert(`Delete ${selectedOrder.length} orders`);
+                                        }}
+                                        disabled={processing}
                                     >
                                         Delete all
                                     </button>
@@ -98,31 +120,33 @@ export default function OrderTable() {
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                             Status
                                         </th>
-                                        <th scope="col" className="rpx-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                             Amount
                                         </th>
-
-                                        <th scope="col" className="rpx-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                             See details
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
-                                    {orders.map((command) => (
-                                        <tr key={command.Date} className={selectedOrder.includes(command) ? 'bg-gray-50' : undefined}>
+                                    {orderList.map((order) => (
+                                        <tr
+                                            key={order.OrderID}
+                                            className={selectedOrder.includes(order) ? 'bg-gray-50' : undefined}
+                                        >
                                             <td className="relative px-7 sm:w-12 sm:px-6">
-                                                {selectedOrder.includes(command) && <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />}
+                                                {selectedOrder.includes(order) && <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />}
                                                 <div className="group absolute top-1/2 left-4 -mt-2 grid size-4 grid-cols-1">
                                                     <input
                                                         type="checkbox"
                                                         className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                                                        value={command.Date}
-                                                        checked={selectedOrder.includes(command)}
+                                                        value={order.OrderID}
+                                                        checked={selectedOrder.includes(order)}
                                                         onChange={(e) =>
                                                             setSelectedOrder(
                                                                 e.target.checked
-                                                                    ? [...selectedOrder, command]
-                                                                    : selectedOrder.filter((p) => p !== command),
+                                                                    ? [...selectedOrder, order]
+                                                                    : selectedOrder.filter((o) => o !== order)
                                                             )
                                                         }
                                                     />
@@ -151,18 +175,18 @@ export default function OrderTable() {
                                             <td
                                                 className={classNames(
                                                     'py-4 pr-3 text-sm font-medium whitespace-nowrap',
-                                                    selectedOrder.includes(command) ? 'text-indigo-600' : 'text-gray-900',
+                                                    selectedOrder.includes(order) ? 'text-indigo-600' : 'text-gray-900'
                                                 )}
                                             >
-                                                {command.Product}
+                                                {order.Product}
                                             </td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.OrderID}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Date}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Name}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Status}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{command.Amount}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.OrderID}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Date}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Customer_Name}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Status}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Amount}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-[#68513F]">
-                                                <Link href={route('order-summary', command.OrderID)}>See</Link>
+                                                <Link href={route('orders.show', order.id)}>See</Link>
                                             </td>
                                         </tr>
                                     ))}
