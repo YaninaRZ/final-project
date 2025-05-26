@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AllProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RoleMiddleware;
+use App\Models\AllProduct;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -70,9 +72,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
             return Inertia::render('admin/dashboard');
         })->name('dashboard');
 
-        Route::get('all-products', function () {
-            return Inertia::render('admin/all-products');
-        })->name('all-products');
+        Route::get('all-products', [AllProductController::class, 'index'])->name('all-products');
+        Route::post('all-products', [AllProductController::class, 'store'])->name('all-products.store');
+        Route::put('all-products/{allProduct}', [AllProductController::class, 'update'])->name('all-products.update');
+        Route::get('all-products/{allProduct}', [AllProductController::class, 'show'])->name('product-detail');
+
 
         Route::get('order-list', function () {
             return Inertia::render('admin/order-list');

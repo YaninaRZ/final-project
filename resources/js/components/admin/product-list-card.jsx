@@ -1,8 +1,15 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid';
-import { Link } from '@inertiajs/react';
-import ButtonAdd from '@/components/ui/button-add.jsx';
-import products from '@/data/products';
+import { Link, useForm, usePage } from '@inertiajs/react';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+    Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle,
+} from '@/components/ui/dialog';
+import InputError from '@/components/input-error';
+
+
+/////////////////////////
 const statuses = {
     Paid: 'text-green-700 bg-green-50 ring-green-600/20',
     Withdraw: 'text-gray-600 bg-gray-50 ring-gray-500/10',
@@ -13,17 +20,152 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function ProductListCard() {
+
+////////////////////////
+
+export default function ProductListCard({ products }) {
+    const [open, setOpen] = useState(false);
+
+    console.log(products);
+
+    const { data, setData, post, put, processing, errors, reset, delete: deleteProduct } = useForm({
+        name: '',
+        description: '',
+        sku: '',
+        sales_quantity: '',
+        sales_remaining_products: '',
+        sales_price: '',
+        image_src: '',
+        image_alt: '',
+        product_gallery: '',
+    });
+
+    const submit = (e) => {
+        e.preventDefault();
+        post(route('all-products.store'), {
+            onFinish: () => {
+                reset(
+                    'name',
+                    'description',
+                    'sku',
+                    'sales_quantity',
+                    'sales_remaining_products',
+                    'sales_price',
+                    'image_src',
+                    'image_alt',
+                    'product_gallery'
+                );
+                setOpen(false);
+            },
+        });
+    };
+
+
     return (
         <>
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent>
+                    <form className="flex flex-col gap-6" onSubmit={submit}>
+                        <DialogHeader>
+                            <DialogTitle>Add a New Product</DialogTitle>
+                        </DialogHeader>
+
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            className="rounded border p-2"
+                            value={data.name}
+                            onChange={(e) => setData('name', e.target.value)}
+                        />
+                        <InputError message={errors.name} />
+
+                        <textarea
+                            placeholder="Description"
+                            className="rounded border p-2"
+                            value={data.description}
+                            onChange={(e) => setData('description', e.target.value)}
+                        />
+                        <InputError message={errors.description} />
+
+                        <input
+                            type="text"
+                            placeholder="SKU"
+                            className="rounded border p-2"
+                            value={data.sku}
+                            onChange={(e) => setData('sku', e.target.value)}
+                        />
+                        <InputError message={errors.sku} />
+
+                        <input
+                            type="number"
+                            placeholder="Sales Quantity"
+                            className="rounded border p-2"
+                            value={data.sales_quantity}
+                            onChange={(e) => setData('sales_quantity', e.target.value)}
+                        />
+                        <InputError message={errors.sales_quantity} />
+
+                        <input
+                            type="number"
+                            placeholder="Remaining Products"
+                            className="rounded border p-2"
+                            value={data.sales_remaining_products}
+                            onChange={(e) => setData('sales_remaining_products', e.target.value)}
+                        />
+                        <InputError message={errors.sales_remaining_products} />
+
+                        <input
+                            type="number"
+                            placeholder="Price"
+                            className="rounded border p-2"
+                            value={data.sales_price}
+                            onChange={(e) => setData('sales_price', e.target.value)}
+                        />
+                        <InputError message={errors.sales_price} />
+
+                        <input
+                            type="text"
+                            placeholder="Image URL"
+                            className="rounded border p-2"
+                            value={data.image_src}
+                            onChange={(e) => setData('image_src', e.target.value)}
+                        />
+                        <InputError message={errors.image_src} />
+
+                        <input
+                            type="text"
+                            placeholder="Image Alt Text"
+                            className="rounded border p-2"
+                            value={data.image_alt}
+                            onChange={(e) => setData('image_alt', e.target.value)}
+                        />
+                        <InputError message={errors.image_alt} />
+
+                        <textarea
+                            placeholder="Gallery (JSON or comma-separated URLs)"
+                            className="rounded border p-2"
+                            value={data.product_gallery}
+                            onChange={(e) => setData('product_gallery', e.target.value)}
+                        />
+                        <InputError message={errors.product_gallery} />
+
+                        <DialogFooter>
+                            <Button type="submit" disabled={processing}>Save</Button>
+                        </DialogFooter>
+                    </form>
+                </DialogContent>
+            </Dialog>
+
 
             <div className="flex justify-end">
                 <div className="w-40 px-4 py-4">
-                    <ButtonAdd />
+                    <Button onClick={() => setOpen(true)}>Add Product</Button>
                 </div>
+
             </div>
             <div className="p-10">
                 <ul role="list" className="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
+
                     {products.map((product) => (
                         <li key={product.id} className="overflow-hidden rounded-xl border border-gray-200">
                             <div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
@@ -44,7 +186,7 @@ export default function ProductListCard() {
                                     >
                                         <MenuItem>
                                             <Link
-                                                href={route('productsAdmin', product.id)}
+                                                href={route('product-detail', product.id)}
                                                 className="block px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
                                             >
                                                 View
@@ -58,20 +200,20 @@ export default function ProductListCard() {
                                 <div className="flex justify-between gap-x-4 py-3">
                                     <dt className="text-gray-500">Sales</dt>
                                     <dd className="text-gray-700">
-                                        <time>{product.sales.quantity}</time>
+                                        <time>{product.sales_quantity}</time>
                                     </dd>
                                 </div>
                                 <div className="flex justify-between gap-x-4 py-3">
                                     <dt className="text-gray-500">Remaining Products</dt>
                                     <dd className="flex items-start gap-x-2">
-                                        <div className="font-medium text-gray-900">{product.sales.remainingProducts}</div>
+                                        <div className="font-medium text-gray-900">{product.sales_remaining_products}</div>
                                         <div
                                             className={classNames(
-                                                statuses[product.sales.quantity],
+                                                statuses[product.sales_quantity],
                                                 'rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset',
                                             )}
                                         >
-                                            {product.sales.quantity}
+                                            {product.sales_quantity}
                                         </div>
                                     </dd>
                                 </div>
