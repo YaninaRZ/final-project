@@ -11,7 +11,7 @@ const breadcrumbs = [
     },
 ];
 
-export default function Dashboard() {
+export default function Dashboard(orders) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
@@ -26,7 +26,7 @@ export default function Dashboard() {
                 <StatsCard></StatsCard>
                 <div className="relative min-h-[100vh] flex-1 overflow-hidden">
                     <LineChart></LineChart>
-                    <OrderTable></OrderTable>
+                    <OrderTable orders={orders} />
                 </div>
             </div>
         </AppLayout>

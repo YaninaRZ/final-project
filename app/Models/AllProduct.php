@@ -16,5 +16,11 @@ class AllProduct extends Model
         'image_src',
         'image_alt',
         'product_gallery',
+        'category_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

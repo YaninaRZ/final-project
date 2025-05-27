@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import DataColumns from '@/components/admin/data-columns';
 import AdminLayout from '@/layouts/admin-layout';
-export default function ProductDetails({ product }) {
+export default function ProductDetails({ product, categories }) {
 
     console.log(product);
     if (!product) {
@@ -17,7 +17,7 @@ export default function ProductDetails({ product }) {
 
     return (
         <AdminLayout>
-            <DataColumns product={product} />
+            <DataColumns product={product} categories={categories} />
         </AdminLayout>
     );
 }

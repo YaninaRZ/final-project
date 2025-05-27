@@ -23,7 +23,7 @@ function classNames(...classes) {
 
 ////////////////////////
 
-export default function ProductListCard({ products }) {
+export default function ProductListCard({ products, categories }) {
     const [open, setOpen] = useState(false);
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -56,6 +56,7 @@ export default function ProductListCard({ products }) {
         image_src: '',
         image_alt: '',
         product_gallery: '',
+        category_id: '',
     });
 
     const submit = (e) => {
@@ -96,6 +97,21 @@ export default function ProductListCard({ products }) {
                             onChange={(e) => setData('name', e.target.value)}
                         />
                         <InputError message={errors.name} />
+
+                        <select
+                            className="rounded border p-2"
+                            value={data.category_id}
+                            onChange={(e) => setData('category_id', e.target.value)}
+                        >
+                            <option value="">Choisir une catégorie</option>
+                            {categories.map((category) => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                        <InputError message={errors.category_id} />
+
 
                         <textarea
                             placeholder="Description"

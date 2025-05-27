@@ -4,7 +4,7 @@ import { AppSidebar } from '@/components/app-sidebar';
 import { AppSidebarHeader } from '@/components/app-sidebar-header';
 import ProductListCard from '@/components/admin/product-list-card';
 
-export default function orderedProducts({ children, breadcrumbs = [], products }) {
+export default function orderedProducts({ children, breadcrumbs = [], products, categories }) {
     return (
         <AppShell variant="sidebar">
             <AppSidebar />
@@ -18,7 +18,7 @@ export default function orderedProducts({ children, breadcrumbs = [], products }
                         sale items before we run out.
                     </p>
                 </div>
-                <ProductListCard products={products} />
+                <ProductListCard products={products} categories={categories} />
             </AppContent>
         </AppShell>
     );

@@ -3,7 +3,7 @@ import { usePage, useForm } from '@inertiajs/react';
 import { useState } from 'react';
 import Button from '@/components/button';
 
-export default function DataColumns({ product }) {
+export default function DataColumns({ product, categories }) {
     console.log(product);
     const [editMode, setEditMode] = useState(false);
 
@@ -17,6 +17,7 @@ export default function DataColumns({ product }) {
         image_src: product?.image_src || '',
         image_alt: product?.image_alt || '',
         product_gallery: product?.product_gallery || '', // supposé JSON ou string URLs
+        category_id: product?.category?.id,
     });
 
     const submit = (e) => {
@@ -48,6 +49,15 @@ export default function DataColumns({ product }) {
         galleryImages = [];
     }
 
+
+    function getCategoryNameById(id) {
+        //fonction pour recup le nom de ma categorie selon id 
+        if (id) {
+            return categories.filter(category => category.id == id)[0].name;
+        }
+        return 'No category';
+    }
+
     return (
         <>
             <form onSubmit={submit} className="flex flex-col gap-8 p-6 lg:flex-row">
@@ -71,6 +81,7 @@ export default function DataColumns({ product }) {
                             { label: 'Image URL', key: 'image_src', type: 'text' },
                             { label: 'Image Alt Text', key: 'image_alt', type: 'text' },
                             { label: 'Product Gallery (JSON)', key: 'product_gallery', type: 'textarea' },
+                            { label: 'Category', key: 'category_id', type: 'select' }
                         ].map(({ label, key, type }) => (
                             <div key={key} className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm/6 font-medium text-gray-900">{label}</dt>
@@ -83,17 +94,31 @@ export default function DataColumns({ product }) {
                                                 onChange={(e) => setData(key, e.target.value)}
                                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
-                                        ) : (
-                                            <input
+                                        ) : type === 'select' ? (
+                                            <select
                                                 type={type}
                                                 name={key}
                                                 value={data[key]}
                                                 onChange={(e) => setData(key, e.target.value)}
                                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                            />
+                                            >
+                                                <option value={''}>No Category</option>
+                                                {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                                            </select>
                                         )
+
+                                            : (
+                                                <input
+                                                    type={type}
+                                                    name={key}
+                                                    value={data[key]}
+                                                    onChange={(e) => setData(key, e.target.value)}
+                                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                                />
+                                            )
                                     ) : (
-                                        <span>{data[key]}</span>
+                                        // jappelle ma fonction et data key va chercher dans mes label et si le data key cest categorie id beh il maffiche le nom 
+                                        <span>{key === 'category_id' ? getCategoryNameById(data[key]) : data[key]}</span>
                                     )}
                                     {errors[key] && <p className="text-red-600 text-sm mt-1">{errors[key]}</p>}
                                 </dd>

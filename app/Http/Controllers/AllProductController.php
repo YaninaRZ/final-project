@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllProduct;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -13,8 +14,13 @@ class AllProductController extends Controller
      */
     public function index()
     {
-        $products = AllProduct::all();
-        return Inertia::render('admin/all-products', ['products' => $products]);
+        $products = AllProduct::with('category')->get();
+        $categories = Category::all();
+
+        return Inertia::render('admin/all-products', [
+            'products' => $products,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -40,6 +46,7 @@ class AllProductController extends Controller
             'image_src' => 'nullable|string|max:255',
             'image_alt' => 'nullable|string|max:255',
             'product_gallery' => 'nullable|array',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $product = AllProduct::create([
@@ -52,6 +59,7 @@ class AllProductController extends Controller
             'image_src' => $request->image_src,
             'image_alt' => $request->image_alt,
             'product_gallery' => $request->product_gallery,
+            'category_id' => $request->category_id,
         ]);
 
         return to_route('all-products');
@@ -62,18 +70,19 @@ class AllProductController extends Controller
      */
     public function show(AllProduct $allProduct)
     {
+
+        $categories = Category::all();  // Récupère toutes les catégories
+
         return Inertia::render('admin/product-detail', [
             'product' => $allProduct,
+            'categories' => $categories,   // Passe les catégories à la page React
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AllProduct $allProduct)
-    {
-        //
-    }
+    public function edit(AllProduct $allProduct) {}
 
     /**
      * Update the specified resource in storage.
@@ -90,6 +99,7 @@ class AllProductController extends Controller
             'image_src' => 'nullable|string',
             'image_alt' => 'nullable|string',
             'product_gallery' => 'nullable|string',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
 
