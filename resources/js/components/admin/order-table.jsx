@@ -182,7 +182,7 @@ export default function OrderTable({ orders = [] }) {
                                             </td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.OrderID}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Date}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Customer_Name}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.client.name}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Status}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Amount}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-[#68513F]">

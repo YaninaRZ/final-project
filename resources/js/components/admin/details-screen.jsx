@@ -50,7 +50,7 @@ export default function Example({ order }) {
                                     <div className="flex-none self-end px-6 pt-4">
                                         <dt className="sr-only">Status</dt>
                                         <dd className="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-600 ring-1 ring-green-600/20 ring-inset">
-                                            Paid
+                                            {order.Status}
                                         </dd>
                                     </div>
                                     <div className="mt-6 flex w-full flex-none gap-x-4 border-t border-gray-900/5 px-6 pt-6">
@@ -58,7 +58,8 @@ export default function Example({ order }) {
                                             <span className="sr-only">Client</span>
                                             <UserCircleIcon aria-hidden="true" className="h-6 w-5 text-gray-400" />
                                         </dt>
-                                        <dd className="text-sm/6 font-medium text-gray-900">Alex Curren</dd>
+                                        <dd className="text-sm/6 font-medium text-gray-900">{order.client?.name}</dd>
+                                        {/* mettre ? pour afficher rien si client no trouver  */}
                                     </div>
                                     <div className="mt-4 flex w-full flex-none gap-x-4 px-6">
                                         <dt className="flex-none">
@@ -66,7 +67,9 @@ export default function Example({ order }) {
                                             <CalendarDaysIcon aria-hidden="true" className="h-6 w-5 text-gray-400" />
                                         </dt>
                                         <dd className="text-sm/6 text-gray-500">
-                                            <time dateTime="2023-01-31">January 31, 2023</time>
+                                            <time dateTime={order.created_at}>
+                                                {new Date(order.created_at).toLocaleDateString('fr-FR')}
+                                            </time>
                                         </dd>
                                     </div>
                                     <div className="mt-4 flex w-full flex-none gap-x-4 px-6">

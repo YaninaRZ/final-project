@@ -3,7 +3,7 @@ import Example from '@/components/admin/details-screen';
 import AdminLayout from '@/layouts/admin-layout';
 
 export default function OrderSummary({ order }) {
-
+    console.log(order);
 
     if (!order) {
         return <>No order found</>;
