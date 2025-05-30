@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use App\Models\Orders;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -13,7 +13,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Orders::with(['client'])->get();
+        $orders = Order::with('client', 'products')->get();
         return Inertia::render('admin/order-list', [
             'orders' => $orders,
         ]);
@@ -39,9 +39,13 @@ class OrdersController extends Controller
             'status' => 'nullable|string|max:100',
             'shipping_address' => 'nullable|string|max:500',
             'order_items' => 'nullable|array',
+
+            'products' => 'required|array',
+            'products.*.id' => 'required|exists:products,id',
+            'products.*.quantity' => 'required|integer|min:1',
         ]);
 
-        Orders::create([
+        $order = Order::create([
             'customer_name' => $request->customer_name,
             'customer_email' => $request->customer_email,
             'total_price' => $request->total_price,
@@ -50,16 +54,25 @@ class OrdersController extends Controller
             'order_items' => $request->order_items,
         ]);
 
+        $productData = collect($request->products)->mapWithKeys(function ($product) {
+            return [
+                $product['id'] => ['quantity' => $product['quantity']],
+            ];
+        });
+
+        $order->products()->attach($productData);
+
+
         return redirect()->route('orders.index')->with('success', 'Order created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Orders $order)
+    public function show(Order $order)
     {
         //affiche toutes les infos de client si jai une clef etrangere client vient fichier orders.php le nom de ma function
-        $order->load('client');
+        $order->load(['client', 'products']);
         return Inertia::render('admin/order-summary', [
             'order' => $order,
         ]);
@@ -68,7 +81,7 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Orders $orders)
+    public function edit(Order $orders)
     {
         //
     }
@@ -76,7 +89,7 @@ class OrdersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Orders $orders)
+    public function update(Request $request, Order $orders)
     {
         //
     }
@@ -84,7 +97,7 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Orders $orders)
+    public function destroy(Order $orders)
     {
         $orders->delete();
         return redirect()->back()->with('success', 'Order deleted successfully.');

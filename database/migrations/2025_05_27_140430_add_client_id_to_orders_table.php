@@ -14,7 +14,10 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //clef etrangere lier avec foreign id for 
-            $table->foreignIdFor(User::class, 'client_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignIdFor(User::class, 'client_id')
+                ->nullable()
+                ->constrained()
+                ->onDelete('set null');
         });
     }
 

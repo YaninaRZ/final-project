@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AllProduct extends Model
+class Product extends Model
 {
+
     protected $fillable = [
         'name',
         'description',
@@ -15,12 +16,16 @@ class AllProduct extends Model
         'sales_price',
         'image_src',
         'image_alt',
-        'product_gallery',
         'category_id',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
     }
 }

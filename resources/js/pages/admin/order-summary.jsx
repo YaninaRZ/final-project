@@ -16,7 +16,7 @@ export default function OrderSummary({ order }) {
                     <h2 className="sr-only">Products</h2>
                 </div>
                 <div className="px-4 py-5 sm:p-6">
-                    <p>Details of the command #{order.OrderID}</p>
+                    <p>Details of the command #{order.id}</p>
                 </div>
             </div>
             <Example order={order} />

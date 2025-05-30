@@ -134,18 +134,22 @@ export default function Example({ order }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {order.items.map((item) => (
-                                        <tr key={item.id} className="border-b border-gray-100">
+                                    {order.products?.map((product) => (
+                                        <tr key={product.id} className="border-b border-gray-100">
                                             <td className="max-w-0 px-0 py-5 align-top">
-                                                <div className="truncate font-medium text-gray-900">{item.title}</div>
-                                                <div className="truncate text-gray-500">{item.description}</div>
+                                                <div className="truncate font-medium text-gray-900">{product.name}</div>
+                                                <div className="truncate text-gray-500">{product.description}</div>
                                             </td>
-
-                                            <td className="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums">{item.quantity}</td>
-                                            <td className="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums">{item.price}</td>
+                                            <td className="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums">
+                                                {product.pivot?.quantity}
+                                            </td>
+                                            <td className="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums">
+                                                €{product.sales_price}
+                                            </td>
                                         </tr>
-                                    ))} */}
+                                    ))}
                                 </tbody>
+
                                 <tfoot>
                                     <tr>
                                         <th scope="row" className="px-0 pt-6 pb-0 font-normal text-gray-700 sm:hidden">

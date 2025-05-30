@@ -55,7 +55,6 @@ export default function ProductListCard({ products, categories }) {
         sales_price: '',
         image_src: '',
         image_alt: '',
-        product_gallery: '',
         category_id: '',
     });
 
@@ -72,7 +71,7 @@ export default function ProductListCard({ products, categories }) {
                     'sales_price',
                     'image_src',
                     'image_alt',
-                    'product_gallery'
+
                 );
                 setOpen(false);
             },
@@ -175,13 +174,7 @@ export default function ProductListCard({ products, categories }) {
                         />
                         <InputError message={errors.image_alt} />
 
-                        <textarea
-                            placeholder="Gallery (JSON or comma-separated URLs)"
-                            className="rounded border p-2"
-                            value={data.product_gallery}
-                            onChange={(e) => setData('product_gallery', e.target.value)}
-                        />
-                        <InputError message={errors.product_gallery} />
+
 
                         <DialogFooter>
                             <Button type="submit" disabled={processing}>Save</Button>

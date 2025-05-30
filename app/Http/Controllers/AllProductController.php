@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AllProduct;
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -14,7 +14,7 @@ class AllProductController extends Controller
      */
     public function index()
     {
-        $products = AllProduct::with('category')->get();
+        $products = Product::with('category')->get();
         $categories = Category::all();
 
         return Inertia::render('admin/all-products', [
@@ -45,11 +45,10 @@ class AllProductController extends Controller
             'sales_price' => 'nullable|numeric',
             'image_src' => 'nullable|string|max:255',
             'image_alt' => 'nullable|string|max:255',
-            'product_gallery' => 'nullable|array',
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
-        $product = AllProduct::create([
+        $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'sku' => $request->sku,
@@ -58,7 +57,6 @@ class AllProductController extends Controller
             'sales_price' => $request->sales_price,
             'image_src' => $request->image_src,
             'image_alt' => $request->image_alt,
-            'product_gallery' => $request->product_gallery,
             'category_id' => $request->category_id,
         ]);
 
@@ -68,7 +66,7 @@ class AllProductController extends Controller
     /**
      * Display the specified resource. ma page detail
      */
-    public function show(AllProduct $allProduct)
+    public function show(Product $allProduct)
     {
 
         $categories = Category::all();  // Récupère toutes les catégories
@@ -82,12 +80,12 @@ class AllProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AllProduct $allProduct) {}
+    public function edit(Product $allProduct) {}
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AllProduct $allProduct)
+    public function update(Request $request, Product $allProduct)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -110,7 +108,7 @@ class AllProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AllProduct $allProduct)
+    public function destroy(Product $allProduct)
     {
         $allProduct->delete();
         return redirect()->back()->with('success', 'Category deleted with succes.');

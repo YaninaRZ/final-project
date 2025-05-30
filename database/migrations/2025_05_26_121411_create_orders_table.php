@@ -14,11 +14,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('OrderID');
-            $table->date('Date');
-            $table->string('Name');
-            $table->string('Status');
-            $table->decimal('Amount', 10, 2);
+            $table->enum('status', ['pending', 'shipping', 'paid', 'cancelled', 'delivered']);
+            $table->decimal('amount', 10, 2);
         });
     }
 

@@ -8,6 +8,7 @@ function classNames(...classes) {
 }
 
 export default function OrderTable({ orders = [] }) {
+
     const checkbox = useRef();
 
     const orderList = orders.orders || [];
@@ -105,9 +106,7 @@ export default function OrderTable({ orders = [] }) {
                                                 </svg>
                                             </div>
                                         </th>
-                                        <th scope="col" className="min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900">
-                                            Product
-                                        </th>
+
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                             OrderID
                                         </th>
@@ -131,7 +130,7 @@ export default function OrderTable({ orders = [] }) {
                                 <tbody className="divide-y divide-gray-200 bg-white">
                                     {orderList.map((order) => (
                                         <tr
-                                            key={order.OrderID}
+                                            key={order.id}
                                             className={selectedOrder.includes(order) ? 'bg-gray-50' : undefined}
                                         >
                                             <td className="relative px-7 sm:w-12 sm:px-6">
@@ -140,7 +139,7 @@ export default function OrderTable({ orders = [] }) {
                                                     <input
                                                         type="checkbox"
                                                         className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                                                        value={order.OrderID}
+                                                        value={order.id}
                                                         checked={selectedOrder.includes(order)}
                                                         onChange={(e) =>
                                                             setSelectedOrder(
@@ -172,19 +171,12 @@ export default function OrderTable({ orders = [] }) {
                                                     </svg>
                                                 </div>
                                             </td>
-                                            <td
-                                                className={classNames(
-                                                    'py-4 pr-3 text-sm font-medium whitespace-nowrap',
-                                                    selectedOrder.includes(order) ? 'text-indigo-600' : 'text-gray-900'
-                                                )}
-                                            >
-                                                {order.Product}
-                                            </td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.OrderID}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Date}</td>
+
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.id}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.created_at}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.client.name}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Status}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.Amount}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.status}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.amount}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-[#68513F]">
                                                 <Link href={route('orders.show', order.id)}>See</Link>
                                             </td>
