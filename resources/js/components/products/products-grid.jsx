@@ -10,7 +10,7 @@ function renderProductGrid(products, onProductClick) {
                     <div key={product.id} className="group relative rounded-lg p-4">
                         <Link href={route('products.show', { id: product.uniqueId || product.id })} className="block">
                             <img
-                                src={product.imageSrc}
+                                src={product.image_src}
                                 alt={product.imageAlt}
                                 className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
                             />

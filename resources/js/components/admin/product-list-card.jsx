@@ -199,7 +199,7 @@ export default function ProductListCard({ products, categories }) {
                             <div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
                                 <img
                                     alt={product.name}
-                                    src={product.imageSrc}
+                                    src={product.image_src}
                                     className="size-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10"
                                 />
                                 <div className="text-sm/6 font-medium text-gray-900">{product.name}</div>

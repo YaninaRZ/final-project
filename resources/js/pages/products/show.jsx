@@ -38,7 +38,13 @@ export default function ProductShow() {
     return (
         <GuestLayout>
             <div className="mx-auto max-w-xl px-6 py-10">
-                <img src={product.imagesrc} alt={product.imageAlt} className="w-full rounded-xl" />
+                {/* <img src={product.image_src} alt={product.imageAlt} className="w-full rounded-xl" /> */}
+                <img
+                    src={product.image_src}
+                    alt={product.imageAlt || product.name}
+                    className="w-full rounded-xl"
+                />
+
                 <h1 className="mt-4 text-2xl font-bold">{product.name}</h1>
                 <p className="mt-4">{product.description}</p>
 
