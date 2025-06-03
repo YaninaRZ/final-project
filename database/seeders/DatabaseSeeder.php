@@ -22,11 +22,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $order = Order::create(['client_id' => 1, 'status' => 'pending', 'amount' => 200.00]);
+        $order = Order::create(['client_id' => 1, 'status' => 'paid']);
 
         $product1 = Product::get(1);
-
-
-        $order->products()->attach([1]);
+        $order->products()->attach([
+            1 => ['quantity' => 49],
+            3 => ['quantity' => 10],
+        ]);
     }
 }

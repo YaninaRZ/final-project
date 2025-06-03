@@ -17,8 +17,12 @@ class Order extends Model
     protected $fillable = [
         'status',
         'amount',
-        'client_id'
+        'client_id',
+        'quantity',
+
     ];
+
+
 
     public function client()
     {
@@ -28,6 +32,19 @@ class Order extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)
+            ->withPivot('quantity');
+    }
+
+    public function calculateAmount()
+    {
+        $total = 0;
+
+        foreach ($this->products as $product) {
+            $quantity = $product->pivot->quantity;
+            $total += $product->sales_price * $quantity;
+        }
+
+        return $total;
     }
 }

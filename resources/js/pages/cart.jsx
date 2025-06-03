@@ -53,7 +53,7 @@ export default function CartStep1() {
                                                         <div className="flex justify-between">
                                                             <h3 className="text-sm font-medium text-gray-700">{product.name}</h3>
                                                         </div>
-                                                        <p className="mt-1 text-sm font-medium text-gray-900">${product.price}</p>
+                                                        <p className="mt-1 text-sm font-medium text-gray-900">${product.sales_price}</p>
                                                     </div>
 
                                                     <div className="mt-4 sm:mt-0 sm:pr-9">
@@ -103,17 +103,19 @@ export default function CartStep1() {
                                     Order summary
                                 </h2>
                                 <dl className="mt-6 space-y-4">
-                                    <div className="flex items-center justify-between">
-                                        <dt className="text-sm text-gray-600">Subtotal</dt>
-                                        <dd className="text-sm font-medium text-gray-900">${subtotal.toFixed(2)}</dd>
-                                    </div>
                                     <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                                         <dt className="text-sm text-gray-600">Shipping</dt>
                                         <dd className="text-sm font-medium text-gray-900">$5.00</dd>
                                     </div>
                                     <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                                         <dt className="text-base font-medium text-gray-900">Total</dt>
-                                        <dd className="text-base font-medium text-gray-900">${(subtotal + 5).toFixed(2)}</dd>
+                                        <dd className="text-base font-medium text-gray-900">
+                                            ${
+                                                (
+                                                    cart.reduce((sum, item) => sum + item.sales_price * item.quantity, 0) + 5
+                                                ).toFixed(2)
+                                            }
+                                        </dd>
                                     </div>
                                 </dl>
 

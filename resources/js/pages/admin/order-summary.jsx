@@ -1,8 +1,7 @@
-import { Link, usePage } from '@inertiajs/react';
 import Example from '@/components/admin/details-screen';
 import AdminLayout from '@/layouts/admin-layout';
 
-export default function OrderSummary({ order }) {
+export default function OrderSummary({ order, amount }) {
     console.log(order);
 
     if (!order) {
@@ -19,7 +18,7 @@ export default function OrderSummary({ order }) {
                     <p>Details of the command #{order.id}</p>
                 </div>
             </div>
-            <Example order={order} />
+            <Example order={order} amount={amount} />
 
         </AdminLayout>
     );

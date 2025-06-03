@@ -1,62 +1,32 @@
 import { usePage } from '@inertiajs/react';
-import { useEffect, useState } from 'react';
 import GuestLayout from '@/layouts/guest-layout';
-import allProducts from '@/data/products';
 import ProductsGrid from '@/components/products/products-grid';
 
-
-function groupProductsByCategory(products) {
-    return products.reduce((acc, product) => {
-        const slug = product.category;
-
-        if (!acc[slug]) {
-            acc[slug] = {
-                slug: product.category,
-                title: product.categoryTitle,
-                products: []
-            };
-        }
-
-        acc[slug].products.push(product);
-        return acc;
-    }, {});
-}
-
-
 export default function ProductIndex() {
-    const { category } = usePage().props;
-
-
-
-    const [products, setProducts] = useState(allProducts);
-
-
-
-    useEffect(() => {
-
-        if (category) {
-            console.log(category);
-            const filteredProducts = products.filter(product => product.category == category);
-            setProducts(filteredProducts);
-        } else {
-            setProducts(groupProductsByCategory(products))
+    const { products: rawProducts } = usePage().props;
+    const productsByCategory = rawProducts.reduce((groups, product) => {
+        const categoryName = product.category?.name || 'Uncategorized';
+        if (!groups[categoryName]) {
+            groups[categoryName] = [];
         }
-    }, [category]);
+        groups[categoryName].push(product);
+        return groups;
+    }, {});
 
+    console.log('Produits groupés par catégorie:', productsByCategory);
 
 
     return (
         <GuestLayout>
             <div className="font-montserrat flex min-h-screen flex-col items-center bg-white px-4 py-16 font-bold text-[#252B42]">
                 <h1 className="mb-12 text-center text-4xl">Our Products</h1>
-                {category ?
-                    <ProductsGrid products={products} />
-                    :
-                    (Object.entries(products).map(([slug, category]) => (
-                        category?.products && (
-                            <ProductsGrid key={slug} products={category.products} />
-                        )
-                    )))}
+
+                {Object.entries(productsByCategory).map(([category, products]) => (
+                    <div key={category} className="mb-10 w-full">
+                        <h2 className="mb-6 text-2xl">{category}</h2>
+                        <ProductsGrid products={products} />
+                    </div>
+                ))}
             </div>
         </GuestLayout>
     );

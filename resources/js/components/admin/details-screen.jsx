@@ -27,7 +27,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function Example({ order }) {
+export default function Example({ order, amount }) {
     console.log(order);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [selected, setSelected] = useState(moods[5]);
@@ -43,14 +43,10 @@ export default function Example({ order }) {
                             <h2 className="sr-only">Summary</h2>
                             <div className="rounded-lg bg-gray-50 shadow-xs ring-1 ring-gray-900/5">
                                 <dl className="flex flex-wrap">
-                                    <div className="flex-auto pt-6 pl-6">
-                                        <dt className="text-sm/6 font-semibold text-gray-900">Amount</dt>
-                                        <dd className="mt-1 text-base font-semibold text-gray-900">$10,560.00</dd>
-                                    </div>
                                     <div className="flex-none self-end px-6 pt-4">
                                         <dt className="sr-only">Status</dt>
                                         <dd className="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-600 ring-1 ring-green-600/20 ring-inset">
-                                            {order.Status}
+                                            {order.status}
                                         </dd>
                                     </div>
                                     <div className="mt-6 flex w-full flex-none gap-x-4 border-t border-gray-900/5 px-6 pt-6">
@@ -144,7 +140,7 @@ export default function Example({ order }) {
                                                 {product.pivot?.quantity}
                                             </td>
                                             <td className="py-5 pr-0 pl-8 text-right align-top text-gray-700 tabular-nums">
-                                                €{product.sales_price}
+                                                ${product.sales_price}
                                             </td>
                                         </tr>
                                     ))}
@@ -152,33 +148,11 @@ export default function Example({ order }) {
 
                                 <tfoot>
                                     <tr>
-                                        <th scope="row" className="px-0 pt-6 pb-0 font-normal text-gray-700 sm:hidden">
-                                            Subtotal
-                                        </th>
-                                        <th
-                                            scope="row"
-                                            colSpan={3}
-                                            className="hidden px-0 pt-6 pb-0 text-right font-normal text-gray-700 sm:table-cell"
-                                        >
-                                            Subtotal
-                                        </th>
-                                        {/* <td className="pt-6 pr-0 pb-0 pl-8 text-right text-gray-900 tabular-nums">{invoice.subTotal}</td> */}
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" className="pt-4 font-normal text-gray-700 sm:hidden">
-                                            Tax
-                                        </th>
-                                        <th scope="row" colSpan={3} className="hidden pt-4 text-right font-normal text-gray-700 sm:table-cell">
-                                            Tax
-                                        </th>
-                                        {/* <td className="pt-4 pr-0 pb-0 pl-8 text-right text-gray-900 tabular-nums">{invoice.tax}</td> */}
-                                    </tr>
-                                    <tr>
                                         <th scope="row" className="pt-4 font-semibold text-gray-900 sm:hidden">
                                             Total
                                         </th>
                                         <th scope="row" colSpan={3} className="hidden pt-4 text-right font-semibold text-gray-900 sm:table-cell">
-                                            Total
+                                            Total ${amount}
                                         </th>
                                         {/* <td className="pt-4 pr-0 pb-0 pl-8 text-right font-semibold text-gray-900 tabular-nums">{invoice.total}</td> */}
                                     </tr>

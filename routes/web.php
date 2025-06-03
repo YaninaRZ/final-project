@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Models\AllProduct;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 ///////////////////////////////////////////////////////////////////////NON CONNECTÉ
@@ -46,19 +47,27 @@ Route::get('/cart', function () {
 
 ///////////////////////////////////////////////////////////////////////PAGES PRODUITS
 
-Route::get('/products', function () {
-    return Inertia::render('products/index');
-})->name('products');
+
+Route::get('/products', [AllProductController::class, 'clientIndex'])->name('products');
+
 
 Route::get('/products/category/{category}', function ($category) {
     return Inertia::render('products/index', ['category' => $category]);
 })->name('products.category');
 
+// Route::get('/products/{id}', function ($id) {
+//     return Inertia::render('products/show', ['id' => $id]);
+// })->name('products.show');
+
 Route::get('/products/{id}', function ($id) {
-    return Inertia::render('products/show', ['id' => $id]);
+    $product = Product::with('category')->findOrFail($id);
+
+    return Inertia::render('products/show', [
+        'product' => $product,
+    ]);
 })->name('products.show');
 
-// a corriger
+
 Route::get('/post-detail/{id}', function ($id) {
     return Inertia::render('post-detail', ['id' => $id]);
 })->name('post-detail');

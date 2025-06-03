@@ -5,11 +5,10 @@ import ProductOverview from '@/components/product-overview';
 import GuestLayout from '@/layouts/guest-layout';
 
 export default function ProductShow() {
-    const { id } = usePage().props;
+    const { product } = usePage().props;
+
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
-
-    const product = allProducts.find((p) => p.uniqueId === id);
 
     if (!product) {
         return (
@@ -22,8 +21,14 @@ export default function ProductShow() {
 
     const parsedProduct = {
         ...product,
-        price: typeof product.price === 'string' ? parseFloat(product.price.replace(/[^\d.-]/g, '')) : product.price,
+        price:
+            typeof product.price === 'string'
+                ? parseFloat(product.price.replace(/[^\d.-]/g, '')) || 0
+                : typeof product.sales_price === 'number'
+                    ? product.sales_price
+                    : 0,
     };
+
 
     const handleOpenPopup = () => {
         setSelectedProduct(parsedProduct);
@@ -33,12 +38,12 @@ export default function ProductShow() {
     return (
         <GuestLayout>
             <div className="mx-auto max-w-xl px-6 py-10">
-                <img src={product.imageSrc} alt={product.imageAlt} className="w-full rounded-xl" />
+                <img src={product.imagesrc} alt={product.imageAlt} className="w-full rounded-xl" />
                 <h1 className="mt-4 text-2xl font-bold">{product.name}</h1>
                 <p className="mt-4">{product.description}</p>
 
                 <div className="mt-2 flex items-center justify-between">
-                    <p className="text-xl text-gray-800">{parsedProduct.price.toFixed(2)} $</p>
+                    <p className="text-xl text-gray-800">{parsedProduct.sales_price.toFixed(2)} $</p>
                     <button onClick={handleOpenPopup} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
                         Add to Cart
                     </button>

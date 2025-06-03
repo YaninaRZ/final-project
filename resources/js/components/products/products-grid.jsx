@@ -35,6 +35,7 @@ function renderProductGrid(products, onProductClick) {
 
 
 export default function ProductsGrid({ products }) {
+    console.log(products);
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);

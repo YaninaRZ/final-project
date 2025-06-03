@@ -23,6 +23,19 @@ class AllProductController extends Controller
         ]);
     }
 
+    public function clientIndex(Request $request)
+    {
+        $products = Product::with('category')->get()->toArray();
+        $categories = Category::all();
+        return Inertia::render('products/index', [
+            'products' => $products,
+            'categories' => $categories,
+            'category' => $request->category,
+        ]);
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -68,7 +81,7 @@ class AllProductController extends Controller
      */
     public function show(Product $allProduct)
     {
-
+        $allProduct->load('category');
         $categories = Category::all();  // Récupère toutes les catégories
 
         return Inertia::render('admin/product-detail', [

@@ -71,6 +71,7 @@ export default function ProductListCard({ products, categories }) {
                     'sales_price',
                     'image_src',
                     'image_alt',
+                    'category_id',
 
                 );
                 setOpen(false);

@@ -73,8 +73,11 @@ class OrdersController extends Controller
     {
         //affiche toutes les infos de client si jai une clef etrangere client vient fichier orders.php le nom de ma function
         $order->load(['client', 'products']);
+        $amount = $order->calculateAmount();
+
         return Inertia::render('admin/order-summary', [
             'order' => $order,
+            'amount' => $amount,
         ]);
     }
 

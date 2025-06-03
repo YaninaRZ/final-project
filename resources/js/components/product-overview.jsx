@@ -33,13 +33,13 @@ export default function ProductOverview({ open, setOpen, product }) {
                     </button>
 
 
-                    <img src={product.imageSrc} alt={product.imageAlt} className="mb-6 w-full  max-h-150 rounded-lg object-cover" />
+                    <img src={product.imagesrc} alt={product.imageAlt} className="mb-6 w-full  max-h-150 rounded-lg object-cover" />
 
 
                     <h2 className="mb-2 text-xl font-semibold text-gray-900">{product.name}</h2>
 
 
-                    <p className="mb-4 text-lg font-medium text-bg-[#252B42] ">{product.price}$</p>
+                    <p className="mb-4 text-lg font-medium text-bg-[#252B42] ">{product.sales_price}$</p>
 
 
                     <div className="mb-4 flex items-center gap-4">
