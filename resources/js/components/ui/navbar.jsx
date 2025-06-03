@@ -34,8 +34,8 @@ const navigation = {
       featured: [
         {
           name: 'New Arrivals',
-          href: route('products.category', { category: 'new-arrivals' }),
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-category-01.jpg',
+          href: route('products.category', { category: 'new arrivals' }),
+          imageSrc: 'https://rituals.scene7.com/is/image/rituals/1115586-rituals-sa24018-sakura-2024-multi:Square?fmt=webp-alpha&hei=850&resMode=sharp2&wid=850',
           imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
         },
       ],
@@ -45,8 +45,8 @@ const navigation = {
           name: 'Face care',
           items: [
 
-            { name: 'skinn products', href: route('products.category', { category: 'skinn' }) },
-            { name: 'masks', href: route('products.category', { category: 'masks' }) },
+            { name: 'Skinn Products', href: route('products.category', { category: 'skinn' }) },
+            { name: 'Masks', href: route('products.category', { category: 'masks' }) },
           ],
         },
         {

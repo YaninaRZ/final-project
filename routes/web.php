@@ -5,7 +5,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RoleMiddleware;
-use App\Models\AllProduct;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -48,16 +47,16 @@ Route::get('/cart', function () {
 ///////////////////////////////////////////////////////////////////////PAGES PRODUITS
 
 
+Route::get('/products/category/{category}', function ($category) { // category = dans l'URL
+    $category = Category::where('name', ucwords($category))->firstOrFail(); //ucwords pour Capitalize
+    $products = $category->products()->with('category')->get();
+    return Inertia::render('products/index', ['products' => $products]);
+})->name('products.category');
+
 Route::get('/products', [AllProductController::class, 'clientIndex'])->name('products');
 
 
-Route::get('/products/category/{category}', function ($category) {
-    return Inertia::render('products/index', ['category' => $category]);
-})->name('products.category');
 
-// Route::get('/products/{id}', function ($id) {
-//     return Inertia::render('products/show', ['id' => $id]);
-// })->name('products.show');
 
 Route::get('/products/{id}', function ($id) {
     $product = Product::with('category')->findOrFail($id);
