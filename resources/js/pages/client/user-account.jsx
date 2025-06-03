@@ -4,13 +4,13 @@ import { Disclosure } from '@headlessui/react';
 import { ArrowRightOnRectangleIcon, CreditCardIcon, KeyIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import GuestLayout from '@/layouts/guest-layout';
-import { Link } from '@inertiajs/react';
 
-const user = {
-    name: 'Debbie Lewis',
-    handle: 'deblewis',
-    email: 'debbielewis@example.com',
-};
+import { Link, usePage } from '@inertiajs/react';
+// const user = {
+//     name: 'Debbie Lewis',
+//     handle: 'deblewis',
+//     email: 'debbielewis@example.com',
+// };
 
 const subNavigation = [
     { name: 'Profile', href: '#', icon: UserCircleIcon, current: true },
@@ -32,8 +32,14 @@ export default function Login() {
     const [allowCommenting, setAllowCommenting] = useState(true);
     const [allowMentions, setAllowMentions] = useState(true);
 
+    const { auth } = usePage().props;
+    console.log(auth);
+    const user = auth.user;
+
     return (
         <GuestLayout>
+
+
             <Disclosure as="div" className="relative overflow-hidden bg-[#E7DED8] pb-32">
                 <header className="relative py-10">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -71,6 +77,8 @@ export default function Login() {
                                             />
                                             <span className="truncate">{item.name}</span>
                                         </a>
+
+
                                     ))}
                                     <Link
                                         method="post"
@@ -99,7 +107,8 @@ export default function Login() {
                                         <div className="grow space-y-6">
                                             <div>
                                                 <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
-                                                    Username
+                                                    Name
+                                                    {user.name}
                                                 </label>
                                                 <div className="mt-2">
                                                     <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-sky-600">
@@ -107,7 +116,7 @@ export default function Login() {
                                                             workcation.com/
                                                         </div>
                                                         <input
-                                                            defaultValue={user.handle}
+                                                            defaultValue={user.name}
                                                             id="username"
                                                             name="username"
                                                             type="text"
