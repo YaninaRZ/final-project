@@ -4,13 +4,8 @@ import { Disclosure } from '@headlessui/react';
 import { ArrowRightOnRectangleIcon, CreditCardIcon, KeyIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import GuestLayout from '@/layouts/guest-layout';
-
 import { Link, usePage } from '@inertiajs/react';
-// const user = {
-//     name: 'Debbie Lewis',
-//     handle: 'deblewis',
-//     email: 'debbielewis@example.com',
-// };
+
 
 const subNavigation = [
     { name: 'Profile', href: '#', icon: UserCircleIcon, current: true },
@@ -108,12 +103,12 @@ export default function Login() {
                                             <div>
                                                 <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
                                                     Name
-                                                    {user.name}
+
                                                 </label>
                                                 <div className="mt-2">
                                                     <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-sky-600">
                                                         <div className="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">
-                                                            workcation.com/
+                                                            {user.name}
                                                         </div>
                                                         <input
                                                             defaultValue={user.name}
@@ -132,10 +127,12 @@ export default function Login() {
                                     <div className="mt-6 grid grid-cols-12 gap-6">
                                         <div className="col-span-12 sm:col-span-6">
                                             <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
-                                                First name
+                                                Email
                                             </label>
                                             <div className="mt-2">
+
                                                 <input
+                                                    defaultValue={user.email}
                                                     id="first-name"
                                                     name="first-name"
                                                     type="text"
@@ -147,10 +144,13 @@ export default function Login() {
 
                                         <div className="col-span-12 sm:col-span-6">
                                             <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-900">
-                                                Last name
+                                                Created at:
+
                                             </label>
                                             <div className="mt-2">
+
                                                 <input
+                                                    defaultValue={user.created_at}
                                                     id="last-name"
                                                     name="last-name"
                                                     type="text"

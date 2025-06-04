@@ -1,20 +1,19 @@
 'use client';
 
 import { Disclosure } from '@headlessui/react';
-import { ArrowRightOnRectangleIcon, CreditCardIcon, KeyIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import {
+    ArrowRightOnRectangleIcon,
+    CreditCardIcon,
+    KeyIcon,
+    UserCircleIcon,
+} from '@heroicons/react/24/outline';
+import { useForm, usePage, Link } from '@inertiajs/react';
 import GuestLayout from '@/layouts/guest-layout';
-import { Link } from '@inertiajs/react'
-
-const user = {
-    name: 'Debbie Lewis',
-    handle: 'deblewis',
-    email: 'debbielewis@example.com',
-};
 
 const subNavigation = [
-    { name: 'Profile', href: 'user-account', icon: UserCircleIcon, current: false },
-    { name: 'Password', href: 'user-password', icon: KeyIcon, current: true },
-    { name: 'Orders', href: 'user-billing', icon: CreditCardIcon, current: false },
+    { name: 'Profile', href: '/user-account', icon: UserCircleIcon, current: false },
+    { name: 'Password', href: '/user-password', icon: KeyIcon, current: true },
+    { name: 'Orders', href: '/user-billing', icon: CreditCardIcon, current: false },
 ];
 
 function classNames(...classes) {
@@ -22,12 +21,28 @@ function classNames(...classes) {
 }
 
 export default function UserPassword() {
+    const { flash, auth } = usePage().props;
+    const user = auth.user;
+
+    const form = useForm({
+        current_password: '',
+        password: '',
+        password_confirmation: '',
+    });
+
+    const submit = (e) => {
+        e.preventDefault();
+        form.put(route('user-password.update'));
+    };
+
     return (
         <GuestLayout>
             <Disclosure as="div" className="relative overflow-hidden bg-[#E7DED8] pb-32">
                 <header className="relative py-10">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold tracking-tight text-white">Welcome to your account!</h1>
+                        <h1 className="text-3xl font-bold tracking-tight text-white">
+                            Welcome to your account!
+                        </h1>
                     </div>
                 </header>
             </Disclosure>
@@ -36,7 +51,6 @@ export default function UserPassword() {
                 <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
                     <div className="overflow-hidden rounded-lg bg-white shadow-sm">
                         <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-x lg:divide-y-0">
-
                             <aside className="py-6 lg:col-span-3">
                                 <nav className="space-y-1">
                                     {subNavigation.map((item) => (
@@ -46,7 +60,7 @@ export default function UserPassword() {
                                             aria-current={item.current ? 'page' : undefined}
                                             className={classNames(
                                                 item.current
-                                                    ? 'border-[#68513F] bg-[#DACEC6] text-[#68513F] hover:bg-[#DACEC6] hover:text-[#68513F]'
+                                                    ? 'border-[#68513F] bg-[#DACEC6] text-[#68513F] hover:bg-[#DACEC6]'
                                                     : 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900',
                                                 'group flex items-center border-l-4 px-3 py-2 text-sm font-medium',
                                             )}
@@ -79,60 +93,84 @@ export default function UserPassword() {
                                 </nav>
                             </aside>
 
-
-
-                            <div className="px-4 py-6 sm:p-6 lg:col-span-9">
-                                <h2 className="text-lg font-medium text-gray-900">Password</h2>
-                                <p className="mt-1 text-sm text-gray-500">Update your password to keep your account secure.</p>
-
-                                <form className="mt-6 max-w-xl space-y-6">
+                            <form onSubmit={submit} className="divide-y divide-gray-200 lg:col-span-9">
+                                <div className="px-4 py-6 sm:p-6 lg:pb-8">
                                     <div>
-                                        <label htmlFor="current-password" className="block text-sm font-medium text-gray-700">
-                                            Current password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            name="current-password"
-                                            id="current-password"
-                                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-[#68513F] focus:ring-[#68513F]"
-                                        />
+                                        <h2 className="text-lg font-medium text-gray-900">Update your password</h2>
+                                        <p className="mt-1 text-sm text-gray-500">
+                                            Ensure your account is using a long, random password to stay secure.
+                                        </p>
                                     </div>
 
-                                    <div>
-                                        <label htmlFor="new-password" className="block text-sm font-medium text-gray-700">
-                                            New password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            name="new-password"
-                                            id="new-password"
-                                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-[#68513F] focus:ring-[#68513F]"
-                                        />
-                                    </div>
+                                    {/* Message succès */}
+                                    {flash?.status && (
+                                        <div className="mb-4 rounded-md bg-green-100 border border-green-400 text-green-800 px-4 py-3 text-sm">
+                                            {flash.status}
+                                        </div>
+                                    )}
 
-                                    <div>
-                                        <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">
-                                            Confirm new password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            name="confirm-password"
-                                            id="confirm-password"
-                                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-[#68513F] focus:ring-[#68513F]"
-                                        />
-                                    </div>
+                                    {/* Message erreur générique si erreurs mais pas sur champs spécifiques */}
+                                    {form.hasErrors &&
+                                        !form.errors.current_password &&
+                                        !form.errors.password &&
+                                        !form.errors.password_confirmation && (
+                                            <div className="mb-4 rounded-md bg-red-100 border border-red-400 text-red-800 px-4 py-3 text-sm">
+                                                An error occurred. Please try again.
+                                            </div>
+                                        )}
 
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="inline-flex items-center rounded-md bg-[#68513F] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#4e3a2c]"
-                                        >
-                                            Save
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                                    <div className="mt-6 space-y-6">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">Current Password</label>
+                                            <input
+                                                type="password"
+                                                value={form.data.current_password}
+                                                onChange={(e) => form.setData('current_password', e.target.value)}
+                                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm px-3 py-2 focus:outline-none focus:ring focus:ring-[#68513F]/50 focus:border-[#68513F]"
+                                            />
+                                            {form.errors.current_password && (
+                                                <p className="text-red-600 text-sm mt-1">{form.errors.current_password}</p>
+                                            )}
+                                        </div>
 
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">New Password</label>
+                                            <input
+                                                type="password"
+                                                value={form.data.password}
+                                                onChange={(e) => form.setData('password', e.target.value)}
+                                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm px-3 py-2 focus:outline-none focus:ring focus:ring-[#68513F]/50 focus:border-[#68513F]"
+                                            />
+                                            {form.errors.password && (
+                                                <p className="text-red-600 text-sm mt-1">{form.errors.password}</p>
+                                            )}
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">Confirm New Password</label>
+                                            <input
+                                                type="password"
+                                                value={form.data.password_confirmation}
+                                                onChange={(e) => form.setData('password_confirmation', e.target.value)}
+                                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm px-3 py-2 focus:outline-none focus:ring focus:ring-[#68513F]/50 focus:border-[#68513F]"
+                                            />
+                                            {form.errors.password_confirmation && (
+                                                <p className="text-red-600 text-sm mt-1">{form.errors.password_confirmation}</p>
+                                            )}
+                                        </div>
+
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                disabled={form.processing}
+                                                className="bg-[#68513F] hover:bg-[#4e3a2c] text-white px-4 py-2 rounded"
+                                            >
+                                                Update password
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
