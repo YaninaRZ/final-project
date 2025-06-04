@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -78,6 +80,36 @@ class OrdersController extends Controller
         return Inertia::render('admin/order-summary', [
             'order' => $order,
             'amount' => $amount,
+        ]);
+    }
+
+    public function clientOrders()
+    {
+        $user = Auth::user(); // utilisateur connecté
+
+        // Récupère ses commandes
+        $orders = Order::with('products') // ou d'autres relations si tu veux
+            ->where('client_id', $user->id)
+            ->get();
+
+        return Inertia::render('client/user-billing', [
+            'orders' => $orders,
+            'auth' => ['user' => $user],
+        ]);
+    }
+
+    public function showClientOrder($id)
+    {
+        $user = Auth::user();
+
+        $order = Order::with('products', 'client')->where('id', $id)->where('client_id', $user->id)->first();
+
+        if (!$order) {
+            abort(404, 'Commande non trouvée ou accès non autorisé');
+        }
+
+        return Inertia::render('client/view-order', [
+            'order' => $order,
         ]);
     }
 

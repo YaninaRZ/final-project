@@ -8,13 +8,8 @@ import {
     UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { useForm, usePage, Link } from '@inertiajs/react';
-import GuestLayout from '@/layouts/guest-layout';
+import ClientLayout from '@/layouts/client-layout.jsx';
 
-const subNavigation = [
-    { name: 'Profile', href: '/user-account', icon: UserCircleIcon, current: false },
-    { name: 'Password', href: '/user-password', icon: KeyIcon, current: true },
-    { name: 'Orders', href: '/user-billing', icon: CreditCardIcon, current: false },
-];
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -36,7 +31,7 @@ export default function UserPassword() {
     };
 
     return (
-        <GuestLayout>
+        <ClientLayout>
             <Disclosure as="div" className="relative overflow-hidden bg-[#E7DED8] pb-32">
                 <header className="relative py-10">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -51,47 +46,7 @@ export default function UserPassword() {
                 <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
                     <div className="overflow-hidden rounded-lg bg-white shadow-sm">
                         <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-x lg:divide-y-0">
-                            <aside className="py-6 lg:col-span-3">
-                                <nav className="space-y-1">
-                                    {subNavigation.map((item) => (
-                                        <a
-                                            key={item.name}
-                                            href={item.href}
-                                            aria-current={item.current ? 'page' : undefined}
-                                            className={classNames(
-                                                item.current
-                                                    ? 'border-[#68513F] bg-[#DACEC6] text-[#68513F] hover:bg-[#DACEC6]'
-                                                    : 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900',
-                                                'group flex items-center border-l-4 px-3 py-2 text-sm font-medium',
-                                            )}
-                                        >
-                                            <item.icon
-                                                aria-hidden="true"
-                                                className={classNames(
-                                                    item.current
-                                                        ? 'text-[#68513F] group-hover:text-[#68513F]'
-                                                        : 'text-gray-400 group-hover:text-gray-500',
-                                                    'mr-3 -ml-1 size-6 shrink-0',
-                                                )}
-                                            />
-                                            <span className="truncate">{item.name}</span>
-                                        </a>
-                                    ))}
 
-                                    <Link
-                                        method="post"
-                                        href={route('logout')}
-                                        as="button"
-                                        className="group flex items-center border-l-4 border-transparent px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-gray-900 w-full"
-                                    >
-                                        <ArrowRightOnRectangleIcon
-                                            aria-hidden="true"
-                                            className="mr-3 -ml-1 size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
-                                        />
-                                        <span className="truncate">Log out</span>
-                                    </Link>
-                                </nav>
-                            </aside>
 
                             <form onSubmit={submit} className="divide-y divide-gray-200 lg:col-span-9">
                                 <div className="px-4 py-6 sm:p-6 lg:pb-8">
@@ -175,6 +130,6 @@ export default function UserPassword() {
                     </div>
                 </div>
             </main>
-        </GuestLayout>
+        </ClientLayout>
     );
 }

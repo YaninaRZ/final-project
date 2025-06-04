@@ -131,13 +131,13 @@ Route::middleware(['auth', 'verified', 'role:client'])->group(function () {
         return Inertia::render('client/user-password');
     })->name('user-password');
 
-    Route::get('/user-billing', function () {
-        return Inertia::render('client/user-billing');
-    })->name('user-billing');
 
-    Route::get('/client/view-order/{id}', function ($id) {
-        return Inertia::render('client/view-order', ['id' => $id]);
-    })->name('view-order');
+    Route::get('/user-billing', [OrdersController::class, 'clientOrders'])
+        ->middleware('auth')
+        ->name('user-billing');
+
+    Route::get('/client/view-order/{id}', [OrdersController::class, 'showClientOrder'])
+        ->name('view-order');
 });
 
 //////////////////////////////////////////////////////////////////////RESET MDP
