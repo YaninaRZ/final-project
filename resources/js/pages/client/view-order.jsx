@@ -2,6 +2,13 @@ import { Link, usePage } from '@inertiajs/react';
 import GuestLayout from '@/layouts/guest-layout';
 
 export default function ViewOrder() {
+
+
+    const { auth } = usePage().props;
+    console.log(auth);
+    const user = auth.user;
+
+
     const { id } = usePage().props;
     if (!id) {
         return <p>no order</p>;

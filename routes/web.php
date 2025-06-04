@@ -142,9 +142,7 @@ Route::middleware(['auth', 'verified', 'role:client'])->group(function () {
 
 //////////////////////////////////////////////////////////////////////RESET MDP
 
-Route::put('/user-password', [UserPasswordController::class, 'update'])
-    ->middleware('auth')
-    ->name('user-password.update');
+
 
 
 
