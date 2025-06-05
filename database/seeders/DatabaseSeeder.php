@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $product1 = Product::get(1);
         $order->products()->attach([
             1 => ['quantity' => 49],
-            3 => ['quantity' => 10],
+            5 => ['quantity' => 10],
         ]);
     }
 }

@@ -1,10 +1,10 @@
 'use client';
 
 import { usePage } from '@inertiajs/react';
-import GuestLayout from '@/layouts/guest-layout';
+import ClientLayout from '../../layouts/client-layout';
 import { CreditCardIcon, KeyIcon, Link, UserCircleIcon } from 'lucide-react';
 import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
-import ClientLayout from '@/layouts/client-layout.jsx';
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
