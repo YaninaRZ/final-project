@@ -33,7 +33,7 @@ export default function ProductOverview({ open, setOpen, product }) {
                     </button>
 
 
-                    <img src={product.imagesrc} alt={product.imageAlt} className="mb-6 w-full  max-h-150 rounded-lg object-cover" />
+                    <img src={product.image_src} alt={product.imageAlt} className="mb-6 w-full  max-h-150 rounded-lg object-cover" />
 
 
                     <h2 className="mb-2 text-xl font-semibold text-gray-900">{product.name}</h2>

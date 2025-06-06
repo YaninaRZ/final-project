@@ -13,12 +13,7 @@ export default function Login() {
     const { auth, url } = usePage().props;
     const user = auth.user;
 
-    // Mise à jour dynamique de la navigation active
-    const subNavigation = [
-        { name: 'Profile', href: '/user-account', icon: UserCircleIcon, current: url === '/user-account' },
-        { name: 'Password', href: '/user-password', icon: KeyIcon, current: url === '/user-password' },
-        { name: 'Orders', href: '/user-billing', icon: CreditCardIcon, current: url === '/user-billing' },
-    ];
+
 
     return (
         <ClientLayout>
@@ -56,11 +51,11 @@ export default function Login() {
                                                             {user.name}
                                                         </div>
                                                         <input
-                                                            defaultValue={user.name}
+
                                                             id="username"
                                                             name="username"
                                                             type="text"
-                                                            placeholder="janesmith"
+                                                            placeholder=""
                                                             className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm"
                                                         />
                                                     </div>

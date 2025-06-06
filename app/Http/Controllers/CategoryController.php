@@ -12,9 +12,27 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+
     {
-        $categories = Category::all();
-        return Inertia::render('admin/categories', ['categories' => $categories]);
+        $categories = Category::with('parent')->get();
+        $parentCategories = Category::whereNull('parent_id')->get();
+
+
+
+        return Inertia::render('admin/categories', [
+            'categories' => $categories,
+            'parentCategories' => $parentCategories,
+        ]);
+    }
+
+    /// categories hierarchy
+    public function getHierarchy()
+    {
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+
+        return Inertia::render('admin/categories-hierarchy', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -22,25 +40,43 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        // pas besoin car modal 
+        // Pas besoin car modal
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created category (sans parent ou enfant).
      */
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-
+            'parent_id' => 'nullable|exists:categories,id',
         ]);
 
-        $categories = Category::create([
+        Category::create([
             'name' => $request->name,
-
+            'parent_id' => $request->parent_id ?? null,
         ]);
 
         return to_route('categories');
+    }
+
+    /**
+     * Store a newly created category parente (pour ta popup).
+     */
+    public function storeParent(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        // parent_id = null explicitement pour une catégorie parente
+        Category::create([
+            'name' => $request->name,
+            'parent_id' => null,
+        ]);
+
+        return response()->json(['message' => 'Catégorie parente créée avec succès']);
     }
 
     /**
@@ -56,7 +92,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //pas besoin car modal 
+        // Pas besoin car modal
     }
 
     /**
@@ -65,7 +101,10 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate(['name' => 'required|string|max:255']);
-        $category->update(['name' => $request->name]);
+        $category->update([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+        ]);
 
         return redirect()->back()->with('success', 'Category modified.');
     }

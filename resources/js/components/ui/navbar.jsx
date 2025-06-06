@@ -83,11 +83,11 @@ export default function NavbarDesign() {
   const cleanup = useMobileNavigation();
 
   const page = usePage();
-  const { auth } = page.props;
-  console.log(auth);
+  const { auth, categories } = page.props;
+  console.log(page.props);
   return (
     <div className="bg-white">
-      {/* Mobile menu */}
+      {/* START Mobile menu */}
       <Dialog open={open} onClose={setOpen} className="relative z-60 lg:hidden">
         <DialogBackdrop
           transition
@@ -232,6 +232,7 @@ export default function NavbarDesign() {
           </DialogPanel>
         </div>
       </Dialog>
+      {/* END Mobile menu */}
 
       <header className="relative bg-white">
 
@@ -301,26 +302,32 @@ export default function NavbarDesign() {
                                 ))}
                               </div>
                               <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                {category.sections.map((section) => (
-                                  <div key={section.name}>
-                                    <p id={`${section.name}-heading`} className="font-medium text-gray-900">
-                                      {section.name}
+                                {categories.map((category) => (
+                                  <div key={category.id}>
+                                    <p id={`${category.name}-heading`} className="font-medium text-gray-900">
+                                      {category.name}
                                     </p>
                                     <ul
                                       role="list"
-                                      aria-labelledby={`${section.name}-heading`}
+                                      aria-labelledby={`${category.name}-heading`}
                                       className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                     >
-                                      {section.items.map((item) => (
-                                        <li key={item.name} className="flex">
-                                          <Link href={item.href} className="hover:text-gray-800">
-                                            {item.name}
+                                      {category.children.map((child) => (
+                                        <li key={child.name} className="flex">
+                                          <Link href={route('products.category', { category: child.name.toLowerCase() })} className="hover:text-gray-800">
+                                            {child.name}
                                           </Link>
                                         </li>
                                       ))}
                                     </ul>
                                   </div>
                                 ))}
+
+                                {/* {categories.map(category => <div>
+                                  {category.name}
+                                  {category.children.map(child => <p>{child.name}</p>)}
+                                </div>)} */}
+
                               </div>
                             </div>
                           </div>

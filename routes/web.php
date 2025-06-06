@@ -116,6 +116,15 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
             return Inertia::render('admin/order-summary', ['id' => $id]);
         })->name('order-summary');
     });
+
+    Route::get('/admin/categories/hierarchy', [CategoryController::class, 'getHierarchy'])->name('categories.hierarchy');
+    Route::post('/admin/categories/store-parent', [CategoryController::class, 'storeParent'])->name('categories.storeParent');
+});
+
+
+Route::get('/test-categories', function () {
+    $categories = Category::with('parent', 'children')->get();
+    return $categories;
 });
 
 

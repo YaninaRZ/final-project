@@ -42,7 +42,7 @@ export default function CartStep1() {
                                             <div className="shrink-0">
                                                 <img
                                                     alt={product.imageAlt}
-                                                    src={product.imageSrc}
+                                                    src={product.image_src}
                                                     className="size-24 rounded-md object-cover sm:size-48"
                                                 />
                                             </div>
