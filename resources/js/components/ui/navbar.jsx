@@ -83,7 +83,7 @@ export default function NavbarDesign() {
   const cleanup = useMobileNavigation();
 
   const page = usePage();
-  const { auth, categories } = page.props;
+  const { auth, categoriesMenu } = page.props;
   console.log(page.props);
   return (
     <div className="bg-white">
@@ -302,7 +302,7 @@ export default function NavbarDesign() {
                                 ))}
                               </div>
                               <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                {categories.map((category) => (
+                                {categoriesMenu.map((category) => (
                                   <div key={category.id}>
                                     <p id={`${category.name}-heading`} className="font-medium text-gray-900">
                                       {category.name}
