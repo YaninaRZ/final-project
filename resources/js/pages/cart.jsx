@@ -39,7 +39,11 @@ export default function CartStep1({ user, csrfToken }) {
             })),
         };
 
-        router.post('/orders-store', data);
+        router.post('/orders-store', data, {
+            onSuccess: () => {
+                clearCart(); // vide le panier après une commande réussie
+            },
+        });
     };
 
 
