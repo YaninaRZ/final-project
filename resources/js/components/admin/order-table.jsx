@@ -171,7 +171,9 @@ export default function OrderTable({ orders = [] }) {
 
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.id}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.created_at}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.client.name}</td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
+                                                {order.client?.name || order.customer_name || 'Unknown'}
+                                            </td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.status}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-[#68513F]">
                                                 <Link href={route('orders.show', order.id)}>See</Link>

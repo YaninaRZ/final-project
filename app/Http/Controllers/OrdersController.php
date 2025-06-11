@@ -21,6 +21,17 @@ class OrdersController extends Controller
         ]);
     }
 
+    public function dashboard()
+    {
+        $orders = Order::with('client', 'products')->get();
+
+        return Inertia::render('admin/dashboard', [
+            'orders' => $orders,
+        ]);
+    }
+
+
+
     public function myOrders()
     {
         $user = Auth::user();

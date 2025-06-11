@@ -46,6 +46,10 @@ Route::get('/cart', function () {
     return Inertia::render('cart');
 })->name('cart');
 
+
+
+
+
 Route::post('orders-store', [OrdersController::class, 'store'])->name('orders.store');
 Route::get('/client-orders', [OrdersController::class, 'clientOrders'])
     ->name('orders.clientOrders');
@@ -87,9 +91,8 @@ Route::get('/post-detail/{id}', function ($id) {
 Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
-        Route::get('dashboard', function () {
-            return Inertia::render('admin/dashboard');
-        })->name('dashboard');
+        Route::get('dashboard', [OrdersController::class, 'dashboard'])->name('dashboard');
+
 
         Route::get('all-products', [AllProductController::class, 'index'])->name('all-products');
         Route::post('all-products', [AllProductController::class, 'store'])->name('all-products.store');
