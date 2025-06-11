@@ -49,6 +49,10 @@ Route::get('/cart', function () {
 Route::post('orders-store', [OrdersController::class, 'store'])->name('orders.store');
 Route::get('/client-orders', [OrdersController::class, 'clientOrders'])
     ->name('orders.clientOrders');
+Route::get('/merci', function () {
+    return Inertia::render('client/thank-you');
+})->name('thank-you');
+
 
 ///////////////////////////////////////////////////////////////////////PAGES PRODUITS
 

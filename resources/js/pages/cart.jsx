@@ -139,6 +139,32 @@ export default function CartStep1({ user, csrfToken }) {
                                 <h2 id="summary-heading" className="text-lg font-medium text-gray-900">
                                     Order summary
                                 </h2>
+
+                                {!user && (
+                                    <div className="mt-6 space-y-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">Nom</label>
+                                            <input
+                                                type="text"
+                                                value={customerName}
+                                                onChange={(e) => setCustomerName(e.target.value)}
+                                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                                                required
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">Email</label>
+                                            <input
+                                                type="email"
+                                                value={customerEmail}
+                                                onChange={(e) => setCustomerEmail(e.target.value)}
+                                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+
                                 <dl className="mt-6 space-y-4">
                                     <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                                         <dt className="text-sm text-gray-600">Shipping</dt>

@@ -48,25 +48,26 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-
         $request->validate([
+            'customer_name' => 'required|string|max:255',
+            'customer_email' => 'required|email|max:255',
             'total_price' => 'required|numeric',
             'status' => 'nullable|string|max:100',
             'shipping_address' => 'nullable|string|max:500',
-
             'products' => 'required|array',
             'products.*.id' => 'required|exists:products,id',
             'products.*.quantity' => 'required|integer|min:1',
         ]);
 
+        $user = Auth::user();
+
         $order = Order::create([
-            'client_id' => $user->id,
-            'customer_name' => $user->name,
-            'customer_email' => $user->email,
+            'customer_name' => $request->customer_name,
+            'customer_email' => $request->customer_email,
             'total_price' => $request->total_price,
-            'status' => $request->status ?? 'pending',
-            'shipping_address' => $request->shipping_address ?? '',
+            'status' => $request->status,
+            'shipping_address' => $request->shipping_address,
+            'client_id' => $user ? $user->id : null, // null si invité
         ]);
 
         $productData = collect($request->products)->mapWithKeys(function ($product) {
@@ -77,8 +78,9 @@ class OrdersController extends Controller
 
         $order->products()->attach($productData);
 
-        return redirect()->route('orders.clientOrders')->with('success', 'Order created successfully.');
+        return redirect()->route($user ? 'orders.clientOrders' : 'thank-you')->with('success', 'Commande passée avec succès.');
     }
+
 
 
     /**
