@@ -21,6 +21,20 @@ class OrdersController extends Controller
         ]);
     }
 
+    public function myOrders()
+    {
+        $user = Auth::user();
+
+        // Récupérer uniquement les commandes du client connecté
+        $orders = Order::with('products')
+            ->where('customer_email', $user->email) // Ou 'user_id' si tu as une relation
+            ->get();
+
+        return Inertia::render('client/my-orders', [
+            'orders' => $orders,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -34,13 +48,12 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+
         $request->validate([
-            'customer_name' => 'required|string|max:255',
-            'customer_email' => 'required|email|max:255',
             'total_price' => 'required|numeric',
             'status' => 'nullable|string|max:100',
             'shipping_address' => 'nullable|string|max:500',
-            'order_items' => 'nullable|array',
 
             'products' => 'required|array',
             'products.*.id' => 'required|exists:products,id',
@@ -48,12 +61,12 @@ class OrdersController extends Controller
         ]);
 
         $order = Order::create([
-            'customer_name' => $request->customer_name,
-            'customer_email' => $request->customer_email,
+            'client_id' => $user->id,
+            'customer_name' => $user->name,
+            'customer_email' => $user->email,
             'total_price' => $request->total_price,
-            'status' => $request->status,
-            'shipping_address' => $request->shipping_address,
-            'order_items' => $request->order_items,
+            'status' => $request->status ?? 'pending',
+            'shipping_address' => $request->shipping_address ?? '',
         ]);
 
         $productData = collect($request->products)->mapWithKeys(function ($product) {
@@ -64,9 +77,9 @@ class OrdersController extends Controller
 
         $order->products()->attach($productData);
 
-
-        return redirect()->route('orders.index')->with('success', 'Order created successfully.');
+        return redirect()->route('orders.clientOrders')->with('success', 'Order created successfully.');
     }
+
 
     /**
      * Display the specified resource.

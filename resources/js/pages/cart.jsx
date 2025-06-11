@@ -2,8 +2,12 @@ import { CheckIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 import { useCart } from '@/hooks/use-cart';
 import GuestLayout from '@/layouts/guest-layout';
+import { router } from '@inertiajs/react';
 
-export default function CartStep1() {
+
+export default function CartStep1({ user, csrfToken }) {
+    const [customerName, setCustomerName] = useState(user?.name || '');
+    const [customerEmail, setCustomerEmail] = useState(user?.email || '');
     const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
     const [quantities, setQuantities] = useState({});
 
@@ -13,6 +17,32 @@ export default function CartStep1() {
     };
 
     const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const totalPrice =
+            cart.reduce(
+                (sum, item) => sum + item.sales_price * (quantities[item.id] ?? item.quantity),
+                0
+            ) + 5; // shipping
+
+        const data = {
+            customer_name: customerName,
+            customer_email: customerEmail,
+            total_price: totalPrice,
+            status: 'pending', // ou ce que tu souhaites
+            shipping_address: '', // si tu veux récupérer l'adresse, ajoute un champ dans le formulaire ou user.address
+            products: cart.map(product => ({
+                id: product.id,
+                quantity: quantities[product.id] ?? product.quantity,
+            })),
+        };
+
+        router.post('/orders-store', data);
+    };
+
+
 
     return (
         <GuestLayout>
@@ -34,7 +64,9 @@ export default function CartStep1() {
                     {cart.length === 0 ? (
                         <p className="mt-8 text-gray-500">Your cart is empty.</p>
                     ) : (
-                        <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+                        <form onSubmit={handleSubmit} className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+                            <input type="hidden" name="_token" value={csrfToken} />
+
                             <section aria-labelledby="cart-heading" className="lg:col-span-7">
                                 <ul role="list" className="divide-y divide-gray-200 border-t border-b border-gray-200">
                                     {cart.map((product, productIdx) => (
@@ -89,6 +121,7 @@ export default function CartStep1() {
                                                     <span>In stock</span>
                                                 </p>
                                             </div>
+
                                         </li>
                                     ))}
                                 </ul>
@@ -132,6 +165,6 @@ export default function CartStep1() {
                     )}
                 </div>
             </div>
-        </GuestLayout>
+        </GuestLayout >
     );
 }
