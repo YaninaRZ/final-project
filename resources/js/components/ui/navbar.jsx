@@ -39,35 +39,11 @@ const navigation = {
           imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
         },
       ],
-      sections: [
-        {
-          id: 'Face care',
-          name: 'Face care',
-          items: [
 
-            { name: 'Skinn Products', href: route('products.category', { category: 'skinn' }) },
-            { name: 'Masks', href: route('products.category', { category: 'masks' }) },
-          ],
-        },
-        {
-          id: 'Hair care',
-          name: 'Hair care',
-          items: [
-            { name: 'Shampoos', href: route('products.category', { category: 'shampoos' }) },
-          ],
-        },
-        {
-          id: 'Body care',
-          name: 'Body care',
-          items: [
-            { name: 'Body', href: route('products.category', { category: 'body' }) },
-          ],
-        },
-      ],
     },
   ],
   pages: [
-    { name: 'New', href: route('new-products') },
+    { name: 'Our Collection', href: route('our-collection') },
     { name: 'About', href: route('about') }
   ],
 }
@@ -127,45 +103,59 @@ export default function NavbarDesign() {
               </div>
               <TabPanels as={Fragment}>
                 {navigation.categories.map((category) => (
-                  <TabPanel key={category.name} className="space-y-10 px-4 pt-10 pb-8">
-                    <div className="grid grid-cols-2 gap-x-4">
+                  <TabPanel key={category.name} className="px-4 pb-8 pt-10">
+                    <div className="grid grid-cols-1 gap-6">
                       {category.featured.map((item) => (
-                        <div key={item.name} className="group relative text-sm">
-                          <img
-                            alt={item.imageAlt}
-                            src={item.imageSrc}
-                            className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
-                          />
-                          <Link href={item.href} className="mt-6 block font-medium text-gray-900">
-                            <span aria-hidden="true" className="absolute inset-0 z-10" />
-                            {item.name}
-                          </Link>
-                          <p aria-hidden="true" className="mt-1">
-                            Shop now
-                          </p>
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          onClick={() => setOpen(false)}
+                          className="group block"
+                        >
+
+                          <div className="aspect-square w-full rounded-lg overflow-hidden bg-gray-100">
+                            <img
+                              src={item.imageSrc}
+                              alt={item.imageAlt}
+                              className="h-full w-full object-cover group-hover:opacity-80 transition"
+                            />
+                          </div>
+                          <div className="mt-4 px-2">
+                            <p className="text-base font-medium text-gray-900">{item.name}</p>
+                            <p className="text-sm text-gray-500">Shop now</p>
+                          </div>
+
+                        </Link>
+                      ))}
+                    </div>
+
+
+
+                    {/* Add desktop categoriesMenu in mobile */}
+                    {/* --- Ajout des catégories du menu desktop dans le mobile --- */}
+                    <div className="mt-8 px-4">
+                      {categoriesMenu.map((cat) => (
+                        <div key={cat.id} className="mt-6">
+                          <p className="font-medium text-gray-900">{cat.name}</p>
+                          <ul className="mt-2 space-y-2">
+                            {cat.children.map((child) => (
+                              <li key={child.name}>
+                                <Link
+                                  href={route('products.category', { category: child.name.toLowerCase() })}
+                                  className="block text-gray-500 hover:text-gray-800 px-2 py-1"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  {child.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       ))}
                     </div>
-                    {category.sections.map((section) => (
-                      <div key={section.name}>
-                        <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-gray-900">
-                          {section.name}
-                        </p>
-                        <ul
-                          role="list"
-                          aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                          className="mt-6 flex flex-col space-y-6"
-                        >
-                          {section.items.map((item) => (
-                            <li key={item.name} className="flow-root">
-                              <Link href={item.href} className="-m-2 block p-2 text-gray-500">
-                                {item.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+
+
+
                   </TabPanel>
                 ))}
               </TabPanels>
@@ -184,18 +174,10 @@ export default function NavbarDesign() {
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               {auth.user ? (
                 <>
-                  {/* <Link
-                    href={route("user-account")}
-                    className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                  >
-                    User Account {auth.user.name}
-                  </Link> */}
-
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <div size="lg" className="text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent group">
                         <UserInfo user={auth.user} />
-                        {/* <ChevronsUpDown className="ml-auto size-4" /> */}
                       </div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
@@ -322,12 +304,6 @@ export default function NavbarDesign() {
                                     </ul>
                                   </div>
                                 ))}
-
-                                {/* {categories.map(category => <div>
-                                  {category.name}
-                                  {category.children.map(child => <p>{child.name}</p>)}
-                                </div>)} */}
-
                               </div>
                             </div>
                           </div>
@@ -361,18 +337,11 @@ export default function NavbarDesign() {
                       </Link>
                     ) : (
 
-                      // <Link
-                      //   href={route("user-account")}
-                      //   className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                      // >
-                      //   User Account {auth.user.name}
-                      // </Link>
 
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <div size="lg" className="text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent group cursor-pointer">
                             <UserInfo user={auth.user} />
-                            {/* <ChevronsUpDown className="ml-auto size-4" /> */}
                           </div>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent

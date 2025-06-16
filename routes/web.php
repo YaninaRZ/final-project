@@ -19,9 +19,9 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-Route::get('/new-products', function () {
-    return Inertia::render('new-products');
-})->name('new-products');
+Route::get('/our-collection', function () {
+    return Inertia::render('our-collection');
+})->name('our-collection');
 
 Route::get('/about', function () {
     return Inertia::render('about');

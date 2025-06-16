@@ -10,7 +10,6 @@ export default function NewProducts() {
     return (
         <GuestLayout>
             <Selection />
-            <ProductsGrid products={products.filter(product => product.category === 'skinn')} />
             <PhilosophySection />
             <TextHero />
         </GuestLayout>
