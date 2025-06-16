@@ -17,7 +17,7 @@ class AllProductController extends Controller
         $products = Product::with('category')->get();
         $categories = Category::all();
 
-        return Inertia::render('admin/all-products', [
+        return Inertia::render('admin/products', [
             'products' => $products,
             'categories' => $categories,
         ]);
@@ -73,7 +73,7 @@ class AllProductController extends Controller
             'category_id' => $request->category_id,
         ]);
 
-        return to_route('all-products');
+        return to_route('products');
     }
 
     /**

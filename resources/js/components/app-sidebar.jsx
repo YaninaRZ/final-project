@@ -14,8 +14,8 @@ const mainNavItems = [
         icon: LayoutGrid,
     },
     {
-        title: 'All Products',
-        url: '/admin/all-products',
+        title: 'Products',
+        url: '/admin/products',
         icon: Package,
     },
     {

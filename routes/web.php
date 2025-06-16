@@ -79,7 +79,7 @@ Route::get('/products/category/{category}', function ($category) { // category =
     return Inertia::render('products/index', ['products' => $products]);
 })->name('products.category');
 
-Route::get('/products', [AllProductController::class, 'clientIndex'])->name('products');
+Route::get('/products', [AllProductController::class, 'clientIndex'])->name('collection');
 
 
 
@@ -106,11 +106,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         Route::get('dashboard', [OrdersController::class, 'dashboard'])->name('dashboard');
 
 
-        Route::get('all-products', [AllProductController::class, 'index'])->name('all-products');
-        Route::post('all-products', [AllProductController::class, 'store'])->name('all-products.store');
-        Route::put('all-products/{allProduct}', [AllProductController::class, 'update'])->name('all-products.update');
-        Route::get('all-products/{allProduct}', [AllProductController::class, 'show'])->name('product-detail');
-        Route::delete('all-products/{allProduct}', [AllProductController::class, 'destroy'])->name('all-products.destroy');
+        Route::get('products', [AllProductController::class, 'index'])->name('products');
+        Route::post('products', [AllProductController::class, 'store'])->name('products.store');
+        Route::put('products/{allProduct}', [AllProductController::class, 'update'])->name('products.update');
+        Route::get('products/{allProduct}', [AllProductController::class, 'show'])->name('product-detail');
+        Route::delete('products/{allProduct}', [AllProductController::class, 'destroy'])->name('products.destroy');
 
         Route::get('order-list', [OrdersController::class, 'index'])->name('order-list');
         Route::get('orders/{order}', [OrdersController::class, 'show'])->name('orders.show');

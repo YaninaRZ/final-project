@@ -22,7 +22,7 @@ export default function DataColumns({ product, categories }) {
 
     const submit = (e) => {
         e.preventDefault();
-        put(route('all-products.update', product.id), {
+        put(route('products.update', product.id), {
             data,
             onSuccess: () => setEditMode(false),
         });

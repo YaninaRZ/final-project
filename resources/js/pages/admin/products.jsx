@@ -4,14 +4,14 @@ import { Head } from '@inertiajs/react';
 
 const breadcrumbs = [
     {
-        title: 'All Products',
+        title: 'Products',
     },
 ];
 
 export default function orderedProducts({ products, categories }) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="All Products" />
+            <Head title="Products" />
             <div className="max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                 <h1 className="text-3xl font-bold tracking-tight text-gray-900">All Products</h1>
                 <p className="mt-4 max-w-xl text-sm text-gray-700">

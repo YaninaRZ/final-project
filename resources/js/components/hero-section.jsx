@@ -31,7 +31,7 @@ export default function HeroSection() {
                     <p className="text-black-500 mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">Discover The Beauty Within</p>
                     <div className="mt-8">
 
-                        <Link href={route('products')} className="w-full rounded-md border border-solid border-stone-300 bg-stone-200 px-16 py-3.5">
+                        <Link href={route('collection')} className="w-full rounded-md border border-solid border-stone-300 bg-stone-200 px-16 py-3.5">
                             View collection
                         </Link>
                     </div>

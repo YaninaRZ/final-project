@@ -36,7 +36,7 @@ export default function ProductListCard({ products, categories }) {
     const handleDeleteProduct = () => {
         if (!selectedProduct) return;
 
-        deleteProduct(route('all-products.destroy', selectedProduct.id), {
+        deleteProduct(route('products.destroy', selectedProduct.id), {
             onFinish: () => {
                 setDeleteDialogOpen(false);
                 setSelectedProduct(null);
@@ -60,7 +60,7 @@ export default function ProductListCard({ products, categories }) {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('all-products.store'), {
+        post(route('products.store'), {
             onFinish: () => {
                 reset(
                     'name',
@@ -263,14 +263,7 @@ export default function ProductListCard({ products, categories }) {
                                     <dt className="text-gray-500">Remaining Products</dt>
                                     <dd className="flex items-start gap-x-2">
                                         <div className="font-medium text-gray-900">{product.sales_remaining_products}</div>
-                                        <div
-                                            className={classNames(
-                                                statuses[product.sales_quantity],
-                                                'rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset',
-                                            )}
-                                        >
-                                            {product.sales_quantity}
-                                        </div>
+
                                     </dd>
                                 </div>
                             </dl>
