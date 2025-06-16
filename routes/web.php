@@ -4,6 +4,7 @@ use App\Http\Controllers\AllProductController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPasswordController;
@@ -50,13 +51,24 @@ Route::get('/cart', function () {
 
 
 
-Route::post('orders-store', [OrdersController::class, 'store'])->name('orders.store');
+///////////////////////////////////////////////////////////////////////COMMANDES
+Route::post('orders-store', [OrdersController::class, 'store'])
+    ->name('orders.store');
+
 Route::get('/client-orders', [OrdersController::class, 'clientOrders'])
     ->name('orders.clientOrders');
+
 Route::get('/merci', function () {
     return Inertia::render('client/thank-you');
 })->name('thank-you');
 
+
+///////////////////////////////////////////////////////////////////////STRIPE PYAMENT
+// Route::middleware(['auth'])->group(function () {
+Route::post('/checkout', [CheckoutController::class, 'create'])->name('checkout.pay');
+Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/cancel', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
+// });
 
 ///////////////////////////////////////////////////////////////////////PAGES PRODUITS
 

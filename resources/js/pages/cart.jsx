@@ -11,6 +11,11 @@ export default function CartStep1({ user, csrfToken }) {
     const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
     const [quantities, setQuantities] = useState({});
 
+    ///////////////////////////////////////// ZONE DE JEU POUR LA PETITE
+
+
+    ////////////////////////////////////////////////////////////////////
+
     const handleQuantityChange = (productId, qty) => {
         setQuantities((prev) => ({ ...prev, [productId]: qty }));
         updateQuantity(productId, parseInt(qty));
@@ -18,33 +23,52 @@ export default function CartStep1({ user, csrfToken }) {
 
     const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const totalPrice =
             cart.reduce(
                 (sum, item) => sum + item.sales_price * (quantities[item.id] ?? item.quantity),
                 0
-            ) + 5; // shipping
+            ) + 5;
+
+        const products = cart.map(product => ({
+            id: product.id,
+            quantity: quantities[product.id] ?? product.quantity,
+        }));
 
         const data = {
-            customer_name: customerName,
-            customer_email: customerEmail,
+            customer_name: user?.name || customerName,
+            customer_email: user?.email || customerEmail,
             total_price: totalPrice,
-            status: 'pending', // ou ce que tu souhaites
-            shipping_address: '', // si tu veux récupérer l'adresse, ajoute un champ dans le formulaire ou user.address
-            products: cart.map(product => ({
-                id: product.id,
-                quantity: quantities[product.id] ?? product.quantity,
-            })),
+            status: 'pending',
+            shipping_address: '',
+            products: products,
         };
 
-        router.post('/orders-store', data, {
-            onSuccess: () => {
-                clearCart(); // vide le panier après une commande réussie
-            },
-        });
+
+        try {
+            // Étape 1 : enregistrer la commande en base
+            router.post('/orders-store', data, {
+                preserveScroll: true,
+                onSuccess: async () => {
+                    clearCart();
+
+                    // équivalent de fetch
+                    router.post(route('checkout.pay'), {
+                        products,
+                        total_price: totalPrice,
+                        customer_email: user?.email || customerEmail,
+                        customer_name: user?.name || customerName,
+                    })
+                },
+            });
+        } catch (error) {
+            console.error('Erreur lors du paiement Stripe :', error);
+        }
     };
+
+
 
 
 

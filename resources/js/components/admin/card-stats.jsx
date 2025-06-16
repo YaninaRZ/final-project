@@ -1,30 +1,40 @@
+import { usePage } from '@inertiajs/react'
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/20/solid'
-import { CursorArrowRaysIcon, EnvelopeOpenIcon, UsersIcon } from '@heroicons/react/24/outline';
+import { CursorArrowRaysIcon, EnvelopeOpenIcon, UsersIcon } from '@heroicons/react/24/outline'
 
-const stats = [
-  { id: 1, name: 'Total Orders', stat: '71,897', icon: UsersIcon, change: '122', changeType: 'increase' },
-  { id: 2, name: 'Active Orders', stat: '58.16%', icon: EnvelopeOpenIcon, change: '5.4%', changeType: 'increase' },
-  { id: 3, name: 'Completed Orders', stat: '24.57%', icon: CursorArrowRaysIcon, change: '3.2%', changeType: 'decrease' },
-  { id: 4, name: 'Return Orders', stat: '24.57%', icon: CursorArrowRaysIcon, change: '3.2%', changeType: 'decrease' },
-]
+const iconMap = {
+  totalOrders: UsersIcon,
+  activeOrders: EnvelopeOpenIcon,
+  completedOrders: CursorArrowRaysIcon,
+  returnOrders: CursorArrowRaysIcon,
+}
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function StatsCard() {
+  const { stats } = usePage().props
+
+  const statsArray = [
+    { id: 1, name: 'Total Orders', stat: stats.totalOrders, icon: iconMap.totalOrders, change: '122', changeType: 'increase' },
+    { id: 2, name: 'Active Orders', stat: stats.activeOrders, icon: iconMap.activeOrders, change: '5.4%', changeType: 'increase' },
+    { id: 3, name: 'Completed Orders', stat: stats.completedOrders, icon: iconMap.completedOrders, change: '3.2%', changeType: 'decrease' },
+    { id: 4, name: 'Return Orders', stat: stats.returnOrders, icon: iconMap.returnOrders, change: '3.2%', changeType: 'decrease' },
+  ]
+
   return (
     <div>
       <h3 className="text-base font-semibold text-gray-900">Last 30 days</h3>
 
       <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map((item) => (
+        {statsArray.map((item) => (
           <div
             key={item.id}
             className="relative overflow-hidden rounded-lg bg-[#FAFAFA] px-4 pt-5 pb-12 shadow-sm sm:px-6 sm:pt-6"
           >
             <dt>
-              <div className="absolute rounded-md bg-[#82684c] p-3">  
+              <div className="absolute rounded-md bg-[#82684c] p-3">
                 <item.icon aria-hidden="true" className="size-6 text-white" />
               </div>
               <p className="ml-16 truncate text-sm font-medium text-gray-500">{item.name}</p>
@@ -46,7 +56,6 @@ export default function StatsCard() {
                 <span className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
                 {item.change}
               </p>
-             
             </dd>
           </div>
         ))}

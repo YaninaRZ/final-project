@@ -2,32 +2,32 @@
 import { Link, useForm } from '@inertiajs/react';
 import { useLayoutEffect, useRef, useState } from 'react';
 import AdminFilter from './filter';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
 export default function OrderTable({ orders = [] }) {
-
     const checkbox = useRef();
 
-    const orderList = orders.orders || [];
+    const orderList = Array.isArray(orders) ? orders : (orders.orders || []);
 
     const [checked, setChecked] = useState(false);
     const [indeterminate, setIndeterminate] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState([]);
 
     useLayoutEffect(() => {
-        const isIndeterminate = selectedOrder.length > 0 && selectedOrder.length < order.length;
-        setChecked(selectedOrder.length === orders.length);
+        const isIndeterminate = selectedOrder.length > 0 && selectedOrder.length < orderList.length;
+        setChecked(selectedOrder.length === orderList.length);
         setIndeterminate(isIndeterminate);
         if (checkbox.current) {
             checkbox.current.indeterminate = isIndeterminate;
         }
-    }, [selectedOrder, orders]);
+    }, [selectedOrder, orderList]);
 
     function toggleAll() {
-        setSelectedOrder(checked || indeterminate ? [] : [...orders]);
+        setSelectedOrder(checked || indeterminate ? [] : [...orderList]);
         setChecked(!checked && !indeterminate);
         setIndeterminate(false);
     }
@@ -41,7 +41,20 @@ export default function OrderTable({ orders = [] }) {
         Amount: '',
     });
 
-    console.log(orders);
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 15;
+    const totalItems = orderList.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentOrders = orderList.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Pour afficher les pages numérotées — simple logique pour afficher de 1 à totalPages (on peut améliorer si besoin)
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+    }
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
@@ -52,6 +65,7 @@ export default function OrderTable({ orders = [] }) {
                     <p className="mt-2 text-sm text-gray-700">A list of all the recent orders</p>
                 </div>
             </div>
+
             <div className="mt-8 flow-root">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -61,11 +75,7 @@ export default function OrderTable({ orders = [] }) {
                                     <button
                                         type="button"
                                         className="inline-flex items-center rounded-sm bg-white px-2 py-1 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white"
-                                        onClick={() => {
-                                            // exemple suppression multiple
-                                            // tu peux appeler une fonction delete ici
-                                            alert(`Delete ${selectedOrder.length} orders`);
-                                        }}
+                                        onClick={() => alert(`Delete ${selectedOrder.length} orders`)}
                                         disabled={processing}
                                     >
                                         Delete all
@@ -125,11 +135,8 @@ export default function OrderTable({ orders = [] }) {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
-                                    {orderList.map((order) => (
-                                        <tr
-                                            key={order.id}
-                                            className={selectedOrder.includes(order) ? 'bg-gray-50' : undefined}
-                                        >
+                                    {currentOrders.map((order) => (
+                                        <tr key={order.id} className={selectedOrder.includes(order) ? 'bg-gray-50' : undefined}>
                                             <td className="relative px-7 sm:w-12 sm:px-6">
                                                 {selectedOrder.includes(order) && <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />}
                                                 <div className="group absolute top-1/2 left-4 -mt-2 grid size-4 grid-cols-1">
@@ -140,9 +147,7 @@ export default function OrderTable({ orders = [] }) {
                                                         checked={selectedOrder.includes(order)}
                                                         onChange={(e) =>
                                                             setSelectedOrder(
-                                                                e.target.checked
-                                                                    ? [...selectedOrder, order]
-                                                                    : selectedOrder.filter((o) => o !== order)
+                                                                e.target.checked ? [...selectedOrder, order] : selectedOrder.filter((o) => o !== order)
                                                             )
                                                         }
                                                     />
@@ -171,9 +176,7 @@ export default function OrderTable({ orders = [] }) {
 
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.id}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.created_at}</td>
-                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                                                {order.client?.name || order.customer_name || 'Unknown'}
-                                            </td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.client?.name || order.customer_name || 'Unknown'}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">{order.status}</td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-[#68513F]">
                                                 <Link href={route('orders.show', order.id)}>See</Link>
@@ -182,6 +185,63 @@ export default function OrderTable({ orders = [] }) {
                                     ))}
                                 </tbody>
                             </table>
+
+                            {/* Pagination styled */}
+                            <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-6">
+                                <div>
+                                    <p className="text-sm text-gray-700">
+                                        Showing <span className="font-medium">{indexOfFirstItem + 1}</span> to{' '}
+                                        <span className="font-medium">{Math.min(indexOfLastItem, totalItems)}</span> of{' '}
+                                        <span className="font-medium">{totalItems}</span> results
+                                    </p>
+                                </div>
+                                <div>
+                                    <nav
+                                        className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                                        aria-label="Pagination"
+                                    >
+                                        <button
+                                            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                                            disabled={currentPage === 1}
+                                            className={classNames(
+                                                'relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0',
+                                                currentPage === 1 && 'cursor-not-allowed opacity-50'
+                                            )}
+                                        >
+                                            <span className="sr-only">Previous</span>
+                                            <ChevronLeftIcon className="size-5 h-5 w-5" aria-hidden="true" />
+                                        </button>
+
+                                        {pages.map((page) => (
+                                            <button
+                                                key={page}
+                                                onClick={() => setCurrentPage(page)}
+                                                aria-current={page === currentPage ? 'page' : undefined}
+                                                className={classNames(
+                                                    page === currentPage
+                                                        ? 'z-10 bg-[#82684c]  text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:[#82684c] '
+                                                        : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0',
+                                                    'relative inline-flex items-center px-4 py-2 text-sm font-semibold'
+                                                )}
+                                            >
+                                                {page}
+                                            </button>
+                                        ))}
+
+                                        <button
+                                            onClick={() => setCurrentPage(() => Math.min(p + 1, totalPages))}
+                                            disabled={currentPage === totalPages}
+                                            className={classNames(
+                                                'relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0',
+                                                currentPage === totalPages && 'cursor-not-allowed opacity-50'
+                                            )}
+                                        >
+                                            <span className="sr-only">Next</span>
+                                            <ChevronRightIcon className="size-5 h-5 w-5" aria-hidden="true" />
+                                        </button>
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
