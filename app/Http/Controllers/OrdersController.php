@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -28,28 +29,45 @@ class OrdersController extends Controller
             'returnOrders' => Order::where('status', 'returned')->count(),
         ];
 
-        return Inertia::render('admin/dashboard', [
-            'orders' => $orders,
-            'stats' => $stats,
-        ]);
-    }
-    public function showSalesDashboard()
-    {
-        $monthlySales = Order::selectRaw('MONTH(created_at) as month, SUM(total_price) as total_sales')
-            ->whereYear('created_at', 2025)
+        $monthlySales = DB::table('orders')
+            ->join('order_product', 'orders.id', '=', 'order_product.order_id')
+            ->join('products', 'order_product.product_id', '=', 'products.id')
+            ->selectRaw("CAST(strftime('%m', orders.created_at) AS INTEGER) as month, SUM(order_product.quantity * products.sales_price) as total_sales")
+            ->whereYear('orders.created_at', 2025)
             ->groupBy('month')
             ->orderBy('month')
             ->pluck('total_sales', 'month');
+
 
         $completeMonthlySales = [];
         for ($i = 1; $i <= 12; $i++) {
             $completeMonthlySales[$i] = $monthlySales[$i] ?? 0;
         }
 
-        return Inertia::render('Dashboard', [
-            'sales2025' => array_values($completeMonthlySales),
+        return Inertia::render('admin/dashboard', [
+            'orders' => $orders,
+            'stats' => $stats,
+            'sales2025' => array_values($completeMonthlySales), // ✅ Ajouté ici
         ]);
     }
+
+    // public function showSalesDashboard()
+    // {
+    //     $monthlySales = Order::selectRaw('MONTH(created_at) as month, SUM(total_price) as total_sales')
+    //         ->whereYear('created_at', 2025)
+    //         ->groupBy('month')
+    //         ->orderBy('month')
+    //         ->pluck('total_sales', 'month');
+
+    //     $completeMonthlySales = [];
+    //     for ($i = 1; $i <= 12; $i++) {
+    //         $completeMonthlySales[$i] = $monthlySales[$i] ?? 0;
+    //     }
+
+    //     return Inertia::render('Dashboard', [
+    //         'sales2025' => array_values($completeMonthlySales),
+    //     ]);
+    // }
 
 
     public function myOrders()

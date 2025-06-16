@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from "react";
-import { usePage } from '@inertiajs/react';  // <-- pour récupérer les props Inertia
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import merge from "deepmerge";
 

@@ -18,9 +18,7 @@ export default function StatsCard() {
 
   const statsArray = [
     { id: 1, name: 'Total Orders', stat: stats.totalOrders, icon: iconMap.totalOrders, change: '122', changeType: 'increase' },
-    { id: 2, name: 'Active Orders', stat: stats.activeOrders, icon: iconMap.activeOrders, change: '5.4%', changeType: 'increase' },
     { id: 3, name: 'Completed Orders', stat: stats.completedOrders, icon: iconMap.completedOrders, change: '3.2%', changeType: 'decrease' },
-    { id: 4, name: 'Return Orders', stat: stats.returnOrders, icon: iconMap.returnOrders, change: '3.2%', changeType: 'decrease' },
   ]
 
   return (

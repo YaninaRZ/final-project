@@ -13,6 +13,8 @@ const breadcrumbs = [
 
 export default function Dashboard({ stats, orders }) {
     const { sales2025 } = usePage().props;
+    console.log("Données des ventes 2025 :", sales2025); // <-- DEBUG
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
