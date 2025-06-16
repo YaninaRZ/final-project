@@ -23,11 +23,14 @@ class OrdersController extends Controller
         $orders = Order::with('client', 'products')->get();
 
         $stats = [
-            'totalOrders' => Order::count(),
+            'totalOrders' => Order::whereIn('status', ['pending', 'paid'])->count(),
+            'pendingOrders' => Order::where('status', 'pending')->count(),
+            'paidOrders' => Order::where('status', 'paid')->count(),
             'activeOrders' => Order::where('status', 'active')->count(),
             'completedOrders' => Order::where('status', 'completed')->count(),
             'returnOrders' => Order::where('status', 'returned')->count(),
         ];
+
 
         $monthlySales = DB::table('orders')
             ->join('order_product', 'orders.id', '=', 'order_product.order_id')

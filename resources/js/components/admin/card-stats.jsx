@@ -1,5 +1,5 @@
 import { usePage } from '@inertiajs/react'
-import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/20/solid'
+import { ArrowDownIcon, ArrowPathIcon, ArrowUpIcon } from '@heroicons/react/20/solid'
 import { CursorArrowRaysIcon, EnvelopeOpenIcon, UsersIcon } from '@heroicons/react/24/outline'
 
 const iconMap = {
@@ -7,6 +7,8 @@ const iconMap = {
   activeOrders: EnvelopeOpenIcon,
   completedOrders: CursorArrowRaysIcon,
   returnOrders: CursorArrowRaysIcon,
+  pendingOrders: ArrowPathIcon,  // <- icône arbitraire, à changer si tu veux
+  paidOrders: EnvelopeOpenIcon,  // <- icône arbitraire, à changer si tu veux
 }
 
 function classNames(...classes) {
@@ -17,9 +19,11 @@ export default function StatsCard() {
   const { stats } = usePage().props
 
   const statsArray = [
-    { id: 1, name: 'Total Orders', stat: stats.totalOrders, icon: iconMap.totalOrders, change: '122', changeType: 'increase' },
-    { id: 3, name: 'Completed Orders', stat: stats.completedOrders, icon: iconMap.completedOrders, change: '3.2%', changeType: 'decrease' },
-  ]
+    { id: 1, name: 'Total Orders', stat: stats.totalOrders, icon: iconMap.totalOrders },
+    { id: 2, name: 'Pending Orders', stat: stats.pendingOrders, icon: iconMap.pendingOrders },
+    { id: 3, name: 'Paid Orders', stat: stats.paidOrders, icon: iconMap.paidOrders },
+    { id: 4, name: 'Completed Orders', stat: stats.totalOrders, icon: iconMap.completedOrders, change: '3.2%' },
+  ];
 
   return (
     <div>
@@ -39,21 +43,7 @@ export default function StatsCard() {
             </dt>
             <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
               <p className="text-2xl font-semibold text-gray-900">{item.stat}</p>
-              <p
-                className={classNames(
-                  item.changeType === 'increase' ? 'text-[#232321]' : 'text-red-600',
-                  'ml-2 flex items-baseline text-sm font-semibold',
-                )}
-              >
-                {item.changeType === 'increase' ? (
-                  <ArrowUpIcon aria-hidden="true" className="size-5 shrink-0 self-center text-[#232321]" />
-                ) : (
-                  <ArrowDownIcon aria-hidden="true" className="size-5 shrink-0 self-center text-red-500" />
-                )}
 
-                <span className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
-                {item.change}
-              </p>
             </dd>
           </div>
         ))}
