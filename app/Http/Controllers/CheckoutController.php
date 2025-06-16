@@ -13,39 +13,41 @@ class CheckoutController extends Controller
 {
     public function create(Request $request)
     {
-
         Stripe::setApiKey(env('STRIPE_KEY'));
 
-        // Récupère la dernière commande de l'utilisateur (à adapter si besoin)
-        $order = Order::where('client_id', Auth::id())
-            ->latest() // retourne un tableau 
-            ->first(); // retourne le premier élément du tableau
-
+        $order = Order::where('client_id', Auth::id())->latest()->first();
 
         if (!$order) {
             abort(404, 'Aucune commande trouvée.');
         }
 
-        // Session = lien de paiement Stripe
-        $session = Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [[
+        // Générer les produits pour Stripe
+        $lineItems = [];
+
+        foreach ($order->products as $product) {
+            $lineItems[] = [
                 'price_data' => [
                     'currency' => 'eur',
                     'product_data' => [
-                        'name' => 'Commande #' . $order->id,
+                        'name' => $product->name,
                     ],
-                    'unit_amount' => 12 * 100, // montant en centimes
+                    'unit_amount' => $product->sales_price * 100, // En centimes
                 ],
-                'quantity' => 1,
-            ]],
-            'mode' => 'payment', // subscription or payment
+                'quantity' => $product->pivot->quantity,
+            ];
+        }
+
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => $lineItems,
+            'mode' => 'payment',
             'success_url' => route('checkout.success'),
             'cancel_url' => route('checkout.cancel'),
         ]);
 
         return Inertia::location($session->url);
     }
+
 
     public function success()
     {

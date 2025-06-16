@@ -11,10 +11,6 @@ export default function CartStep1({ user, csrfToken }) {
     const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
     const [quantities, setQuantities] = useState({});
 
-    ///////////////////////////////////////// ZONE DE JEU POUR LA PETITE
-
-
-    ////////////////////////////////////////////////////////////////////
 
     const handleQuantityChange = (productId, qty) => {
         setQuantities((prev) => ({ ...prev, [productId]: qty }));
