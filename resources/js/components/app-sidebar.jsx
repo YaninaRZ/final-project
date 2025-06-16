@@ -50,7 +50,7 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href={route('dashboard')} prefetch>
+                            <Link href={route('home')} prefetch>
                                 <span className="sr-only">Skinn</span>
                                 <img alt="" src="/images/Skinn.svg" className="h-8 w-auto" />
                             </Link>

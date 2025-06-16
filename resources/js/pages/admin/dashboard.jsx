@@ -1,5 +1,5 @@
 import AppLayout from '@/layouts/app-layout';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import StatsCard from '@/components/admin/card-stats';
 import LineChart from '@/components/admin/line-chart';
 import OrderTable from '@/components/admin/order-table';
@@ -12,8 +12,7 @@ const breadcrumbs = [
 ];
 
 export default function Dashboard({ stats, orders }) {
-    console.log('Dashboard stats:', stats);
-    console.log('Dashboard orders:', orders);
+    const { sales2025 } = usePage().props;
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
@@ -27,7 +26,7 @@ export default function Dashboard({ stats, orders }) {
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 <StatsCard stats={stats} />
                 <div className="relative min-h-[100vh] flex-1 overflow-hidden">
-                    <LineChart></LineChart>
+                    <LineChart sales2025={sales2025} />
                     <OrderTable orders={orders} />
                 </div>
             </div>

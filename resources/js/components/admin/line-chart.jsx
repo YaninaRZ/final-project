@@ -58,10 +58,9 @@ function AreaChart({ height = 350, series, colors, options }) {
   );
 }
 
-export default function LineChart() {
+export default function LineChart({ sales2025 }) {
 
-  // Ici tu récupères tes données passées par Laravel via Inertia
-  const { sales2025 } = usePage().props;
+
   console.log(sales2025);
   // Prépare la série avec les vraies données
   const series = [

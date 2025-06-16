@@ -33,10 +33,9 @@ class OrdersController extends Controller
             'stats' => $stats,
         ]);
     }
-
     public function showSalesDashboard()
     {
-        $monthlySales = Order::selectRaw('MONTH(created_at) as month, SUM(total) as total_sales')
+        $monthlySales = Order::selectRaw('MONTH(created_at) as month, SUM(total_price) as total_sales')
             ->whereYear('created_at', 2025)
             ->groupBy('month')
             ->orderBy('month')
@@ -51,6 +50,7 @@ class OrdersController extends Controller
             'sales2025' => array_values($completeMonthlySales),
         ]);
     }
+
 
     public function myOrders()
     {
