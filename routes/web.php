@@ -92,7 +92,7 @@ Route::get('/products/{id}', function ($id) {
     ]);
 })->name('products.show');
 
-
+// a modifier 
 Route::get('/post-detail/{id}', function ($id) {
     return Inertia::render('post-detail', ['id' => $id]);
 })->name('post-detail');
