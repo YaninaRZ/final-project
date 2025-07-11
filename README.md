@@ -17,7 +17,7 @@ Avant de commencer, assurez-vous d’avoir installé les outils suivants :
 1. **Cloner le projet**
    ```bash
    git clone https://github.com/YaninaRZ/final-project.git
-2. ** Installer Node.js**
+2. **Installer Node.js**
 3. **Modifier le fichier .env**
 ➔ Renseigner la clé de connexion à la base de données
 4. **Installer les dépendances Node.js**
