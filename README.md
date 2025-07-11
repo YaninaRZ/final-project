@@ -13,9 +13,9 @@ Avant de commencer, assurez-vous d’avoir installé les outils suivants :
 ## Installation
 
 1. **Cloner le projet**
-   ```bash
-   git clone https://github.com/YaninaRZ/final-project.git
-    ```
+```bash
+git clone https://github.com/YaninaRZ/final-project.git
+```
 3. **Créer et Modifier le fichier .env depuis .env.example**
 ➔ Renseigner la clé de connexion à la base de données
 4. **Installer les dépendances PHP**
