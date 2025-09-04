@@ -7,6 +7,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Déclaration de la font (via Google Fonts ou fichier local) */
+@font-face {
+    font-family: "Style Script";
+    src: url("/resources/fonts/StyleScript-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @layer utilities {
+    .font-style { font-family: "Style Script", cursive; }
+  }
+
 @theme {
     --font-sans:
         'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';

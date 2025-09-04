@@ -1,8 +1,9 @@
 'use client';
+import { Link } from '@inertiajs/react'
 
 import { usePage } from '@inertiajs/react';
-import ClientLayout from '../../layouts/client-layout';
-import { CreditCardIcon, KeyIcon, Link, UserCircleIcon } from 'lucide-react';
+import ClientLayout from '@/layouts/client-layout.jsx';
+import { CreditCard as CreditCardIcon, Key as KeyIcon, Link as LinkChainIcon, UserCircle as UserCircleIcon } from 'lucide-react';
 import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 
 
@@ -124,9 +125,9 @@ export default function ViewOrder() {
                 </section>
 
                 <p className="mt-8 text-center">
-                    <a href="/user-billing" className="inline-block text-blue-600 hover:underline font-semibold">
+                    <Link href="/user-billing" className="inline-block text-blue-600 hover:underline font-semibold">
                         ← Back to orders
-                    </a>
+                    </Link>
                 </p>
             </div>
 

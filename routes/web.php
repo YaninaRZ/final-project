@@ -9,10 +9,12 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPasswordController;
 use App\Http\Middleware\RoleMiddleware;
+use App\Http\Controllers\CartController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
 ///////////////////////////////////////////////////////////////////////NON CONNECTÉ
 
 Route::get('/', function () {
@@ -42,13 +44,16 @@ Route::get('/privacy-policy', function () {
 Route::get('/licence', function () {
     return Inertia::render('licence');
 })->name('licence');
+///////////////////////////////////////////////////////////////////////CART
 
 Route::get('/cart', function () {
     return Inertia::render('cart');
 })->name('cart');
 
-
-
+////////////////////////////////Routes compteur panier
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 
 ///////////////////////////////////////////////////////////////////////COMMANDES
@@ -100,7 +105,7 @@ Route::get('/post-detail/{id}', function ($id) {
 
 ///////////////////////////////////////////////////////////////////////ROUTES ADMIN
 
-Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin', 'verified'])->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('dashboard', [OrdersController::class, 'dashboard'])->name('dashboard');

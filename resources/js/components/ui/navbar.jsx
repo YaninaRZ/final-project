@@ -60,6 +60,9 @@ export default function NavbarDesign() {
 
   const page = usePage();
   const { auth, categoriesMenu } = page.props;
+  const { cartCount = 0 } = usePage().props;
+
+
   console.log(page.props);
   return (
     <div className="bg-white">
@@ -398,15 +401,32 @@ export default function NavbarDesign() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <Link href={route('cart')} className="group -m-2 flex items-center p-2">
+                  <Link href={route('cart')} className="group -m-2 flex items-center p-2 relative">
                     <ShoppingBagIcon
                       aria-hidden="true"
                       className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
+                    <span className="sr-only">
+                      {cartCount} items in cart, view bag
+                    </span>
 
-                    <span className="sr-only">items in cart, view bag</span>
+                    {cartCount > 0 && (
+                      <span
+                        className="
+          absolute -top-1 -right-1
+          inline-flex items-center justify-center
+          rounded-full text-[10px] font-semibold leading-none
+          h-4 min-w-4 px-1
+          bg-black text-white
+        "
+                        aria-label={`${cartCount} items in cart`}
+                      >
+                        {cartCount > 99 ? '99+' : cartCount}
+                      </span>
+                    )}
                   </Link>
                 </div>
+
               </div>
             </div>
           </div>

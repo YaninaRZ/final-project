@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 const navigation = {
     pages: [
         { name: 'Home', href: '/' },
-        { name: 'Shop all', href: '/shop-all' },
+        { name: 'Shop all', href: '/products' },
         { name: 'About', href: '/about' },
         { name: 'Contact Us', href: '/contact' },
     ],
