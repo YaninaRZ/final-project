@@ -5,10 +5,14 @@ export default function HeroSectionMain() {
         <div className="px-6 pt-10 pb-24 sm:pb-32 lg:col-span-7 lg:px-0 lg:pt-40 lg:pb-48 xl:col-span-6 h-full">
           <div className="mx-auto max-w-lg lg:mx-0 h-full flex flex-col justify-center">
 
-            <h1 className="mt-24 text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:mt-10 sm:text-7xl">
-              Skinn-inspired
-              care
+            <h1 className="mt-24 text-7xl font-normal tracking-tight text-pretty text-gray-900 sm:mt-10 sm:text-7xl">
+              <span className="font-style text-[90px] leading-[110px] sm:text-[110px] sm:leading-[120px]">
+                Skinn
+              </span>
+              -inspired care
             </h1>
+
+
           </div>
         </div>
         <div className="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0 h-full">

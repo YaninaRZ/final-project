@@ -3,6 +3,12 @@ export default function ContactForm() {
         <div className="flex min-h-screen flex-col items-center justify-center p-4">
             <img src="/images/sideeye.svg" alt="Contact Illustration" className="mb-8 h-auto w-full object-cover" />
 
+
+            <h2 className="font-style text-[90px] leading-[80px] text-gray-900 mb-8 text-center">
+                Contact Form
+            </h2>
+
+
             <form className="w-full max-w-4xl bg-white p-8">
                 <div className="space-y-12">
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
