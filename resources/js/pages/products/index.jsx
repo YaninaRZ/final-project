@@ -23,7 +23,7 @@ export default function ProductIndex() {
 
                 {Object.entries(productsByCategory).map(([category, products]) => (
                     <div key={category} className="mb-10 w-full">
-                        <h2 className="mb-6 text-2xl">{category}</h2>
+                        <h2 className="mb-6 text-2xl pl-23">{category}</h2>
                         <ProductsGrid products={products} />
                     </div>
                 ))}
