@@ -12,7 +12,12 @@ use Illuminate\Validation\Rules;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @group Users
+     * Lister les clients
+     *
+     * Retourne la liste des utilisateurs avec le rôle "client".
+     * @authenticated
+     * @response 200 {"component":"admin/client","props":{"clients":[{"id":1,"name":"Alice"}]}}
      */
     public function index()
     {
@@ -29,7 +34,15 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @group Users
+     * Créer un nouvel utilisateur
+     *
+     * Crée un nouvel utilisateur avec nom, email et mot de passe.
+     * @authenticated
+     * @bodyParam name string required Nom complet de l’utilisateur. Example: Alice Martin
+     * @bodyParam email string required Email unique. Example: alice@example.com
+     * @bodyParam password string required Mot de passe. Example: secret123
+     * @response 302 Redirection vers la liste des clients avec message de succès.
      */
     public function store(Request $request)
     {
@@ -75,7 +88,13 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @group Users
+     * Supprimer un utilisateur
+     *
+     * Supprime un utilisateur par son ID.
+     * @authenticated
+     * @urlParam id integer required ID de l’utilisateur à supprimer. Example: 7
+     * @response 302 Redirection avec message "Utilisateur supprimé avec succès."
      */
     public function destroy(string $id)
     {

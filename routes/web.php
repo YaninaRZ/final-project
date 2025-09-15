@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 ///////////////////////////////////////////////////////////////////////NON CONNECTÉ
+Route::view('/docs', 'scribe.index')->name('public_docs');
 
 Route::get('/', function () {
     return Inertia::render('welcome');

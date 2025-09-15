@@ -1,0 +1,2025 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: docs
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Invoke the controller method.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IitLWGVUWkJBT29CSG1COFR3WnY2SkE9PSIsInZhbHVlIjoiR3NiZExnd0lpUEJQYmZCOHBOSTJ3bVgxajRGKzIrMnF3dFY1WVlJMU5DZ3BtalhSVzkwdmhaa3dxZEZXb01TSG5mcTZMR2djZDdtS0JGL01ac1MwZXVPZmhwM0xwR1RScjRhNXhuNFpJMUJWUzJOamZlOXAwcGIzOU9jaXpyeTQiLCJtYWMiOiIwZDJjMzllZjI1NGU4ODkxYWYwNzNjODg3Nzk3NTI5ZTMwNzQ4ZTdmMzVmNDUyNWE1NzQ0MzI3OTE5MmM3NWVkIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Ik9pWVBQbHE3UE5YeGVBRUJ3ejZnUmc9PSIsInZhbHVlIjoiYzJHYklYWmFGWXpkOWgwWTZiR2hqb1M1azcwVkxnSHFSNk04ZjNBYU1xa2xFTzZIWUhWMU1vbWIraURTV1pRR3MvSXVlVlRDbHVRZnlZRjFrQVBrUlhJTFR0Zld4dnR6ZmRFMTllTllyRVh5ZVBUOGY0c2VhbExVN0VTSzJyNmkiLCJtYWMiOiJlM2YzYWMyMDBmYTdhOGYyNmIyNTBlNjkxMjdmMGJjZGNiN2VjZDEwYjI2NDlmMWFjOGRhZDBiZThjYjIyNjg4IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: up
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+
+              <title>Laravel</title>
+
+              <!-- Fonts -->
+              <link rel="preconnect" href="https://fonts.bunny.net">
+              <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+              <!-- Styles -->
+              <script src="https://cdn.tailwindcss.com"></script>
+
+              <script>
+                  tailwind.config = {
+                      theme: {
+                          extend: {
+                              fontFamily: {
+                                  sans: ['Figtree', 'ui-sans-serif', 'system-ui', 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji"],
+                              }
+                          }
+                      }
+                  }
+              </script>
+          </head>
+          <body class="antialiased">
+          <div class="relative flex justify-center items-center min-h-screen bg-gray-100 selection:bg-red-500 selection:text-white">
+              <div class="w-full sm:w-3/4 xl:w-1/2 mx-auto p-6">
+                  <div class="px-6 py-4 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex items-center focus:outline focus:outline-2 focus:outline-red-500">
+                      <div class="relative flex h-3 w-3 group ">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 group-[.status-down]:bg-red-600 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-400 group-[.status-down]:bg-red-600"></span>
+                      </div>
+
+                      <div class="ml-6">
+                          <h2 class="text-xl font-semibold text-gray-900">Application up</h2>
+
+                          <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                              HTTP request received.
+
+                                                      Response rendered in 210ms.
+                                              </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </body>
+          </html>
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: /
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkRkczEvTFJpN0hpaDZyWkNEdUNmT2c9PSIsInZhbHVlIjoiYUNTWW9iK3FhK3BpODExaGc5UVJyK1JXMTN2WWpZQVR1WDI1L3RQRTA3WUVrVUlzTnJPUXhQNU1UdUZVellSRkJMOHQ5UFhYTjE5R0dYTmNFRW8yb1BKWXVrMjVkN2R3ZnRBUlFWSU0xVURqdFNSSkRESWpKQ2VvZkhXMlFXZHoiLCJtYWMiOiI5YzU4NzU5OTZmNzA0MGIzMDcwMzM0YWIyNzQ2ODVhNTM5ODdiZmVmNjIxMGJlZTU0N2VkNGY3MjFmZWU2Njc2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IlQ3WWVUVnJURVBlczFaV0Q1RFJ2MlE9PSIsInZhbHVlIjoiVkEyV0VQR1Q4RWE0QXNObEZIUGVaZTFra21ZWkpLNlpabUNBdzErQmMzSHY2TVExaElkcCtkakg0WnhUc2djeWJ0ajBibTlHdkVwckp0dURNMDY1dmtzZ0gya0I2Sk1LTFFTVk8rR1ZuSDhuR1BjNEJvS29MZ3RFMFQwWHpqZmoiLCJtYWMiOiJkOTA2OWY5MjBkY2U2ZDViNTI1ZGFmMjQ0MzhkOTBiZjk3MzJmZjU5Mjk0Mjc4NWYwNzY3Y2MzYzM1YTEzMmJkIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: our-collection
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjdjSlFwekFiSDNIdk9QZ0x4akd0aHc9PSIsInZhbHVlIjoiVGpObGVad2tTQTR2UWFMTkpHcGtwUkpDbG1BUkJ3T1VFL2E5NHkvemVlWGJvVDAwQTdYRUsrUm5MM0Z6NnNjY2NlUzNTSGM5aC9yQ21id2VpUUF6UTNVR25KTG9ybUJGVG1OMEFVdEM2Vm9TSkVBTTVEaUE4U1ZNWTB3OGdac0kiLCJtYWMiOiI4OTRkYjZmMDJkNGM1NGYzMTdkZmExODIwMzY1YmU2YmM4NGUwODNiMzNjOTcyYWUzZTM4YWFlMjFhNjc4NDZjIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6InR1QTRyU0w0Y3cyWThJcDI1RTRNQ1E9PSIsInZhbHVlIjoiaGJhbWdxeklJbmJXeUJGZjBoUXVGQ0dXY1pFb2dhUUIwRW9uWkZPa24zRUk3dWFsblV6SEdyanFmaXh2ckNhSFpJTDBQZEhJeHpwUkhQdHdGZS9Jd2tjK3VmYTRJQi9yZDNEY25hbUw3ZlloNEhzbHF4SEFMZDR2bXdrR0xLeU4iLCJtYWMiOiIxYTY1OWIxNDgxZTY5MDdhZTU2ZDkxNDE2NDI0NDdmNWI2NTI0OGQyNjQxYTA0NTUxYjgzYmVhZjdlYWFjMTdmIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: about
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Imtkd2tMelVIRVNaRm9RREhnUy8zS0E9PSIsInZhbHVlIjoiN0E0QmRNVmlsYWFhSjJ5OHdRTE9LOUdtZWt2WTQ0a01HVldlUE5vWWFzLzNEc1hGSHdQUXN5Tkl2Wmx1VmJYT1NBU0x1dVNYMTIrU1BneXBWVE9wVThnTlFPbko5aEFTbkVYZjJndkgxbnV4SE9KTytEMHMyMFFVQTNaRTB6VzgiLCJtYWMiOiI1ZjY3NjRkNzc3MDdlYjViYjg3YzdhMTY3NjMwNDU4NzMxNzliMjIxOTY5ZGUzMDgwYzFkZTgwNzlhMDc1M2U5IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IlJZWkJ2Q2pkdWNNTzc3NGxNM3pPYmc9PSIsInZhbHVlIjoiTXZZOWhQWkRTUklodXIvYjBGdVhjckpWNzNnQ3IyTHhZWHc2SnhwTHNmYjRMZThQR2R4YzI0K0xFY29lTHUvRE5xS3RIRVV2Y1Z4YU5MMm1FTG5WbStTRnVkWWh1RXlac3JZdEdDZGhJZHg4cFBTY0J5SzBCQjlPMUJkbitxZ1giLCJtYWMiOiI3Mjc3NmViMTYxYTc5MmU2M2FjNGY0ZjZlMGYzZGUwYTY0NjI5ZTZkNzVlOTJlNDk4MzBkOTM1ZDhlOTI1NDlkIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: contact
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Ikk0elpLUU95a245c2NhRGVQak9rU2c9PSIsInZhbHVlIjoieE5MNnBzWUhTcVpZR0FPT2RIL3JwZ3k0eFMrTEdFZkJiSFBqOG1ud3g4d2cwbHVCcEJabjk4alFGWmZNdVN6YVVvbVJJc3VlaU53aG9HSlFGbm03ejRmazJrN1RqYzdnMk1kd0dlZG4vaDFuLzJUK3R2MUZ2S09uZC93eHVGT1QiLCJtYWMiOiIxMzMyOTNmYjc0MDA1MjQzNDhhNjA4NmM2MDdiN2YyMWQ3NjVjY2FiMzgwNjE3NDNlOGVlYjhjZjI2ODU1N2NjIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IitJWHc0QzV5ODJBVWZSbitoZkRZYWc9PSIsInZhbHVlIjoiTkozQkt3Y1c5TVliVENDWFA3aUgxOHRSbHh6UWQwd29xRU5JRlAxVjg3dXBwYjdldW10SEpTMWpDS2Mvb3JPbUZpQnFienc1QVVxbWlSaThVYnB1VkNlQ1dwWTRPQkdwV0Fwd0RaTTVCM2FMOUZIOWJnRUQ0RXVRZXZEaGszRmUiLCJtYWMiOiI1Nzg5NWE2ZDUyY2RkY2NjOTZjMDE4ODkwNzNiNGNiODI5YzFjNDVjNjE0MjI5YTY0MjdkMTZhMTM2NjU5MDcwIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: terms-of-services
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkplakxVT3V3YjVBV1F6YzRUdENHZmc9PSIsInZhbHVlIjoiK0R1N0svMzJOWEw1ZFRqN1hMZHVoU3B4REowR0FNemhmbjA2eGxBakdORXFVbkJtdkc1c1M3cHBEOHRLR05PNlBuTWd3djNqcHlhbW4yOUtjYUpQRXp2VlBFdjNPT0F2OHltU2tzNGdHMWdCVXg0SG45Q0ZJc2wybmdEdGY2NU0iLCJtYWMiOiI2ZjMxMTYyZDYxYmJkMDgxYzQwNGNhOTAzMWNmYmFkMjI0OWFkNTE2OWE5MjNjZjI2MDEzOTBiZjc2ZGQ0ZmY4IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Imo1R1lpU2NURTFpbFB5NHQyanRockE9PSIsInZhbHVlIjoiRWI4Sm9rMm51OUhhZ0RUL0lPcE9HZDZ0VTFaQ2VZcmFEVFdXR2dwUHFVcXRUdlNkMlVscDZYY1Y3M1BvK2tDYXo4YUdhTktVTlVyN3Y5Nnp4STBIU0JFdUJ4c1NIeGxVditDOW9jUEhYZ0tOZWFzRGFScjJ6SVFGcEZuZS9jWmsiLCJtYWMiOiIwMTc2M2QzMzRmNGFiZGQ3YzUzZTUzNDU3ZTEwNjIyNTQ3YmI2MDNiM2ViZjgzYTc5OTMxN2E3MDFmOWU4NjYwIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: privacy-policy
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Ik5oYU5KR2tmQjhhNWJxL3ZRVWZOZnc9PSIsInZhbHVlIjoiVnJTbWl4SHFmbHAvcGlad1hNTkZVZ0lxd0lXZ2d6eDVxdFpYMzd0SDJjek5uWGxkTFBqbjRrUTZIbTJUZ1pjQVUwMEtPQ3lZeldQRTdFYTdWT0J6QXhmMXhqSkpNc09wM2lDYTZRaXRyVnVoanBaYnFGb3lDK242MUtWM0VpY1YiLCJtYWMiOiIyMzkyOWEzMTc2NDI0NjZiYzFhMmY5ODUyMGUyMWVkNWY0Y2M4ZDljNDU4MTE0ZjgyZjBiNDkxM2Y3OWE1Y2M3IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6InJhV3pMcFdPYUdkWm1Tdi9SVkRZS2c9PSIsInZhbHVlIjoiUHN6VmRuNzBNbW5sMUVFeEpicHZFRUdobW5pUG5xUzg3N0VUQ2N5SDhxVWRlZGFRSkFDWUh0L3lqcFkrRUQ2NFhHaGdqQWRNRHZPWWlCbE9OUG9KbjZtTkVaekwyQ3RzUFAxczA4S3BVSFNKSmNiZE82QzlYOHFNdzZjcXB6V3EiLCJtYWMiOiI5ZDBjMjA0YTY4YjM0ODRkMjRkYzQ2ZWMxNTFkNjY3NzgyNGEzNjE1NDA5MjhhZWYzNDVjMTBjYTUwMjc0NmJjIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: licence
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Ijc5eEhkNC92QmRxRUFtcW4raGpMZ1E9PSIsInZhbHVlIjoiSXlmd3B0NnI3WFlkVWFmSDEwVHA3WGNwS0t2aGhHbEd0N0ZVQkRvSTRMemFvRUFxbzJPL2FvZTVWb3pPYjJUOFpaTDNMNWtCaTc1d2Y1d1VXY3FXZDBNQWs0ampZRmxLNjlta0RpK05CdjQrSi9oUUVFaUNXa3Q4WFhSZzhuSmEiLCJtYWMiOiJhODA1YjE3YWY5NTViMDgzZGY2YWRiZmZmY2I1OWVkMDllYWY1ZTlhM2ZmMDIzYWQyYTc3NTRhZDNhYzYxNWMwIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6ImdFbDIxSmIvZWhEQU1YQ1dGZzJ0Nmc9PSIsInZhbHVlIjoieU5oZGpQV2crdGRvWnRRQVVVWEcxTTU3ZjR3TjFCWVdvVUFWQTEvbHR2WFZ1NTdnemRibTlCdVNLR25RM1lQYnNjd1MxUGlJb0RwakI2Ni9DR0czL243UXBqQXF3OXBUWnVUcmtVMjAwZ25neExnWmlTc0hTdUIyRGVpVy9MVHAiLCJtYWMiOiIxZmJiZWM5YjQzN2IyZWFlYWIxYmI4ZDBmYTc3MDA5ZTNkNWM3ZDRkYjhlZDAzMDM5NmI4YTAxZmJkMzAwMjkwIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: cart
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjgxSDNhMjVjZ0JXK3NOQ2RRY1JRWnc9PSIsInZhbHVlIjoiaDVSd3pnZGI4OWdvMndxRzhueXZxUnJuSTZISGorZEZ4OHpYaFVIdlpvdmk5K0NzSGFwYkJndVBidzl2a2FLclVxTDFPek9valFYaEpmMGk1alNXQTBVbGZHNjUxNGRLVUZDUitRWVBveU9CWVdoeWF2VW1MVU4ybG5sRDVtK3MiLCJtYWMiOiI3ZWQwOTdmOWE2NThjZGJlZjlkOWQzZDc0MTY5NTg1NTM3ZjQxYjdmNDE2Y2YyNTA1NmM3Y2U3NGVjZjM4MDJkIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Iks2UCtEaytEYTFzdFFQZ2ozcWRrQmc9PSIsInZhbHVlIjoiSkcyVEFia0xXaTBGT1ZadjBxVkdtSUxaWU5ZbXBkUStFeWROWm10STJUVGRLMWVFdmdyZnFtZUZZelBIZklNSlVWdzJtMzVNVXdLVUhkcnJSZzVraGRFVWlQRXZZM0hnUGlVMmdBbkNYOWJNbFpMWThaQlQ3MkQxeVUyOWZaQ3ciLCJtYWMiOiI2MTFkNGVkMTg2ZGU0NGZkNTFiMTU4NDkxZmE1ZWU2M2MzMzg3YzFiNTg3ZDRmZTk4ZDNmZDgzNmIxNTg0ZTg0IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: merci
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Ik1LTVdnNUVrSktjWEViZWtJN1kwcWc9PSIsInZhbHVlIjoiY0VtSUwxWFBZcHBtVm92a292L2crZlhMMFI2TGlidHMvVzc2RjN3KytYTXdrcHNKV3QvbzBDV2pvbzlOeU9VRWx6N1RmMERQQ3BxQi92bXZCb0h6c2V3S01OWkE1UFQxcFJ1M2duUkd5aVcweU5sODN6Z2FsOEd6aVo1dVByQlUiLCJtYWMiOiJjODFiODkwMjcwNGY1ODZmNTZlNzc3ODkzMjE4MThiMmQzMjgxMTgwMmIyMTU5NjcxZTU5ZGEzMDJjY2U0NGQzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6InZ0RWx1MnNWK3gxMFo2N0wyUDBOWHc9PSIsInZhbHVlIjoidStwNXZrK1lPb1h6cGtvd1RISjJ1bHhQdjRMTU5RNG5ZdVE3OUdza0g4eHlleGpHaEliM3hxeFVUNW83cVlCN25QU1hNV2treVoyZmRKeC94eDJmbU5hak5zS1Rub1NvWUx3TnJsSXZIRWdlbjFNeHZrNHo4eC9mOXFRR2tFeWUiLCJtYWMiOiI3MjM2ZWM0NDQwOTM2MDU3ZjY5MmI5OTg5NjQ1MTIyNTZlYTg0YjFlZDZhYTVlYjI3ZTQ2Y2M5ZWEwMmM0NDMzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'products/category/{category}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category:
+        name: category
+        description: 'The category.'
+        required: true
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      category: 14
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\Category]."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Im0vZDdlV3BMYTJXVUFvMlh6SUF2RWc9PSIsInZhbHVlIjoiUWdNbzM5OU5tUTRCazlvdnIrRkpGV0NFazNSNHJtZzRrazAvcGhBTFFEa1JUd003OUYxM2NpNldZL1NpNWpGblpjRzI3Q3BWV0phYlpxRmNBVWo5em5vWkJLNTB6Vkx0SW9yalZpODIxTlZOVWszM0xxek5WS2FVV0ptc0lYOXgiLCJtYWMiOiJmZmNlMmI2ZjY2OWYzYWUwM2UxNTEzNTYzMzk5NmI4YzRhODI1MWE2MTg2MWVjYmE3NDVmZjMyOGI3YzkwZWQyIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Imp1Y3paa3RzblNST1BDelVpSU12RHc9PSIsInZhbHVlIjoiYUtqK2ZaUHZOOEN5bEc4dHE2bEROZTU5Y3lWbWFjYUs5NWJoa1lRRHp3eTNKaVNvOXg3TnVCRG8rMEhncC9sNFc4UG5IZm43S3R5MzFKalJxN3NlYk5RelBYSzdpcjErZ1NtMnl3TmFwckNsKzNLYmFnYW5vaENid29TcDQ2a24iLCJtYWMiOiIxZjI0Mzg3N2U3MGNmMjQ5NjY3NjZlZDgwYWM1YmY1MjUzOWFiNWI3ODQ5YzE3Y2UwYmExMDFmYzRmMmRlZjE2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'products/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjBKaURnT0pEV0syY01JUEQySlBoM1E9PSIsInZhbHVlIjoiYUI5UDVjb3FXMHlkR3dkZS9Udk9wWjZLeHVDSUpTZlZuZUdUdWg4RGNMZm9hY0J5S0FEdHhjTE1GbnJkNTVYazc2T3BSSjlkKytyZjhRMGFlczl6ZWhWbHZrVVVxL056ODdnWHF4eTBHR1dLUk1DaWdCWWVPZDlxcjluRUhJSjIiLCJtYWMiOiI2Nzc5OWEzNzY1NDk0Y2I2MWNhZDAwNWE5YzgwODg0NjgyNTU5NDE2ZjBlOTU0NTZmZWE2ZTg5OTRjMTUzMWY2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6InpNUzFqZTVtSWNNWGEzdVBPUStjRHc9PSIsInZhbHVlIjoiQVUwSWxoTVMzN0pNcUdyVXhVVnJoc0VVUTNweXlpdTZIWmMySlJjanU5TjFjeGlwVEtweklhVHFqTUVsRlZSdi91dURQMk15c2VvcWY3YlRvWld1bU15bWEvOEVscWFDbmN6ek9ZWG9jWEJOclBaRkZxQ240VFhINzZPZnF3V2wiLCJtYWMiOiJjMjg5MTE3ZmY1MzBlODQ1M2NhZDVhMmJlYzBiOGEwYjZlNDAzYTI3NTU5NGI1MDdiZmQwMGRlN2ViYjIyMDJjIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'post-detail/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the post detail.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkR0N2RuaU80MTJ4eVJZNUdqVzIweWc9PSIsInZhbHVlIjoiY0NteFVjN29pWE5kMzZibUpGQy9RSDhGNllFVjBuZk9XOUEzWlZZdXZGbzhXRmc2aVdjaWFpNUhWR21FSXMxZGFBVzFZMy9zQTQvVVRvTitMVmFBZGgyc1NMQUY4MGY1aERZdlBlWWw4UnIwamVVZFdCUUd2VG53Ym1IaFd3NXgiLCJtYWMiOiJjZDJiYzFhMzZiMDIwNDdhM2JjZDRiY2RmMjk3NzBkYTZiZjdiNWQzZDU3NzQ4Y2I4NmE1OGRiYTM4NDEyYzc5IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6InBDdW9jdnNxN3VPWU1Ic0Y3UkZLc3c9PSIsInZhbHVlIjoicDU5OStnNmMzQzJmNmZSYzVoREpjNzhKWEFKRXB1RndrNHlqRGhZQjJlNStVQTAvdm1PQWVDSisveUowNHlmb3lsOWxDb0lqcUNwTnJ0eUZKdSt4OVEwQVRiRDdBSjBVajhMaUtxSGNrTTNHM1J1S1cwMHRZaGU1ZllXMzB6ZzEiLCJtYWMiOiJhNjU2NmM3MzZlMGJlOTVkYmRjY2I5MmIzNWRmYTczMzRkNjE3MDk0Njk5MWJlOGJhMjMwMmNiY2Q2YzlhNWUxIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'admin/product-detail/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the product detail.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6InRMUjhHbVB6RStKMitXOXltaTF2YlE9PSIsInZhbHVlIjoiVGpkOGNHSlV3UWVOTXYrbW1JUFh4TTA4cFVmUUswU3h1aFJvUDlJczFJSk90SzNFK1Z4UzBqOUgrb21hejl0YXp3UGtKWjg4S3ZXb25qT25YQ0Z0endDSWR3K1pob05aOC90TFYyNFZhQ0hia0M5R2RGVjI3ZGo1bXovd2tBZDIiLCJtYWMiOiJlOGFiZjkyNGY5ZTVjMzEzMDJhNzY1MGJkN2E2ZDRkNDE1Nzg4YWRkYjU3YzVkYmIwNzA4OTY0NDFhMjhiZTQzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6ImZZajlUdEowSTk5Q0V3My94Z2NVMVE9PSIsInZhbHVlIjoiUUJBNTQrMDBqWXF0TXo4NExtRHA3WEpCUElRV1hMQ0xyL0tTVzhJM09jWXQ1bnNSRFFGM0p4K1o5UnZOSUR6R1hlOEd1R2RvMTJJczFNRW90OTYrYngrdWxORm1aSU9uZlloekV5VnowWS9PTVRnV0lQcWZSU0FmeDYwbXc3MUIiLCJtYWMiOiI2MWUzNzM0OTM1ODVmN2YzZmZjYzBhOWJkNjBhMDQ0ZDFkZDI0YjM2NmU1ZDJkOWZkODdhZTRjMjgxYzU0ZGVmIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: admin/add-product
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6InhGcDRlM2FIOS92STZBaHhQVnNEL3c9PSIsInZhbHVlIjoidnF5YjZkNGZDVWdZSXRxWnFMaXZqQVQxRmhsemJMRGl5VWV3TkU0TVV6M0xtVWRMd2VBdFl2bk82dk5mODBYNTRtNkd2cW1iUWhWd0p1Y2phdDJRMGlxYTBkTiszNVI1UHdUd1FocUdTVDNzb0MzRTZva21xOFFuUGNhcTdzNlkiLCJtYWMiOiI2Y2YxZjIyNzNiMTZiYWE5Y2MxMjE3YmIzM2E3ZGJkZjc0MjllMGUzZWEyYzEwNjQ0YzJhNDJkYmQzYmJhNzYyIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Im9QWFlyOFNnY0hZd241Y3NSUTFodlE9PSIsInZhbHVlIjoiTVNlVHY1dTkvZzNXUndrWWZXOVpjUFpjTkptT2JPbWhGSndjeGVkd3Q5STlHU25vOTROTS9QSGxhOVY0MTZRWUtiMW4zREM3VG8vajQwL2E1V0ZSRUtUT2hMLzdrZTVuQzJVRk92QlNJRnQvZ2VzRFcyWHZUQTZmblg5dm1pbEUiLCJtYWMiOiIxOTU4ZGZiZTNiOGIxMmQ0Y2MxZWExNWMzZmM3OWQ1MGZhM2VmNWU0ZGZhYzcyN2U0NjE5NzNmMGRjYzIxM2I2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'admin/order-summary/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the order summary.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Ik5sa3lBalJUUDBZYjZuRG14QURDOVE9PSIsInZhbHVlIjoiT0pRYWdYS05CdTQ5Sko4R29kSS8vSHI0cHIwcDhqZ1FKV3pVcDBDNU9ycmJBVm1VM3RnQ3YwMlEvWHAwdk9YeTU1c3JJNzdHZkRuSGNBWHhjaVVoQ2xseUZtcjQxWWk3UUFKcGN2ZmlEOE9MTzVqaUZGQkR4K0tiVFdUb3FkTkYiLCJtYWMiOiJhM2QyMzk2MTViZTg2M2RhZTI3NmUzYzJiYWFlNzJmMjc1MWRhYjRmNDU4MDg2MWViZjU5ZGFjYjdiYzhkYzIzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Ik5TZ0hLNGQ1S3dsTExXcmpGaFJYdFE9PSIsInZhbHVlIjoiaDBEM3JNdmRnaHlrVWRRT0ZLY2lVK2piVnJ1VHBVbXlRRnVLdXlsS2NSZDlkcC82ZTVlbytVaHJrOFRlVEJDUXZYNmtqSjNsY2hSVmh2blZLbFltT3B4akt5cWJrRlBzTXA4YytIWkQvUVR0QXBlQnNLVnJKRjRGUUxBWHpDOXMiLCJtYWMiOiJiZDhhNTczZGI2NzczNDAyN2Y4MDcyNGFkOTc4ZTkzMTQwYTBlZjhlZWFjYzEzN2I5OWFmYWEwM2YxYmFkM2M4IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: test-categories
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[{"id":14,"created_at":"2025-06-03T12:19:18.000000Z","updated_at":"2025-06-16T08:01:37.000000Z","name":"New Arrivals","parent_id":14,"parent":{"id":14,"created_at":"2025-06-03T12:19:18.000000Z","updated_at":"2025-06-16T08:01:37.000000Z","name":"New Arrivals","parent_id":14},"children":[{"id":14,"created_at":"2025-06-03T12:19:18.000000Z","updated_at":"2025-06-16T08:01:37.000000Z","name":"New Arrivals","parent_id":14}]},{"id":29,"created_at":"2025-06-16T08:02:55.000000Z","updated_at":"2025-06-16T08:02:55.000000Z","name":"Body","parent_id":null,"parent":null,"children":[{"id":30,"created_at":"2025-06-16T08:03:05.000000Z","updated_at":"2025-06-16T08:03:05.000000Z","name":"Gel","parent_id":29}]},{"id":30,"created_at":"2025-06-16T08:03:05.000000Z","updated_at":"2025-06-16T08:03:05.000000Z","name":"Gel","parent_id":29,"parent":{"id":29,"created_at":"2025-06-16T08:02:55.000000Z","updated_at":"2025-06-16T08:02:55.000000Z","name":"Body","parent_id":null},"children":[]},{"id":31,"created_at":"2025-06-16T08:04:58.000000Z","updated_at":"2025-06-16T08:04:58.000000Z","name":"Face","parent_id":null,"parent":null,"children":[{"id":32,"created_at":"2025-06-16T08:05:16.000000Z","updated_at":"2025-06-16T08:05:16.000000Z","name":"Masks","parent_id":31}]},{"id":32,"created_at":"2025-06-16T08:05:16.000000Z","updated_at":"2025-06-16T08:05:16.000000Z","name":"Masks","parent_id":31,"parent":{"id":31,"created_at":"2025-06-16T08:04:58.000000Z","updated_at":"2025-06-16T08:04:58.000000Z","name":"Face","parent_id":null},"children":[]},{"id":33,"created_at":"2025-09-04T12:08:31.000000Z","updated_at":"2025-09-04T12:08:31.000000Z","name":"Cleanser","parent_id":null,"parent":null,"children":[{"id":34,"created_at":"2025-09-04T12:08:51.000000Z","updated_at":"2025-09-04T12:08:51.000000Z","name":"Face Cleanser","parent_id":33}]},{"id":34,"created_at":"2025-09-04T12:08:51.000000Z","updated_at":"2025-09-04T12:08:51.000000Z","name":"Face Cleanser","parent_id":33,"parent":{"id":33,"created_at":"2025-09-04T12:08:31.000000Z","updated_at":"2025-09-04T12:08:31.000000Z","name":"Cleanser","parent_id":null},"children":[]}]'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlNJTis3V3ZyUWpkUVQ0U1d4MGQ4UXc9PSIsInZhbHVlIjoiWVhkdEJIMkk4WXpycDJ0cFo5Yy9DZ1gxSENROWZ0MUlxNGJMQThuNk5LcEFQd2Y0dy94K1JlbkdwUFg0MUJSRmdTOExvditDNHA4VUE5NjB4cnpXbVhDQUVESjdFeU85c0xlaUlDQWs1N09nRk11eUJsSm5OQTMxdXFvU3Vxa1EiLCJtYWMiOiJmY2IwNzI0ZGQxM2I5YTY1NDcyYmM3NjYzOTkwYTYzMGY0NDQyMmM5ZDllZjUxYjA1ZTNiYTMwNmYxYjNkOWZjIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Ii9keEdQQk0xNTBIWGM3djhBWkFyVmc9PSIsInZhbHVlIjoia05MVGw3Y3pDY05PZlA1aWhEN295bFB0VHFWOEdXbTB2dUFQN2gwNHlOY1ZaQ1Ira2Zka0hUYWVOR1pWb1JXMktDSnN2SDNFbk1ybkFrTnY2d3Frd2dkSThZRzlCbkhVcEtVTjhING9XSXgvcFBuWDNhT29meWdTY3Q3ajhDN00iLCJtYWMiOiJlMDhhNzY0ZTgzNWE4OWFkY2EyY2Y4MTk5NTcxYTUxZjQ0MjgxNGVmMGFkZTkzNjg0YjRmMjRiOThjYjI0MjUyIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: user-account
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImFTcUhzN0RPQ3RXMHhYWWQwV3liK0E9PSIsInZhbHVlIjoibDZFVkVMTGUyWW9ydXUrTWlNdjdWcnQvb3pFTGgrSEpuT25YQTI1cmppZFBJdHV2QmdPVHQ2eGZmeUFsU2w5ay9nRDdORzZiMHlrakNRditxVVF0UExMejhTSzE3dTd6a0U1anFZR0RnY2Q2WHVUcE1UdDNLdXNVM3AxNExEamQiLCJtYWMiOiI0ZDNhNTVjZjY1ZGZjZjdiZTVkMTI2MDY1Mzc1ODg1OGYwM2IyYmFlYTY0YzUyZTA3ZDI5NGQzOTZkYjk5NmU0IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IkErY2hkR1BtT0VnWVE1djZpd1dTMkE9PSIsInZhbHVlIjoiZE1jV3VNeW1ITVhPaEp3U3pLbE9ENUtWK05TSGkweUhIY3QvZlFWZ0QrTFZaY0Q1a21VN0xMakZ2T21uUDBRQ2VyTDY2Y0UxT2VlNVN3dzZkc0laS29HMlZuYUllenZ2UWlhaGFJL0RDOGdHbys5TlE3cUM4ZTd6d0RuL1JkL0kiLCJtYWMiOiIxNzdlYjUzMjNmZTdhZDEwY2E1YWJmN2Q2NDk0N2U2YmM2YjBmOTJhNGM3NDc5NzIxMDIxODZhYzk3MDA1OGM2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: user-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjlOUytBSG9YMFhwODZhRHZQZ01vUlE9PSIsInZhbHVlIjoiUGFKYm9vbXVLczcyUHVXV0I3d2UwMzRENGJ2aUlFSk9pRDhsaHFCSVY3bDIrTVpaOHhuUVArZTVyVzN0dmVobUY0ekFPSGNJRndJM1BjK2RWcXBUNTFKakdEdFhBeHRSajhkblcrTTErTzhadFZlRDY3MlRtYWxtWitWZW84RnkiLCJtYWMiOiIxZWM4MGEwMGQ1ODgxYWE5ZjYwYjljODc2NThjYjMzZWMxZGE4NjJhZTc3YTI1M2IzMWZlNzI5NWMyODBiNGFlIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IkUwSzNYeWZTTyttSkUzWGhqNHY3TlE9PSIsInZhbHVlIjoiS2g4OHRPdnk3dmQyaFhzSmtTbEQvd3JqS0JFOElMbm9EYWJkeWU0a0UyVVp6WGNua2VOZGtCUGNoYlZvRnl2ditxZHgzODUvZGxmQzNaamY1VG52SjdtSE41TDVhTGZJNGxIbytqTlZCREhpNE54WmVjU0J5N0RwcmVNTkcvUVoiLCJtYWMiOiIzYzY0YWVkZTlkMTE1Nzc2MGM3NDc0NDRjM2VjOTY4ZDZkNzNiNTIyY2E1OTVlMDkwNDYzZjczNDlkMTViYWM3IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      0: GET
+      2: POST
+      3: PUT
+      4: PATCH
+      5: DELETE
+      6: OPTIONS
+    uri: settings
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Invoke the controller method.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlV6V3AyYkFlTmN2U1hIU3A1eDNidHc9PSIsInZhbHVlIjoicSsvTkJsd1RWZ0pJYTBGQjF6aGM1a2hCQzN4RkExZ3hJdEdQZlhsVkNGWVZYQ2dwL3VBQi93VFFEa204ekpkYnNSc25HNk1QcGd0OUk2ZVR2Y2VMUXNRclRFN00rd0dPcjRnU2VVTUQyUHM4WGRZVTJhaG1hOEphcGw1bGNDTWUiLCJtYWMiOiJiZDA0MzQ2NTQyNmI2Yjk2Y2M3NTIyYzlhYmFlMTQyNjRjYWUxMWU3ODdmN2VkMzkzNWJjNWUxYTIxNGU3NzNiIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IldXY1lSbEVTUzNyR2ZaZXdwR01QL0E9PSIsInZhbHVlIjoiZDNmUmIzY2lJeVdpTFBZNVpPWGdLZ2NCWGF6cndmcDU5czJ0dVFrVVdIcEY2b21tYVFIa2tEWE9mak1vR1JqcVIxL2tLUS9aRnZzaVpEQk1xcUZlK2JjVEMwcHE2S3RhOEIwbGJ2ZlhRZ3dmK0xHMFptTjlpQzMyMkZzdTRYL2YiLCJtYWMiOiJhN2M1ZWVlN2U0MWRhNzUxNGQ2OGU1ZGRlNWQwMmY0NWVmZjk1YTIzZGEyZjcxN2ViMmM3N2QwMDQzZGNjMGUxIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: settings/profile
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Show the user's profile settings page."
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImdGOUYyVHkyZjhveEUzZ2V5dlo3UFE9PSIsInZhbHVlIjoiNjhnVkE4aDJ5dGROT0xyM0hjZTduUTZpalFLeDlSc0FwV3h6MUpjbWhid3VzQXV3eU02NVB3VW0wUlZVTGdhRzNwNjVJK1NXclg5ZE1OeFVFc3ZOTzRGRFQ3OWZBdjczbU1BSm5DdE5iK2R3VnJYVGFXeTF4TFhia2FQbktMbVMiLCJtYWMiOiIwZDNkZTU3MmIwYjM4YzUwODhkNzkwMTBmZjg4ZWIyZjk5NGVmMGExMmQ2ZTMwNWI0MjdhY2UzMDk4YWFjMDY1IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IlJMTVRLU3BxUFBxV3VRUHVra1ZtZGc9PSIsInZhbHVlIjoiYWR4K1NwTEVoak1iNEhzdGphL0Q2TnFZdDdRR0s2TjR6TDlrNGs2ZUIxbnp6OWVubjNtdTBPMmxtbWJZQ1U4SDlzdW9lWENZZlFLWXlKQ0hWZnl5WVZQMktQMUZjUGl0MGFabkdZK3dDYkM2aWlQdTZ2MmdseDJRRUVRQmMwTmsiLCJtYWMiOiJmZTc1YTMzY2U4MjdjZDAzZjFjYTQyY2VhODVhOTg4OGI0NGMyMWNlMjQ0ZDI3N2FjMjQxMzVkOTBlNWQyODczIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: settings/profile
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Delete the user's account."
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      password:
+        name: password
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      password: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6InhxS01xNWVxbnFEY29LQjVYMVF2YlE9PSIsInZhbHVlIjoiWk1ZSE9jQjNmR2RoMWgyVlBNTGJ5QWVYOHBoMzVORVJJeTFQa0hkZi9iVVJQRzdGZk9IWUkxNExkS0l6TStRbzF1NThGdFgwVlZtelNzcC9WeFZTRUtnTWI4bzdHR0FtQlJjN1Q2Y2NtcnFyUi9YcW82Wi9IT3Nwbm5EemdqNTciLCJtYWMiOiI3MjZlN2M1NDZmNWMxMDY1ODQwNTU4MWFlNmQ4Zjc0MDhkNzNlNjBhODA4ZWMwZmM3NWE0ZWM4YjgxMTNlMjZjIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: settings/password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Show the user's password settings page."
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImxxalgrNEVlWDN5cGF0OTNzMlQ4SVE9PSIsInZhbHVlIjoicmxKZ2hwVG5DUkNMRWlvNzg3R3FnSGZ4cE5aK0h6QTNsOENoUDcwUENkRmxwaHpQc3JKTXhja0tjNzM5R2k3OTJUVmZVRVM2MnM2KzBKMDZia2V6clZRRDcxSUQwZ2RzdFJzbTdaRkF0T0YvR0xhaVVNQjR4c0RBT2ZMa2ZJcmMiLCJtYWMiOiI3MmQ5Njc3MTQ5NDFhYmJhZDI2NjA2NWFiMTFmYTQwYjNkZTYzNzZhODI2OTUzMGZhM2FiNWU3Y2M1MWRlMzg2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IjJxSTFTTkFXNTc0UVZKNUhRMHQ4d3c9PSIsInZhbHVlIjoiTmkxY0dnODZmZUJzcGs4c0R5VmFuWVJPcld1N0tqMVgvbE82Uks0Y3ZBcHYzNmhqbGZUY0RYQi9aVGhuNTNVcnJRMHhRZ1o2dWoySjJmVUorR0RBLzdYbzZCMTlva2szM2h0RnkvRkdhMkZGaXcxQ1d3QU15VDNua21oVG91S1kiLCJtYWMiOiJhM2ViMzQ1MzI2ZDc0ODQ1ZDFmMzFlNmFiYWI1OWMyODA2ZGEzNTIyMTAwNmM2MDg0OTFjOWU2MzUxYWQyMTcxIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: settings/password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Update the user's password."
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      current_password:
+        name: current_password
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      current_password: architecto
+      password: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IkJrbFlIaVg2MzA3UmQrRmcrZFA1b1E9PSIsInZhbHVlIjoiMXlYVkFqVW8vODBCNnFZRUVSSkNjVS9UaXZIMmd0bFovNlJFV0s4Ykw2MHRhMGxVUU5yUTkxbStjcDdZVUZnTm5PRzhKNUpmbmZWUithV25mUHZLNVoxNFBTb1ZOcDN0ekFrbFo4UUxUckdaTkhDK0hvRDI3VWJZam9DNkFDTjQiLCJtYWMiOiIyZjBlYzVlMGFkOWM4NWNlNDgxZjZhN2FhNTE5YzBiYjdlMzMwOGE3NTU0Zjk2MmI4MjZmOWNjNDY5ODcxNzFmIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: settings/appearance
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjVhVDQyOTNTWTZnRWs2d3FnNjFCcXc9PSIsInZhbHVlIjoiK05ZUHBaUFhZSlFteHFZS0U5TFMyYVZUZFhTOWFIL0RXTE4rSmZjcE1XeUxEM1dJUHdhK05HTU05ZmpoVnB6SHowU3RtS05OTW9ML0JtVThzYzAwNndURG02K2syeHRjOGZ3ODN0M0duTHdUN0dSYTRUZlRYbGJCQUNwVW03L2giLCJtYWMiOiJkZTlhN2ViODU5NTBlNDNhNzliNTgzY2Y3NjAxNDgyZjFjYmQyMTc4M2QyZWU3YjFlNjAwYTdiMjU2Y2IwNWU4IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6ImQyUmdIcmM3WnZQVEFwZ1dkQXFGRUE9PSIsInZhbHVlIjoidjJtMUo0b1RCbFFmS2JXNTJiSGJnV2cvM01kS3FYNnJzaE5LNExKS1d0ZEFyeGtuZkFJWm9LaGpjQjNLL0gzcjQ4Q3A1NTJDWXk2RGwraS94TzN1dHhYZjVBRS95S09laFEya0hvMWFBOG1GVmN1WUhqVmZYZzViK2J1TVQ1bXEiLCJtYWMiOiJmZTFkZGNkMDBlN2JlYzU3NjBhZGQxNWEwMjQxYjI5MmZmMGU5M2YwM2RiZjdhODc0MDM4M2VmYzYyZmY1ODg3IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the registration page.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IndLek8xTENoRW52dFJtUFZMb0VDK0E9PSIsInZhbHVlIjoidlJZNUhiclBGZjY2MmVBcVZsckhLZUVYUFpoQkdoU3ZnaG15N1MyeXhkbGhqNFZMNUVYOXBEUS91QXNyVzA0anErS2duTmJnRXlnQzZCQUJaZEJqZ3JBaWxhUWRFbUV3ZDBkOUcvQ1lOT2xwOENoZTJoSU4vdHpMRmpwR1pKcG8iLCJtYWMiOiIyNDlkMDFlZGRkNDU1NmFiZDNiNWU2NTMzMjY1MGE2OGEwZDQxYWEyN2Q1MGQxODRkMTQ4ZmFkZDllMmNmNDYwIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6InFTU09ldUY2Rlk3V0daVlU5czNoQ3c9PSIsInZhbHVlIjoiR01IaGJRTTY1YjUvUHFTWmRCV1p3UHdSZi9WcStKYklwUmdwZFBzaVFPc29rM1lwNFF6K1JtWDdKUGRYbzE5K0o0NjRJMGxPVE5CcHZ0UmNZMG1nWThCd1c0Y1dLay9uZlExb05ERnUzSERDL0hxUDM5bmg5RjgzTnNwaGZZWFoiLCJtYWMiOiI4NTRmYjA5MmQwMTNkNDBhZjdlN2M5OTJhNmRlOGQ1NDU0Yjc4YjBjMTE1MjFiMWYxZGQxZTJiMGZlMDZlOTkyIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Handle an incoming registration request.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: b
+      password: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IkFUQzljdy83YXJ3UFNseHIvczl2dnc9PSIsInZhbHVlIjoiZDNEejF5ZUdoNW1lZy9iRndEc2VMaGs5RXVzdStzOXE4bk5uclltTFpjY09waXdlY2dXWU1RTlBHK2JNTythTCtBRFc3K3RnUzZJOGM5N2JtdFRoMm9QMG1XaDVuZXZPMVFIZC9WejZoNXg3R2p6TlhVV3cyUmVqT1VBWW1uZ0wiLCJtYWMiOiJiNWI2NmYxMzRiZTMwMDgwOTI0Nzg5M2M4OTE4ZjhmZTg0M2VmOTdkNmVlZDY4MGY0NmM3M2Q4YzAzZjMxNWM2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the login page.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImJBekhSNm1ERWlXYTR6Rk1NKzJZenc9PSIsInZhbHVlIjoiT0ViRkkxeDdCTDRRV1owTGVKcUg2aEtIU1BnanBHb0hEZlJvQk12SnZQNUNibEVBcXh5ZlM1SXRXb3daMWc4aEV1c1dRbGJ1SnVJWkRvcXFVOENiQmZ2VGUxUDZkd1NmRnplUGhPUTY0b05XN1NQRHhObGNLN3k0dTc3RmE2c2EiLCJtYWMiOiJiNWJkMGIzZWVlYzdlNDhjMTE5MzRmZmVjYzJjYWFiM2Y1MDU2NDQ3YjYyNTU3ZGM4MmE5Mjc2YzUzOTg1YWQ2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Iml5OGhGVTRWM29xbVpwa0dYUE10VHc9PSIsInZhbHVlIjoiQld6L3ZTWk9KckNxdHc3bW5GclV0SDhjeTlpU2dGZGFhcTZaQTdNRUh3TTR0OFR3S3hQMUNwNTZIbHhLSzl5UVFON3hqZ3dCL2dJTC9iQ0FZL1Bma0c3YkprZTYyTHRhZDhraG56RTBlb0t6am1YSyt6d0ltT0VPOGdUOVV3dWUiLCJtYWMiOiIyNTE4NzQ3MmVhYmQ1YzJkNWRkNjcyZjY5MTkzN2Y5OTZhNDJkN2ZlMjEwZDhkNmY4ODI3ZjAwOTNhMGQ0MTYyIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Handle an incoming authentication request.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: gbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: '|]|{+-'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: gbailey@example.net
+      password: '|]|{+-'
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6InFqaWVuenVYZmlZdGNNRXpTUE9DNWc9PSIsInZhbHVlIjoiVjRxNFZrZlF0VnVERFNCaXhMaXV5OFR0ZFdURkFiemQ3RlpyRHV3NlNyNWJsTlFPYUNxdHRTT1RuanRCUWdlQjRZL2lNbFZwRDhUNDJGQlNFU1BNMmJzN0pTeTBJSGMwYUkzVit2aHVvZWNEcjVyRU5Pc051SjBNYlZpZEdDQ3oiLCJtYWMiOiJlMzhkYjMxZWYzNTgzNWRjYTE0MGIwZGNkMjAwODgzZmVlYTZmNDgwZjU4NDVmNmUwMzNlOTU1ZTFhZTk2NjEzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: forgot-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the password reset link request page.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImpZVmhBcUh4NVBxYXJNV3NOc3U0MEE9PSIsInZhbHVlIjoiUmRlNkZ3MWN3dmVLeE1nN3gvcGg3dzBHemlROVhmZEMrV0VJMWJ0cG1SV2JVZlI3dThYR3lDbW5rRllwN3d1QTRFYkVlSHpSaUlLa2o3ekdDeDFZamtOajcrWFZzbnhGeWVJcjg5SzZCdFZ4R2lpL05XOEo1NFQ3akxUOWduSUoiLCJtYWMiOiI3YWMyNzY4ZmQyZWNkMWQwYmMzZDBkN2M4Nzk4MzAxZDA2OGEwN2ViZmQ4NjhjMTYxNmRiZDQ1YzZlMTZlOWQwIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6ImlyNS81U2tkMjZXWjdQMUlMVTdZdnc9PSIsInZhbHVlIjoiWHF0QnR0aDNtTjZMNkMrM0pJN1BWYW9wWWdYY0g2ampIbkZ3WDVScVRvZ1JFWlpyc01YMmVMK3BNOC9vQXNKTkZERGhnUzJ4SVZxNm9lWEUwcCtubkJtZTZzbDB1cjRseUVCVk5TT3BxTnZqSHRlSFUxcEYyU2JWNFBVTVFSMjYiLCJtYWMiOiJkNzViMGU0NTExZWRjYTAzODIxYmJmYTQ1ZjBlODQ4Y2UyNzQxOWQ3NjllYzRkOWZmMDJjNTBmYjkxNzc1YTVlIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: forgot-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Handle an incoming password reset link request.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: gbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: gbailey@example.net
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6ImZnQkRoaDBteG1kTDJhM0JuejhMamc9PSIsInZhbHVlIjoiNDE4K3VwNEE2L2pOSUIrb3cyeXZmSFVLZE10NWRDNXBTd29pQ0l3QWpSRFNNQnZXVWJXZkxDaElwTnhsWDBwU0RxblFnRURpR2V2Qmx3aTZtSHNFMVV2TXBldGdXckkwRGM0VEk4MGhlVmlXSk8rZENmQzVrUFprRWozcHFBVjkiLCJtYWMiOiJkMjgzOGM3ODhkM2M5YWYyNjNhMjFmYjQyMDk0ZTRjYjk3ZTgxZjgzODcyZGVlODI3MGY2NWQwYmI1NDE2MzhmIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'reset-password/{token}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the password reset page.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      token:
+        name: token
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      token: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6InZmTHNEQUNsQmVYTkZYejd3dllMOEE9PSIsInZhbHVlIjoiZ2VUbTdpYlB6RlFWd3NKb2d5aE1uWGcrbHAzK0Q3R1U5eWkyUW9pczlQK1g5RjNSQ2xzVDZpWHhGOHBnajZBYks1MnBVZHlhQUo1aUc2Wk1LMUlaY0pJMEY5RWpQc1l5VExQaWV1dWc0MVllaHhlMnQ5MFNvRytidkJWMFdZT1IiLCJtYWMiOiI4OTVlZmVjY2U3ZWM1M2JjMjI0ZDg2MTJiNTM5ZmFiY2VkZjZiMzc2NGE0NzhiMjJlODE4NGExZGY1YjJhZjQzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IjVoMHdlOVljeU5OVitVWURKMkFMN2c9PSIsInZhbHVlIjoiaWxaVmhqckNNeGN1Yks2bjY2MzdsQTBXRExPTS9hOE9uKzBKd01oRE1IZXJJQjJzZUd4TW41WWJ6bGFvcnM3L1llV1VhNWtUN1dMK3hjV00xZkc0NllOblh6WVFPN2pZWXAxZXdhaUFjbmFhZkxkN1FOemp6VS85SDhXT0NNRy8iLCJtYWMiOiI5NGU0NTQ2MmI0MWU5NDI0M2ZkNGM4MGQ0ZTEwNWY0YjFlZmQyZWRjNWQxYjlmZWFlNTBjOWM1NGY0N2I4YWMzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: reset-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Handle an incoming new password request.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      token:
+        name: token
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: zbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      token: architecto
+      email: zbailey@example.net
+      password: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6ImFBVnM1Mzl6T2Y5RlpjaUNrWE1wa2c9PSIsInZhbHVlIjoiSU12VDFXVy9MWWd2RlVpN1FYaENjbmVtdDR3dG1xdUEvdDlzLzV1ZXF0eENGUFB2aU8zcnQxMzNtQVBZWDhueGNpWUVPNXZaeUxGMXpidnVGdG44ZG01ZVJTY0kzd1Vab3JLdnJMMnMvMUxKQmpzdk0rdExUNW0xZ0VYbExhQkoiLCJtYWMiOiI4YmFhYzQ3YjYyZTdkMWEyZmY1NGI1YTQ3MGRmYTA0NDIxZTNjOTA5MGQ0YzUwZDg0YTM0YTViNDYxZmFlMjAyIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: verify-email
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the email verification prompt page.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImNaMXB6U0xuQ3BNQWZ3VUlocUw2R1E9PSIsInZhbHVlIjoib0ZQQ2pwT01NUnRCOTJxcUlObmhNZzZyRmpWWUoxdWFoRFFvZEF1SFVHTVRiaVMzakt3eUp4OWpkNjVPMDVWTFZtUFFPUFNDdDUrbmsvZ0xuVm5EcFdVRmVRYkIxRmw1RUhlSHZyQ2dsUE5iL1Jobk5TcGhJaHN2UGprNloyS3kiLCJtYWMiOiI0MTIyZTU4MzAzYTc4YTkwYjJhYWJkMTA1NDcwMWZhY2JiOGNlNmY3N2U4Zjk4YTM1MWM3MTk3OTAxODhmZmZmIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IjZjbnBuTjV0T29YSDJpeXJwampvTFE9PSIsInZhbHVlIjoiZ214YVlOS2pWQVArTk5NQWVURllmdjZPV09qY1M1dnpXcWxaazQrOHBab2JWOGoxTXRKM0JPc2QrajdGOUJnTnNxMjVHa29WYTJldTVaN2t2Y3ZBR2ljRTVYcng2UjBNSWlVaGNxYWpnUXNEU3dMUnBjMHJKelRjSU5LamhUZnAiLCJtYWMiOiJmMjIxMjMzNDRlMjBjYTY1OWZkNWNkYmRlOGQ5ZjNhZmJmODk5YjMxYTQ5N2I3MjMyMGQ0OGU4Mzc1MDdjMzYyIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'verify-email/{id}/{hash}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Mark the authenticated user's email address as verified."
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the verify email.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      hash:
+        name: hash
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+      hash: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImlnSVBWQzk2dkNzS1MyaHBlU2cyL0E9PSIsInZhbHVlIjoidk5GamsyZVp6aGdzTXRiOUl4Wm9ZZFplNC9qQVMrUkQrRUs4SnlDNitYRUw0NEVXcjhJbFJDLzR1QVkySUFIK2ZUVVZxZ2pRcisxU08rRWwxUUNBTjE0dWY1Q0F6RWpITzBvM1hZb1pDelZ2eFJXbDVLUmxScXlJcFRnb2xGRmIiLCJtYWMiOiI5M2NkNjg4NGM2MGQ5NWY5ODY3NTI4ZTYwMDc2ZWYwNTNmODE2ZDk2ZmMxMzgwNWZkMGYwZDQ4YjA4ODczOGVkIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6ImZocTJWQktadElLZEwrWTBXYVBmTlE9PSIsInZhbHVlIjoiNTAwS3J2TnkwV1JuTXFIOFZyUDJlWkdTQ0VraGJxdDZySzhTMXJnNHlOSXZLYWRkeEFpNElMKy9pbjZUcUxPVy8wMzcrZzVrQ0NOMDlacFNGbGNPYkJTQy95NnMwSkM0REpoSW9lZDNqdk5DQ3J6aTJjajVaVmkvaFVVMXRyMEsiLCJtYWMiOiJkMWYxZDE5NzI1YjgyNzdkZjBiMzE5Njc1YWJlMTM1YjEzYjhhMDMyNGY5NjY4YzAyNzBiZjZmYzUwNzQzNjVkIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: email/verification-notification
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Send a new email verification notification.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6Ilh0aTA2Z1VUQmNVYUFJKzRtYTM3OUE9PSIsInZhbHVlIjoiMVRjaXRhK2R2S0czMkpWb3R1VlVWWGd0N2xZOURRc2JZOUFkejhaWk9ETFNSTEZTNDJhYUVvemFBUnBlQ1dlOEJiMkIya3o4OS96OUU1WHIrRmIySis0TmRueDRpdENiN3ZncytuWGMyVUZSTWdER1RqMFR4NkhYU1FRMnBPbTYiLCJtYWMiOiJiZmM2OTg3MWQwZDMyZTI4NDczMjU3YWZjZDUyNmNiZjQzMTFhNzYxODBjZWFkOTU4YTEzOTExNTdmMmJlZTIwIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: confirm-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the confirm password page.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlN5UFpscC9JdUxIWmFGcjAwNzRqU0E9PSIsInZhbHVlIjoiaTE1MmwzUlFUS2tkb3VsRDVBU2F4bGlBb1VsZ0s2ZUV2OVk4TytDdC9keWVLQVAyNDZsdVlTd1pPT2kxaTFQVjVRMFZIQlhCazJSTmo4KzhFRHJNRWg0QU5yS29GV0V6UjdCVThSL2E3R200K2pvbWNhak15R0toWTY3eGNLMUMiLCJtYWMiOiJiYzQ5NGZlOTA0Y2U1YzNkODE3NDgwNTVjZmEwZmRjYjE3ZTViYjA2NmNhYzhjNDBkZDU0YTBhNjBkZWRkYmQ1IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6Ikc4M0FOZUV4YmlPdWFnY0JaUDkrMVE9PSIsInZhbHVlIjoiMVZNOHdnbU8zQnpxcUU0dURhYmJEWDlHa0dkY2x5ZW0yald4NFVscUlFaHJZTWk4ZVlQSHl4UVJPeDZ2dnRsRjVMc3YzTzFQMkRneDFnZHVxOC9vOVpJUHpkblNzKzQ2c1g1Q0NzVk02cDZwVnVOWEpBQlFYc285dXhpV1lVdEgiLCJtYWMiOiI1Y2M4ZjcxMzk4MTAyNGRiYjFhYjkzODQ3YThmYTU2MjExZTBkZjZhODI3MTg4ZjVkYjUwMTdjY2ZlMDlkMjhmIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: confirm-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Confirm the user's password."
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6InZMMTBoRW5QT2dCUHhCUm9YVDdHWVE9PSIsInZhbHVlIjoiYjJ6K0NoZGsxVzJITjM3WHBRanFQSEIzRUdKNHJtWGF6dFhmeVViVzgyRHcxR0hJTzBBaFd3eUpxdXRxVmppbjVuY05VSVI2VmdLSFMzdHlDcnJ6OWFvWDAvdjNNb2FZV1VIbXorNjlkZWJOR3BEd2tnNkt3N1ljUFRvUjVHZUsiLCJtYWMiOiI3NTY1MmNiNjQxNmFlMTk2OTg0YzFmNTg4ZjQ5YWE1YzRjNTJmOGE3OTFhYWJlYTgxNDZmYzY5YjI3MzEzYzMzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: logout
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Destroy an authenticated session.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IjdiL1QvcVFOYUFyUHBhN24zbE15cXc9PSIsInZhbHVlIjoiMitDNGJKMXRWMUpuN25HcXJBKzJPL3dJZUpGY0pobkJ5Y2NnbWxCWFRvUkdLS0poNXVpTjhRVkVTUEl2T0NGTnhONTcvT29IMHp0RlpobkFCd3VJOC91SXg0STI0V2dPbEJieG9oOGJZcVpSSWlWeERPQlVYNzJWRG9pKy9EZzMiLCJtYWMiOiJiODExOTYyMWIwYjhlMTMxZGUzZWY0YWJiZDY1YzllM2M3MDgyNmYxODIxZTA4ZTQ5YzkzNGZiZGM0NDdiZmM5IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'storage/{path}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      path:
+        name: path
+        description: ''
+        required: true
+        example: '|{+-0p'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      path: '|{+-0p'
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 403
+        content: |-
+          {
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

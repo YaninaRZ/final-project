@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
+
+    /**
+     * @group Orders
+     * Lister toutes les commandes (admin)
+     *
+     * Retourne la page Inertia avec la liste des commandes (clients + produits).
+     * @authenticated
+     * @response 200 {"component":"admin/order-list","props":{"orders":[{"id":1,"status":"pending"}]}}
+     */
+
     public function index()
     {
         $orders = Order::with('client', 'products')->get();
@@ -17,6 +27,15 @@ class OrdersController extends Controller
             'orders' => $orders,
         ]);
     }
+
+    /**
+     * @group Orders
+     * Tableau de bord des ventes (admin)
+     *
+     * Statistiques (totaux, pending, paid, etc.) + ventes mensuelles 2025.
+     * @authenticated
+     * @response 200 {"component":"admin/dashboard","props":{"stats":{"totalOrders":12,"paidOrders":5},"sales2025":[0,1200,0,...]}}
+     */
 
     public function dashboard()
     {
@@ -72,7 +91,14 @@ class OrdersController extends Controller
     //     ]);
     // }
 
-
+    /**
+     * @group Orders
+     * Mes commandes (client)
+     *
+     * Liste les commandes pour l’utilisateur connecté (filtrage par email).
+     * @authenticated
+     * @response 200 {"component":"client/my-orders","props":{"orders":[{"id":7,"status":"paid"}]}}
+     */
     public function myOrders()
     {
         $user = Auth::user();
@@ -86,10 +112,35 @@ class OrdersController extends Controller
         ]);
     }
 
+    /**
+     * @group Orders
+     * Formulaire de création (admin)
+     *
+     * Affiche la page Inertia pour créer une nouvelle commande.
+     * @authenticated
+     * @response 200 {"component":"admin/order-create"}
+     */
+
     public function create()
     {
         return Inertia::render('admin/order-create');
     }
+    /**
+     * @group Orders
+     * Créer une commande (admin ou client connecté)
+     *
+     * Crée une commande et attache les produits (id + quantity).
+     * @authenticated
+     * @bodyParam customer_name string required Nom du client. Example: Alice Martin
+     * @bodyParam customer_email string required Email du client. Example: alice@example.com
+     * @bodyParam total_price number required Total de la commande. Example: 149.99
+     * @bodyParam status string Statut initial. Example: pending
+     * @bodyParam shipping_address string Adresse de livraison. Example: 10 rue de Paris, 75000 Paris
+     * @bodyParam products array required Tableau des produits.
+     * @bodyParam products[].id integer required ID du produit. Example: 3
+     * @bodyParam products[].quantity integer required Quantité. Example: 2
+     * @response 302 Redirection vers la page suivante (clientOrders ou thank-you) avec message de succès.
+     */
 
     public function store(Request $request)
     {
@@ -126,6 +177,17 @@ class OrdersController extends Controller
         return redirect()->route($user ? 'orders.clientOrders' : 'thank-you')->with('success', 'Commande passée avec succès.');
     }
 
+    /**
+     * @group Orders
+     * Détails d’une commande (admin)
+     *
+     * Affiche le résumé d’une commande avec client + produits + montant calculé.
+     * @authenticated
+     * @urlParam order integer required ID de la commande. Example: 12
+     * @response 200 {"component":"admin/order-summary","props":{"order":{"id":12},"amount":199.9}}
+     */
+
+
     public function show(Order $order)
     {
         $order->load(['client', 'products']);
@@ -136,6 +198,15 @@ class OrdersController extends Controller
             'amount' => $amount,
         ]);
     }
+
+    /**
+     * @group Orders
+     * Factures de l’utilisateur (client)
+     *
+     * Liste des commandes de l’utilisateur connecté (par client_id).
+     * @authenticated
+     * @response 200 {"component":"client/user-billing","props":{"orders":[{"id":4}],"auth":{"user":{"id":1}}}}
+     */
 
     public function clientOrders()
     {
@@ -150,6 +221,17 @@ class OrdersController extends Controller
             'auth' => ['user' => $user],
         ]);
     }
+
+    /**
+     * @group Orders
+     * Voir une commande (client)
+     *
+     * Affiche une commande précise appartenant au user connecté (sécurisée).
+     * @authenticated
+     * @urlParam id integer required ID de la commande. Example: 9
+     * @response 200 {"component":"client/view-order","props":{"order":{"id":9}}}
+     * @response 404 {"message":"Commande non trouvée ou accès non autorisé"}
+     */
 
     public function showClientOrder($id)
     {
@@ -178,6 +260,16 @@ class OrdersController extends Controller
     {
         //
     }
+
+    /**
+     * @group Orders
+     * Supprimer une commande (admin)
+     *
+     * Supprime la commande et redirige avec un message de succès.
+     * @authenticated
+     * @urlParam orders integer required ID de la commande. Example: 5
+     * @response 302 Redirection avec message "Order deleted successfully."
+     */
 
     public function destroy(Order $orders)
     {

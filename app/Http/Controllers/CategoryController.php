@@ -9,7 +9,15 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @group Catégories (Admin)
+     * Lister toutes les catégories
+     *
+     * @response 200 {
+     *   "props": {
+     *     "categories": [{"id":1,"name":"Hair","parent":null}],
+     *     "parentCategories": [{"id":1,"name":"Hair"}]
+     *   }
+     * }
      */
     public function index()
 
@@ -25,7 +33,20 @@ class CategoryController extends Controller
         ]);
     }
 
-    /// categories hierarchy
+    /**
+     * @group Catégories (Admin)
+     * Récupérer la hiérarchie des catégories
+     *
+     * @response 200 {
+     *   "props": {
+     *     "categories": [
+     *       {"id":1,"name":"Hair","children":[{"id":2,"name":"Shampoo"}]}
+     *     ]
+     *   }
+     * }
+     */
+
+
     public function getHierarchy()
     {
         $categories = Category::with('children')->whereNull('parent_id')->get();
@@ -42,10 +63,18 @@ class CategoryController extends Controller
     {
         // Pas besoin car modal
     }
-
     /**
-     * Store a newly created category (sans parent ou enfant).
+     * @group Catégories (Admin)
+     * Créer une nouvelle catégorie
+     *
+     * @bodyParam name string required Nom de la catégorie. Example: Masks
+     * @bodyParam parent_id integer ID d’une catégorie parente (optionnel). Example: 1
+     *
+     * @response 302 {
+     *   "message": "Redirection vers la liste des catégories"
+     * }
      */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -62,8 +91,16 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created category parente (pour ta popup).
+     * @group Catégories (Admin)
+     * Créer une catégorie parente (sans parent_id)
+     *
+     * @bodyParam name string required Nom de la catégorie parente. Example: Hair
+     *
+     * @response 200 {
+     *   "message": "Catégorie parente créée avec succès"
+     * }
      */
+
     public function storeParent(Request $request)
     {
         $request->validate([
@@ -96,8 +133,18 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @group Catégories (Admin)
+     * Mettre à jour une catégorie
+     *
+     * @urlParam category integer required ID de la catégorie. Example: 2
+     * @bodyParam name string required Nouveau nom de la catégorie. Example: Conditionner
+     * @bodyParam parent_id integer ID de la catégorie parente. Example: 1
+     *
+     * @response 302 {
+     *   "message": "Redirection avec succès"
+     * }
      */
+
     public function update(Request $request, Category $category)
     {
         $request->validate(['name' => 'required|string|max:255']);
@@ -110,8 +157,16 @@ class CategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @group Catégories (Admin)
+     * Supprimer une catégorie
+     *
+     * @urlParam category integer required ID de la catégorie. Example: 3
+     *
+     * @response 302 {
+     *   "message": "Catégorie supprimée avec succès"
+     * }
      */
+
     public function destroy(Category $category)
     {
         $category->delete();

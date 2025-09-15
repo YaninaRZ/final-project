@@ -29,5 +29,10 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+
+        <env name="DISABLE_VITE_DURING_TESTS" value="1"/>
+        <env name="APP_URL" value="http://localhost"/>
+
+
     </php>
 </phpunit>

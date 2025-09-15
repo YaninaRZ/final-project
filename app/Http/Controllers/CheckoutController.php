@@ -19,6 +19,24 @@ class CheckoutController extends Controller
         // Stripe::setApiVersion('2024-06-20');
     }
 
+    /**
+     * @group Checkout
+     * Créer une session Stripe Checkout pour la dernière commande de l’utilisateur
+     *
+     * Démarre un paiement pour la dernière commande du client connecté.
+     * Retourne une redirection (Inertia::location) vers la page Stripe.
+     *
+     * @authenticated
+     * @response 302 Redirection vers Stripe Checkout.
+     * @responseField url string URL Stripe Checkout (transportée via redirection côté client)
+     *
+     * @remarks
+     * - Récupère la dernière commande du user (via `client_id`).
+     * - Calcule/maj `amount` et `status`.
+     * - Construit `line_items` à partir des produits de la commande (prix en centimes).
+     * - Redirige vers Stripe.
+     */
+
     public function create(Request $request)
     {
         // $order = Order::where('client_id', Auth::id())->latest()->first();
@@ -73,6 +91,23 @@ class CheckoutController extends Controller
     //     return inertia('checkout/success');
     // }
 
+    /**
+     * @group Checkout
+     * Succès de paiement Stripe
+     *
+     * Vérifie la session Stripe et marque la commande comme "paid" si le paiement est réussi.
+     * Renvoie une page Inertia avec l’ID de commande.
+     *
+     * @authenticated
+     * @queryParam session_id string required Identifiant renvoyé par Stripe. Example: cs_test_a1b2c3
+     *
+     * @response 200 {
+     *   "props": {
+     *     "orderId": 42
+     *   }
+     * }
+     */
+
     public function success(Request $request)
     {
         $sessionId = $request->query('session_id');
@@ -96,6 +131,18 @@ class CheckoutController extends Controller
             'orderId' => $orderId,
         ]);
     }
+
+    /**
+     * @group Checkout
+     * Annulation du paiement Stripe
+     *
+     * Affiche une page d’annulation simple.
+     *
+     * @authenticated
+     * @response 200 {
+     *   "component": "checkout/cancel"
+     * }
+     */
 
     public function cancel()
     {

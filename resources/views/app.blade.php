@@ -42,9 +42,15 @@
 
 
     @routes
+    {{-- Ne charge pas Vite quand on est sur les docs --}}
+    @if (!request()->is('docs*'))
     @viteReactRefresh
+    @unless (app()->environment('testing') || env('DISABLE_VITE_DURING_TESTS'))
     @vite(['resources/js/app.jsx', "resources/js/pages/{$page['component']}.jsx"])
+    @endunless
+    @endif
     @inertiaHead
+
 
 
 </head>
