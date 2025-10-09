@@ -9,11 +9,15 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPasswordController;
 use App\Http\Middleware\RoleMiddleware;
+use App\Http\Controllers\CartController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
+
 ///////////////////////////////////////////////////////////////////////NON CONNECTÉ
+Route::view('/docs', 'scribe.index')->name('public_docs');
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -42,13 +46,16 @@ Route::get('/privacy-policy', function () {
 Route::get('/licence', function () {
     return Inertia::render('licence');
 })->name('licence');
+///////////////////////////////////////////////////////////////////////CART
 
 Route::get('/cart', function () {
     return Inertia::render('cart');
 })->name('cart');
 
-
-
+////////////////////////////////Routes compteur panier
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 
 ///////////////////////////////////////////////////////////////////////COMMANDES
@@ -73,9 +80,15 @@ Route::get('/checkout/cancel', [CheckoutController::class, 'cancel'])->name('che
 ///////////////////////////////////////////////////////////////////////PAGES PRODUITS
 
 
-Route::get('/products/category/{category}', function ($category) { // category = dans l'URL
-    $category = Category::where('name', ucwords($category))->firstOrFail(); //ucwords pour Capitalize
-    $products = $category->products()->with('category')->get();
+// Route::get('/products/category/{category}', function ($category) { // category = dans l'URL
+//     $category = Category::where('name', ucwords($category))->firstOrFail(); //ucwords pour Capitalize
+//     $products = $category->products()->with('category')->get();
+//     return Inertia::render('products/index', ['products' => $products]);
+// })->name('products.category');
+
+Route::get('/products/category/{category:slug}', function (Category $category) {
+    $products = $category->products()->with('category')->latest()->get();
+
     return Inertia::render('products/index', ['products' => $products]);
 })->name('products.category');
 
@@ -100,7 +113,7 @@ Route::get('/post-detail/{id}', function ($id) {
 
 ///////////////////////////////////////////////////////////////////////ROUTES ADMIN
 
-Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin', 'verified'])->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('dashboard', [OrdersController::class, 'dashboard'])->name('dashboard');
@@ -157,6 +170,9 @@ Route::middleware(['auth', 'verified', 'role:client'])->group(function () {
         return Inertia::render('client/user-account');
     })->name('user-account');
 
+
+    Route::put('/user-password', [UserController::class, 'update'])
+        ->name('user-password.update');
 
     Route::get('/user-password', function () {
         return Inertia::render('client/user-password');

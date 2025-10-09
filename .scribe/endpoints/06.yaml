@@ -1,0 +1,191 @@
+name: Users
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: admin/client
+    metadata:
+      groupName: Users
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Lister les clients
+
+        Retourne la liste des utilisateurs avec le rôle "client".
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"component":"admin/client","props":{"clients":[{"id":1,"name":"Alice"}]}}'
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: admin/client-create
+    metadata:
+      groupName: Users
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Créer un nouvel utilisateur
+
+        Crée un nouvel utilisateur avec nom, email et mot de passe.
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom complet de l’utilisateur.'
+        required: true
+        example: 'Alice Martin'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Email unique.'
+        required: true
+        example: alice@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Mot de passe.'
+        required: true
+        example: secret123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: 'Alice Martin'
+      email: alice@example.com
+      password: secret123
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: 'Redirection vers la liste des clients avec message de succès.'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6Ilh3c3BFYlBTQ0grZ2xiQTZiLzJJSVE9PSIsInZhbHVlIjoiallHYVp1NWxMVjdOZU5BR2RoRWNnWlcxSzFpSWUwbWFoRkxjb0Vra0RXRHIwLzZiNUJmT3hBV1FCRWh3TnltZmZ2MDFmMzdKVVBxZlJxejZNeUlQS3ZYUEI3WDc1S0ZDaUdsTTJ1Vml6VEtJY0doWnZRNnhrUVhvOWR4QTd4UG4iLCJtYWMiOiI5ZjJiNDAxZTg0OTcxNjMwOWJmZmI4OWYwYmQ4M2RlNGViYmM4MmQ5MmY1ZGVkMDg5OGY4YmRmNzFjZjM2NjdjIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'admin/client-delete/{id}'
+    metadata:
+      groupName: Users
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Supprimer un utilisateur
+
+        Supprime un utilisateur par son ID.
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID de l’utilisateur à supprimer.'
+        required: true
+        example: 7
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 7
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: 'Redirection avec message "Utilisateur supprimé avec succès."'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IlovRkdZQnNSZDlvV0RQNXZtMEljeVE9PSIsInZhbHVlIjoiZ1JkdytGZlN4elQxUHpveStCY3lZNjhwNnZOdmM1V0JiNnVGWm5LZGRJVFN4Tll6RTlxTGQ3N0JMZ1RTSkp2UTg1UGhEOWM4S1ZQMkxqNjNLdGI2SzBncEZ2MnJYWmNRekxnNWR1d3F3NnpHVmZJOEN5V0xIUVhzMXJ4UU1RS2ciLCJtYWMiOiI0YzkyMDc3ZTZjMjI2YzM1MzI3NjRkN2NjY2M3ZmIxMjk1MWQ5NzdjMWVjMzJkMzA0YjFhM2FkYmFhMzhlMzg5IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['name', 'parent_id'];
+    protected $fillable = ['name', 'parent_id', 'slug'];
 
     public function products()
     {

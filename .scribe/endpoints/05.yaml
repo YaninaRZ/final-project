@@ -1,0 +1,524 @@
+name: 'Produits (Admin)'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: admin/products
+    metadata:
+      groupName: 'Produits (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Lister tous les produits (admin)
+
+
+        lalalla
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "props": {
+              "products": [{"id": 1, "name": "Shampoo", "category": {"id": 2, "name":"Hair"}}],
+              "categories": [{"id": 2, "name":"Hair"}]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: admin/products
+    metadata:
+      groupName: 'Produits (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer un produit'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom du produit.'
+        required: true
+        example: Shampoo
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'Description du produit.'
+        required: false
+        example: 'A natural shampoo'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      sku:
+        name: sku
+        description: 'Référence interne.'
+        required: false
+        example: TS-OVR-001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      sales_quantity:
+        name: sales_quantity
+        description: 'Quantité vendue.'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      sales_remaining_products:
+        name: sales_remaining_products
+        description: 'Stock restant.'
+        required: false
+        example: 50
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      sales_price:
+        name: sales_price
+        description: 'Prix de vente (EUR).'
+        required: false
+        example: 29.99
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      image_src:
+        name: image_src
+        description: "URL ou chemin d'image."
+        required: false
+        example: /images/ts-ovr.jpg
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      image_alt:
+        name: image_alt
+        description: 'Texte alternatif.'
+        required: false
+        example: 'Shampoo natural'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      category_id:
+        name: category_id
+        description: 'ID de catégorie existante.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: Shampoo
+      description: 'A natural shampoo'
+      sku: TS-OVR-001
+      sales_quantity: 10
+      sales_remaining_products: 50
+      sales_price: 29.99
+      image_src: /images/ts-ovr.jpg
+      image_alt: 'Shampoo natural'
+      category_id: 2
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Redirection vers la liste des produits"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6ImdkaGNtNFJFdnJtZmtGYjhFZTh6VkE9PSIsInZhbHVlIjoiZ24rVFFrTVpBUnhVVEtpWEQvYUtYamtXZnIxcHVOT0lZRmg2cGFGbmFrZjRHOGZYMWhYeUNpdlJXekJDNmo2QWhtUGR6YXd2Mk5PQ1VRV2E0MThHTmYzbWRGNG5GdHNOMU5TRlROMVFSSFE3N1BUYVRGQnFQMW1sUDZKTWo5ODMiLCJtYWMiOiIzNjhlMDhiZTkxZGQzZTkyYzY0YTM0N2NhY2JiMTVjMTU0MjJmMDYzZDNmMGEwNWIyYjkyZDNjZDgyNzU2MmQyIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'admin/products/{allProduct_id}'
+    metadata:
+      groupName: 'Produits (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour un produit'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      allProduct_id:
+        name: allProduct_id
+        description: 'The ID of the allProduct.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      product:
+        name: product
+        description: 'ID du produit.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      allProduct_id: 1
+      product: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom du produit.'
+        required: true
+        example: Shampoo
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'Description du produit.'
+        required: false
+        example: 'A natural shampoo'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      sku:
+        name: sku
+        description: 'Référence interne.'
+        required: false
+        example: TS-OVR-001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      sales_quantity:
+        name: sales_quantity
+        description: 'Quantité vendue.'
+        required: false
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      sales_remaining_products:
+        name: sales_remaining_products
+        description: 'Stock restant.'
+        required: false
+        example: 38
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      sales_price:
+        name: sales_price
+        description: 'Prix de vente (EUR).'
+        required: false
+        example: 31.99
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      image_src:
+        name: image_src
+        description: 'URL/chemin image.'
+        required: false
+        example: /images/ts-ovr.jpg
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      image_alt:
+        name: image_alt
+        description: 'Alt image.'
+        required: false
+        example: 'Shampoo natural'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      product_gallery:
+        name: product_gallery
+        description: 'Galerie images (format libre).'
+        required: false
+        example: /g/ts-ovr
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      category_id:
+        name: category_id
+        description: 'ID de catégorie.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: Shampoo
+      description: 'A natural shampoo'
+      sku: TS-OVR-001
+      sales_quantity: 12
+      sales_remaining_products: 38
+      sales_price: 31.99
+      image_src: /images/ts-ovr.jpg
+      image_alt: 'Shampoo natural'
+      product_gallery: /g/ts-ovr
+      category_id: 2
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Redirection vers la page détail"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6InBtOEJFSFNtRHhUYWpELzVNL1VabWc9PSIsInZhbHVlIjoiRGNrdkZxUzh2Tm4zMVhvZTdvMHQvWWNobGI0aXcycUVtcTRsWjNGanV3VGtBRDUwZEkzbDBXNElXdjBKNURJRzExaEFITlJUUG5mVzlOdnJaUktsOVFmeE45WnFPakU1c0RlT1h6UVYySDY1aUdsS0pRRUdiWkdKTVkxSTA0dHYiLCJtYWMiOiIwOTQzOTMyYmMxMjcyMDlmNzViOGQyZmU3NGIxZDRjN2Y3M2E5NDUyZmZhZGZkZjlmZmQ3ZTYyY2JhMGI3YWIxIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'admin/products/{allProduct_id}'
+    metadata:
+      groupName: 'Produits (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Voir le détail d’un produit'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      allProduct_id:
+        name: allProduct_id
+        description: 'The ID of the allProduct.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      product:
+        name: product
+        description: 'ID du produit.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      allProduct_id: 1
+      product: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "props": {
+              "product": {"id": 1, "name": "Shampoo", "category": {"id": 2, "name":"hair"}},
+              "categories": [{"id":2,"name":"Hair"}]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'admin/products/{allProduct_id}'
+    metadata:
+      groupName: 'Produits (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer un produit'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      allProduct_id:
+        name: allProduct_id
+        description: 'The ID of the allProduct.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      product:
+        name: product
+        description: 'ID du produit.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      allProduct_id: 1
+      product: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Redirection vers la page précédente"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IjZSZzUvWHB5dXpsWEI1SVYyempvVnc9PSIsInZhbHVlIjoiTklOK3l2NTV2anIxZUtCSHFQaXNFRDVyOEtaZEFWbDJBTDlESEczbG5SY2phbFIzaUQwdlh2TlpTMzY4RTFWOHFoRFNQRCtmLzBHZjQ2SjI5ZnhObTAyYTdMeUhzMHVmSW9XZDBZcnZTaGkyNmttUFJCZ25MWGt5REhVWU1CbWYiLCJtYWMiOiI4NDBjYWQzNGEwMWQ0NmI4OTEzYWQxNzgwNzY1MDhhYTMyZjQ3ODNiODJmNmY1OGIwZmFiNjA3YTE0MjJhMzUzIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -19,7 +19,7 @@ export default function ClientLayout({ children }) {
                     <div className="overflow-hidden rounded-lg bg-white shadow-sm">
                         <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-x lg:divide-y-0">
                             {/* Sidebar */}
-                            <aside className="py-6 lg:col-span-3 bg-[#F5F1ED] border-r border-[#E2DCD7]">
+                            <aside className="py-6 lg:col-span-3 bg-[#F5F1ED] border-r border-[#E2DCD7]relative z-20 pointer-events-auto">
                                 <nav className="space-y-1">
                                     {subNavigation.map((item) => (
                                         <Link
@@ -60,7 +60,7 @@ export default function ClientLayout({ children }) {
                             </aside>
 
                             {/* Content Area */}
-                            <div className="px-4 py-6 sm:p-6 lg:col-span-9">
+                            <div className="px-4 py-6 sm:p-6 lg:col-span-9 relative z-10">
                                 {children}
                             </div>
                         </div>

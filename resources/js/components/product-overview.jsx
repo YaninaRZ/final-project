@@ -24,7 +24,11 @@ export default function ProductOverview({ open, setOpen, product }) {
         <Dialog open={open} onClose={() => setOpen(false)} className="relative z-10">
             <DialogBackdrop className="fixed inset-0 bg-black/30" />
 
-            <div className="fixed inset-y-0 right-0 h-screen z-20 w-1/2 overflow-y-auto bg-white shadow-xl">
+            <div
+                className="fixed z-20 bg-white shadow-x inset-x-0 bottom-0 h-[80vh] w-full rounded-t-2xl md:inset-y-0 md:top-0 md:bottom-0 md:left-auto md:right-0 md:w-1/2 md:h-screen md:rounded-none
+  "
+            >
+
                 <div className="relative flex h-full flex-col p-6">
 
                     <button type="button" onClick={() => setOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
@@ -33,13 +37,10 @@ export default function ProductOverview({ open, setOpen, product }) {
                     </button>
 
 
-                    <img src={product.image_src} alt={product.imageAlt} className="mb-6 w-full  max-h-150 rounded-lg object-cover" />
-
-
+                    <img src={product.image_src} alt={product.imageAlt} className="mb-4 w-full  max-h-48p   md:h-140 rounded-lg object-cover" />
                     <h2 className="mb-2 text-xl font-semibold text-gray-900">{product.name}</h2>
+                    <p className="mb-4 text-sm text-gray-600 line-clamp-4">{product.description}</p>
 
-
-                    <p className="mb-4 text-lg font-medium text-bg-[#252B42] ">{product.sales_price}$</p>
 
 
                     <div className="mb-4 flex items-center gap-4">

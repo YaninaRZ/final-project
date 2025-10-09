@@ -1,5 +1,13 @@
 import GuestLayout from '@/layouts/guest-layout';
 
+const toPrice = (v) => {
+    if (typeof v === 'string') v = v.replace(',', '.').replace(/[^\d.-]/g, '');
+    const n = Number(v);
+    return Number.isFinite(n) ? n : 0;
+};
+const fmtPrice = (n) =>
+    new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n);
+
 export default function ClientOrders({ orders }) {
     return (
         <GuestLayout>
@@ -14,7 +22,9 @@ export default function ClientOrders({ orders }) {
                             <li key={order.id} className="border p-4 rounded-md shadow-sm">
                                 <p><strong>Order ID:</strong> {order.id}</p>
                                 <p><strong>Status:</strong> {order.status}</p>
-                                <p><strong>Total Price:</strong> ${order.total_price.toFixed(2)}</p>
+                                <p>
+                                    <strong>Total Price:</strong> {fmtPrice(toPrice(order.total_price))}
+                                </p>
                                 <p><strong>Products:</strong></p>
                                 <ul className="ml-4 list-disc">
                                     {order.products.map((product) => (

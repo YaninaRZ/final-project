@@ -1,0 +1,385 @@
+name: 'Catégories (Admin)'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: admin/categories
+    metadata:
+      groupName: 'Catégories (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister toutes les catégories'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "props": {
+              "categories": [{"id":1,"name":"Hair","parent":null}],
+              "parentCategories": [{"id":1,"name":"Hair"}]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: admin/categories-create
+    metadata:
+      groupName: 'Catégories (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer une nouvelle catégorie'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom de la catégorie.'
+        required: true
+        example: Masks
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'ID d’une catégorie parente (optionnel).'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: Masks
+      parent_id: 1
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Redirection vers la liste des catégories"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6Im1zeFIxd2VGbksyU1lGdlZIMDUvWXc9PSIsInZhbHVlIjoiTHJmbHM4TnI3ZHZuWnVPKzBNTnRka3RveHJmUzFYYVVFODNFVUVDVHNOdWN1L1ArWGJ4ejRjTjg2NlFFMy9uMXNTWENqV1U3SXVqb3M2VVUra1g4ZjgwYk51dUhqZWdZZGYrek9Hcm0wUk43VFE1WlVudlkzdmRSOEo3eExmclciLCJtYWMiOiI5MDQ1ZDUwZTk1MmNjYTAwNzJlMGMxYTUzMWMxZjIyZTJhYzI2ZTQ4MTViMzAzMGY2N2U0YWZiNDJmOWM2MDE2IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'admin/categories/{id}'
+    metadata:
+      groupName: 'Catégories (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une catégorie'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      category:
+        name: category
+        description: 'ID de la catégorie.'
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 14
+      category: 2
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nouveau nom de la catégorie.'
+        required: true
+        example: Conditionner
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'ID de la catégorie parente.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: Conditionner
+      parent_id: 1
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Redirection avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6InFoYzNuTDV5THpTVTUvQlJkR0xiNXc9PSIsInZhbHVlIjoiQmNPWjJpZHgwSmF1emdVYTdWUTFmazVPSytqY0pzSEZOZ1A4MGJaRXJQN2N3Y0RPbkhaY2xDNUtkL1hSdWp2bUNMUnp0ZFBnb3JkbHp4dUNWck0wTjdRZGl4THY4Y1E2OHlZS0hmSXZFRmYvZ2NUUUNBSStNaFYreXludkVueHgiLCJtYWMiOiIzNGNkZTg0YmNkNDI5NmMzMTQyYTFiZGI2NzA1ODA1MTFmNWNkMzc2MzBhYTI4Nzc1MGM2NzUwNWNmNzFmODRhIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'admin/categories-delete/{category_id}'
+    metadata:
+      groupName: 'Catégories (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer une catégorie'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      category:
+        name: category
+        description: 'ID de la catégorie.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 14
+      category: 3
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Catégorie supprimée avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6Ii9BWFpHTVhiQTY2a2c0OE9kU0s0ZGc9PSIsInZhbHVlIjoiVHloR2d0Znd5R1J3U2tKckRZSUgyTE42Yy9OWnBDZGEvLzdwZW9rS1ZuMUdBNVRzSEdwdjZJZ1Rpc2Q3OXBvS3hCZVhSc2NkWDFRb1I3eG9WMlkyM041MTdqYUp4WTVveVZKak4rOEY1c1Vmdy93SjBXQnY3anRsZU9VZXFKUEgiLCJtYWMiOiI4NDZjOWNjZjMxMGUxYWQ4ZDFmOTU4OWY4NGZjODFkMDhhODcwMDAwZGI0NTY1ZDhjNGYxYmI4OTg4YzIzMTQxIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: admin/categories/hierarchy
+    metadata:
+      groupName: 'Catégories (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Récupérer la hiérarchie des catégories'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "props": {
+              "categories": [
+                {"id":1,"name":"Hair","children":[{"id":2,"name":"Shampoo"}]}
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: admin/categories/store-parent
+    metadata:
+      groupName: 'Catégories (Admin)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer une catégorie parente (sans parent_id)'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom de la catégorie parente.'
+        required: true
+        example: Hair
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: Hair
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Catégorie parente créée avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

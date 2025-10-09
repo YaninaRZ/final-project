@@ -9,6 +9,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
 import { useMobileNavigation } from '@/hooks/use-mobile-navigation';
 import { LogOut, Settings } from 'lucide-react';
+import { useCart } from '@/hooks/use-cart';
 
 import {
   Dialog,
@@ -34,7 +35,7 @@ const navigation = {
       featured: [
         {
           name: 'New Arrivals',
-          href: route('products.category', { category: 'new arrivals' }),
+          href: route('products.category', { category: 'new-arrivals' }),
           imageSrc: 'https://rituals.scene7.com/is/image/rituals/1115586-rituals-sa24018-sakura-2024-multi:Square?fmt=webp-alpha&hei=850&resMode=sharp2&wid=850',
           imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
         },
@@ -50,6 +51,7 @@ const navigation = {
 
 
 
+
 export default function NavbarDesign() {
   const [open, setOpen] = useState(false)
 
@@ -61,6 +63,11 @@ export default function NavbarDesign() {
   const page = usePage();
   const { auth, categoriesMenu } = page.props;
   console.log(page.props);
+
+  const { cart } = useCart();
+  const itemCount = cart?.length ?? 0;
+  const showBadge = itemCount > 0;
+
   return (
     <div className="bg-white">
       {/* START Mobile menu */}
@@ -398,15 +405,21 @@ export default function NavbarDesign() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <Link href={route('cart')} className="group -m-2 flex items-center p-2">
-                    <ShoppingBagIcon
-                      aria-hidden="true"
-                      className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
-                    />
-
+                  <Link href={route('cart')} className="group -m-2 flex items-center p-2 relative">
+                    <ShoppingBagIcon aria-hidden="true" className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500" />
+                    {showBadge && (
+                      <span
+                        className="absolute -top-0.5 -right-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-black text-white text-[10px] leading-none px-1"
+                        aria-label="Items in cart"
+                      >
+                        {Math.min(itemCount, 9)}
+                      </span>
+                    )}
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>
                 </div>
+
+
               </div>
             </div>
           </div>

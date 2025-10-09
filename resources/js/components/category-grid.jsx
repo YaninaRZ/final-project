@@ -2,47 +2,56 @@ import { Link } from '@inertiajs/react';
 
 export default function CategoryGrid() {
     return (
-        <>
-            <div className="mb-100 grid min-h-full grid-cols-1 lg:grid-cols-3">
-                <div className="relative flex h-[500px]">
-                    <img alt="" src="images/bodywash.svg" className="absolute inset-0 h-full w-full object-cover" />
-                    <div className="relative flex w-full flex-col items-start justify-end bg-black/40 p-8 sm:p-12">
-                        <p className="mt-1 text-2xl font-medium text-white">Body Wash</p>
-                        <Link
-                            href="/products"
-                            className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50"
-                        >
-                            Shop now
-                        </Link>
-                    </div>
-                </div>
+        <div className="mb-100 grid min-h-full grid-cols-1 lg:grid-cols-3">
 
-                <div className="relative flex h-[500px]">
-                    <img alt="" src="images/facewash.svg" className="absolute inset-0 h-full w-full object-cover" />
-                    <div className="relative flex w-full flex-col items-start justify-end bg-black/40 p-8 sm:p-12">
-                        <p className="mt-1 text-2xl font-medium text-white">Face Wash</p>
-                        <Link
-                            href="/products"
-                            className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50"
-                        >
-                            Shop now
-                        </Link>
-                    </div>
-                </div>
-
-                <div className="relative flex h-[500px]">
-                    <img alt="" src="images/cleanserwash.svg" className="absolute inset-0 h-full w-full object-cover" />
-                    <div className="relative flex w-full flex-col items-start justify-end bg-black/40 p-8 sm:p-12">
-                        <p className="mt-1 text-2xl font-medium text-white">Cleanser</p>
-                        <Link
-                            href="/products"
-                            className="mt-4 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50"
-                        >
-                            Shop now
-                        </Link>
-                    </div>
-                </div>
+            {/* Body Wash */}
+            <div className="relative flex h-[500px] items-center justify-center">
+                <img
+                    alt="Body Wash"
+                    src="images/bodywash.svg"
+                    className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/30" />
+                <Link
+                    href={route('products.category', { category: 'gel' })}
+                    className="relative flex h-40 w-40 items-center justify-center border border-white text-white text-sm tracking-wide transition hover:bg-white hover:text-black"
+                >
+                    BODY WASH
+                </Link>
             </div>
-        </>
+
+            {/* Face Wash */}
+            <div className="relative flex h-[500px] items-center justify-center">
+                <img
+                    alt="Face Wash"
+                    src="images/facewash.svg"
+                    className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/30" />
+                <Link
+                    href={route('products.category', { category: 'masks' })}
+                    className="relative flex h-40 w-40 items-center justify-center border border-white text-white text-sm tracking-wide transition hover:bg-white hover:text-black"
+                >
+                    FACE WASH
+                </Link>
+            </div>
+
+            {/* Cleanser */}
+            <div className="relative flex h-[500px] items-center justify-center">
+                <img
+                    alt="Cleanser"
+                    src="images/cleanserwash.svg"
+                    className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/30" />
+                <Link
+                    href={route('products.category', { category: 'shampoo' })}
+                    className="relative flex h-40 w-40 items-center justify-center border border-white text-white text-sm tracking-wide transition hover:bg-white hover:text-black"
+                >
+                    HAIR
+                </Link>
+            </div>
+
+        </div>
     );
 }

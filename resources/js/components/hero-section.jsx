@@ -28,7 +28,13 @@ export default function HeroSection() {
             </div>
             <div className="relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40">
                 <div className="pr-6 pl-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pr-0 lg:pl-24 xl:pl-32">
-                    <p className="text-black-500 mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">Discover The Beauty Within</p>
+                    <p className="mt-2 text-4xl sm:text-5xl font-normal tracking-tight text-gray-900">
+                        Discover The Beauty Within{' '}
+                        <span className="font-style text-[#68513F] text-[120px] ">
+                            Skinn
+                        </span>
+                    </p>
+
                     <div className="mt-8">
 
                         <Link href={route('collection')} className="w-full rounded-md border border-solid border-stone-300 bg-stone-200 px-16 py-3.5">

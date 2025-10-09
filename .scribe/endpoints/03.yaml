@@ -1,0 +1,167 @@
+name: Checkout
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: checkout
+    metadata:
+      groupName: Checkout
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Créer une session Stripe Checkout pour la dernière commande de l’utilisateur
+
+        Démarre un paiement pour la dernière commande du client connecté.
+        Retourne une redirection (Inertia::location) vers la page Stripe.
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: 'Redirection vers Stripe Checkout.'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: X-Inertia
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjhYaEwrZVFQK0VXeDl0NUFJN0RValE9PSIsInZhbHVlIjoiTDJzSDNCVXJQcmNzdXU1RGwxUTBvOEtnUmhZZmdqeENQcmlEZUxRYmwva21jOUZqL2ViVGtvcDVvZTF2VHhoVGhVMGZuN0Z2SlRrVlNLV2RhQlZjMkNxSDJSMHUzd2g1ZEIrNVBKaUNNaEJ1RXh1bHJzcE9SeHBDUG5uQW9nNmQiLCJtYWMiOiI0NmYwYTFjOWI0ZDkwNWNkNWJjNzYzMzkwNjY3ZGIzZjE4Y2UwNTdjMzQ3YjU0YTI3YTEzZDE2YzEzOWZmNTk1IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IkJycW5OWmVMMkhjZUtSK0V4UFgvNXc9PSIsInZhbHVlIjoiWFk4K1pQZExCeFlpVlZaZGpROXdEWXBJSC9aRXpXbklCajJKekFhdzdpVTh2VXU5NDV5TE1tUzhjUUMzd2RNdkVKWlphdDQramE1dXRGbnRubGRnNUQwbnpJNEZnWEh6NFk5V01QczY1bGgwSG81SmZ1aG4yQlNuYS9ZU09mdEEiLCJtYWMiOiJhOTMwY2YzMGM5ZTY4ZDdjNjY3ZWVmM2FjYTk4MWM0MmJhNTJkMGMxMWQ0MmIzMTZmODlkZWE3ZWFlN2NmMjRkIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields:
+      url:
+        name: url
+        description: 'URL Stripe Checkout (transportée via redirection côté client)'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: checkout/success
+    metadata:
+      groupName: Checkout
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Succès de paiement Stripe
+
+        Vérifie la session Stripe et marque la commande comme "paid" si le paiement est réussi.
+        Renvoie une page Inertia avec l’ID de commande.
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      session_id:
+        name: session_id
+        description: 'Identifiant renvoyé par Stripe.'
+        required: true
+        example: cs_test_a1b2c3
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      session_id: cs_test_a1b2c3
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "props": {
+              "orderId": 42
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: checkout/cancel
+    metadata:
+      groupName: Checkout
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Annulation du paiement Stripe
+
+        Affiche une page d’annulation simple.
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "component": "checkout/cancel"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

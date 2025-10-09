@@ -1,0 +1,58 @@
+name: 'Produits (Client)'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: products
+    metadata:
+      groupName: 'Produits (Client)'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les produits côté client'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      category:
+        name: category
+        description: 'Filtrer par slug ou nom de catégorie.'
+        required: false
+        example: mode
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      category: mode
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "props": {
+              "products": [{"id": 1, "name": "Shampoo"}],
+              "categories": [{"id": 2, "name":"Hair"}],
+              "category": "hair"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -1,0 +1,228 @@
+name: Panier
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: cart/add
+    metadata:
+      groupName: Panier
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Ajouter un produit au panier'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      id:
+        name: id
+        description: 'ID du produit.'
+        required: true
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      name:
+        name: name
+        description: 'Nom du produit.'
+        required: true
+        example: '"T-shirt Skinn"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      price:
+        name: price
+        description: 'Prix du produit (euros).'
+        required: true
+        example: 29.99
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'URL image du produit.'
+        required: false
+        example: '"/images/tshirt.jpg"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      qty:
+        name: qty
+        description: Quantité.
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      id: 12
+      name: '"T-shirt Skinn"'
+      price: 29.99
+      image: '"/images/tshirt.jpg"'
+      qty: 2
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Produit ajouté au panier",
+            "redirect": "back"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IldSMWV3ODRVQ0M4TFlQdmNVemMyNXc9PSIsInZhbHVlIjoidzVFOFdtemxuTGFsK3NpSEZhUWVxU2lOS3psVTBGR2FJeEJqTklRbFo3c3EwVE92M1JhRHBEZVlkNDFYTXRjTUtReTlJaUsvZ3cwd0pQSndQcHNlUGNKTVRteGJ0TzZxYVdRcm00YkpYUzRERFFxS2dIQXVZZzZUZHNab25DQXkiLCJtYWMiOiJhNDQyYTUyMzc0ODY5NjYxNzZjMzJmYjkyNmNlMTFhYzE4OTg3YThiODlhZTk5NGQ2YTZhNDRjNDE3ZTM3NDk3IiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: cart/remove
+    metadata:
+      groupName: Panier
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Retirer un produit du panier'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      id:
+        name: id
+        description: 'ID du produit à retirer.'
+        required: true
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      id: 12
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Produit retiré du panier",
+            "redirect": "back"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6ImorOEpTYVp6UTFJQ2JFWmx2VWpZd0E9PSIsInZhbHVlIjoiT3BYcE80VnBjM1RnOUhheG9wOUV6QkxKaXBNaTgveHc3NHJHeGpJc2pyRGtDM0Z0UjVFMUI2VGZzNVlXVVlvWWlhbkJvWWJMd3ZoOTVSaDRJTWhpR3VZU0ZBLys2OEJuellVdXd5SFJNbUoxTHp1eVBxNlRhOVlxWUJHcllsL2wiLCJtYWMiOiIxYTQ0NWFiODk3MDgxYzA2OTIxMGViMjE2ZWIyMDE2Nzg3N2FmMWFkY2Q3MWE2MDY5MzE3YmZkZmU1NGU1MWMwIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: cart/clear
+    metadata:
+      groupName: Panier
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Vider le panier'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "message": "Panier vidé",
+            "redirect": "back"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 419
+        content: |-
+          {
+              "message": "CSRF token mismatch."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          set-cookie: 'laravel_session=eyJpdiI6IkRPMTRUSmRQdkZrY1AxMzFQMEZySEE9PSIsInZhbHVlIjoiNi85amtYWkZYdUR1TWowT3U1RmluYVhkNmpQa2E3NnVmekJIVEVlN2IzZlNGUkhrWGc0dUx3NjhJS0xHREVNcUpaeUtWUTRWOW5rNk0wVlBuNUpJaFQ0V1JLOGdta2JhTi9lc3BJdmsrQUhLcmlxVllGVEtYNTJFWGZBSmhDY3UiLCJtYWMiOiI3MGNjODcyNWQ4NmU3MmU3MGZkNjc1NDVkMThlZmUxM2U4YWVmZjhjYzY4MDEwNDQ0MTkwODc3NGYxOGU5ZjlkIiwidGFnIjoiIn0%3D; expires=Thu, 11 Sep 2025 10:37:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

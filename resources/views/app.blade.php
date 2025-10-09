@@ -35,11 +35,24 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    <!-- Google Fonts: Style Script -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+
 
     @routes
+    {{-- Ne charge pas Vite quand on est sur les docs --}}
+    @if (!request()->is('docs*'))
     @viteReactRefresh
+    @unless (app()->environment('testing') || env('DISABLE_VITE_DURING_TESTS'))
     @vite(['resources/js/app.jsx', "resources/js/pages/{$page['component']}.jsx"])
+    @endunless
+    @endif
     @inertiaHead
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
 
 
 </head>
