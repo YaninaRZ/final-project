@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -77,17 +78,26 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        // Validation basique
+        $data = $request->validate([
             'name' => 'required|string|max:255',
             'parent_id' => 'nullable|exists:categories,id',
         ]);
 
-        Category::create([
-            'name' => $request->name,
-            'parent_id' => $request->parent_id ?? null,
-        ]);
+        // Générer le slug à partir du nom
+        $data['slug'] = Str::slug($data['name']);
 
-        return to_route('categories');
+        // Vérifier l’unicité
+        $base = $data['slug'];
+        $i = 1;
+        while (Category::where('slug', $data['slug'])->exists()) {
+            $data['slug'] = $base . '-' . $i++;
+        }
+
+        // Créer la catégorie
+        Category::create($data);
+
+        return redirect()->back()->with('success', 'Catégorie créée avec succès !');
     }
 
     /**

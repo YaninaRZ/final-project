@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Schema;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+
 
 class AllProductController extends Controller
 {
@@ -53,14 +55,45 @@ class AllProductController extends Controller
 
     public function clientIndex(Request $request)
     {
-        $products = Product::with('category')->get()->toArray();
-        $categories = Category::all();
+        $active = trim((string) $request->query('category', ''));
+
+        $query = Product::with('category');
+
+        if ($active !== '') {
+            $query->whereHas('category', function ($q) use ($active) {
+                $q->whereRaw('LOWER(TRIM(name)) = ?', [mb_strtolower($active)])
+                    ->orWhere(function ($qq) use ($active) {
+                        if (\Illuminate\Support\Facades\Schema::hasColumn('categories', 'slug')) {
+                            $qq->where('slug', $active);
+                        }
+                    });
+            });
+        }
+
+        // Récupération
+        $products = $query->latest()->get();
+
+        // ✅ Normaliser sales_price -> float (pour éviter les strings côté front)
+        $products = $products->map(function ($p) {
+            $p->sales_price = (float) ($p->sales_price ?? 0);
+            return $p;
+        });
+
+        $categories = Category::select('id', 'name')
+            ->when(\Illuminate\Support\Facades\Schema::hasColumn('categories', 'slug'), fn($q) => $q->addSelect('slug'))
+            ->orderBy('name')
+            ->get();
+
         return Inertia::render('products/index', [
-            'products' => $products,
-            'categories' => $categories,
-            'category' => $request->category,
+            'products'       => $products,
+            'categories'     => $categories,
+            'activeCategory' => $active,
         ]);
     }
+
+
+
+
 
 
 
@@ -132,15 +165,19 @@ class AllProductController extends Controller
      * }
      */
 
-
     public function show(Product $allProduct)
     {
         $allProduct->load('category');
-        $categories = Category::all();  // Récupère toutes les catégories
+
+        // ✅ Normaliser sales_price -> float pour la page détail
+        $product = $allProduct->toArray();
+        $product['sales_price'] = (float) ($product['sales_price'] ?? 0);
+
+        $categories = Category::all();
 
         return Inertia::render('admin/product-detail', [
-            'product' => $allProduct,
-            'categories' => $categories,   // Passe les catégories à la page React
+            'product'     => $product,
+            'categories'  => $categories,
         ]);
     }
 

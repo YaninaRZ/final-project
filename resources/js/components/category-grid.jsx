@@ -45,10 +45,10 @@ export default function CategoryGrid() {
                 />
                 <div className="absolute inset-0 bg-black/30" />
                 <Link
-                    href={route('products.category', { category: 'face cleanser' })}
+                    href={route('products.category', { category: 'shampoo' })}
                     className="relative flex h-40 w-40 items-center justify-center border border-white text-white text-sm tracking-wide transition hover:bg-white hover:text-black"
                 >
-                    CLEANSER
+                    HAIR
                 </Link>
             </div>
 

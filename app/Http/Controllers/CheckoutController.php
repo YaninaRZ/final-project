@@ -80,7 +80,8 @@ class CheckoutController extends Controller
                 'order_id' => (string) $order->id,     // 👈 pour la retrouver
                 'user_id'  => (string) Auth::id(),
             ],
-            'client_reference_id' => (string) Auth::id(),
+            'client_reference_id' => (string) $order->id,
+
         ]);
 
         return Inertia::location($session->url);

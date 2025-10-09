@@ -9,7 +9,10 @@ export default function ProductShow() {
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
-
+    const price = Number(product?.sales_price ?? 0);
+    const priceText = Number.isFinite(price)
+        ? new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(price)
+        : '—';
     if (!product) {
         return (
             <GuestLayout>
@@ -49,7 +52,8 @@ export default function ProductShow() {
                 <p className="mt-4">{product.description}</p>
 
                 <div className="mt-2 flex items-center justify-between">
-                    <p className="text-xl text-gray-800">{parsedProduct.sales_price.toFixed(2)} $</p>
+                    <p className="text-xl text-gray-800">{priceText}</p>
+
                     <button onClick={handleOpenPopup} className="ml-4 rounded-[5px] bg-[#252B42] px-[13px] py-2 text-sm text-white">
                         Add to Cart
                     </button>

@@ -14,6 +14,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 
 ///////////////////////////////////////////////////////////////////////NON CONNECTÉ
 Route::view('/docs', 'scribe.index')->name('public_docs');
@@ -79,9 +80,15 @@ Route::get('/checkout/cancel', [CheckoutController::class, 'cancel'])->name('che
 ///////////////////////////////////////////////////////////////////////PAGES PRODUITS
 
 
-Route::get('/products/category/{category}', function ($category) { // category = dans l'URL
-    $category = Category::where('name', ucwords($category))->firstOrFail(); //ucwords pour Capitalize
-    $products = $category->products()->with('category')->get();
+// Route::get('/products/category/{category}', function ($category) { // category = dans l'URL
+//     $category = Category::where('name', ucwords($category))->firstOrFail(); //ucwords pour Capitalize
+//     $products = $category->products()->with('category')->get();
+//     return Inertia::render('products/index', ['products' => $products]);
+// })->name('products.category');
+
+Route::get('/products/category/{category:slug}', function (Category $category) {
+    $products = $category->products()->with('category')->latest()->get();
+
     return Inertia::render('products/index', ['products' => $products]);
 })->name('products.category');
 
@@ -163,6 +170,9 @@ Route::middleware(['auth', 'verified', 'role:client'])->group(function () {
         return Inertia::render('client/user-account');
     })->name('user-account');
 
+
+    Route::put('/user-password', [UserController::class, 'update'])
+        ->name('user-password.update');
 
     Route::get('/user-password', function () {
         return Inertia::render('client/user-password');

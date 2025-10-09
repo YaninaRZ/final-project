@@ -2,32 +2,35 @@
 
 namespace Database\Seeders;
 
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // ce que tu as déjà (admin par défaut, catégories, produits)
+        User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            ['name' => 'Admin', 'password' => Hash::make('password')]
+        );
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $beauty = Category::firstOrCreate(['name' => 'Beauty']);
+        $hair   = Category::firstOrCreate(['name' => 'Hair']);
 
-        $order = Order::create(['client_id' => 1, 'status' => 'paid']);
+        Product::firstOrCreate(
+            ['name' => 'Shampoo'],
+            ['category_id' => $hair->id, 'price' => 12.9, 'description' => 'Gentle shampoo']
+        );
+        Product::firstOrCreate(
+            ['name' => 'Face Cream'],
+            ['category_id' => $beauty->id, 'price' => 19.9, 'description' => 'Hydrating cream']
+        );
 
-        $product1 = Product::get(1);
-        $order->products()->attach([
-            1 => ['quantity' => 49],
-            5 => ['quantity' => 10],
-        ]);
+        // ➜ Appelle en plus le seeder dédié (il mettra à jour le même admin si besoin)
+        $this->call(AdminUserSeeder::class);
     }
 }

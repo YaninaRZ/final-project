@@ -52,6 +52,8 @@
     @inertiaHead
 
 
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+
 
 </head>
 

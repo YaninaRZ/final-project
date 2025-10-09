@@ -84,7 +84,16 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'current_password'      => ['required', 'current_password'],
+            'password'              => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = $request->user();
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+
+        return back()->with('success', 'Mot de passe mis à jour.');
     }
 
     /**
